@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Data;
 
@@ -15,16 +16,14 @@ public partial class SchedulePlatformContext : DbContext
     {
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=SchedulePlatform;User Id=sa;Password=alexNet007;TrustServerCertificate=True");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Customer>();
         base.OnModelCreating(modelBuilder);
     }
     
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
+    public virtual DbSet<Customer> Customers { get; set; }
     
 }

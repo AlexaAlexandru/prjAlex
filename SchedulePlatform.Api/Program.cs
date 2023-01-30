@@ -1,11 +1,29 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Models;
+using SchedulePlatform.Data;
+using SchedulePlatform.Data.Repositories;
+using SchedulePlatform.Service;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SchedulePlatform.Api", Version = "v1" });
+});
+
+ConfigurationManager configuration = builder.Configuration;
+
+var connectionString = configuration.GetConnectionString("connect");
+
+builder.Services.AddDbContext<SchedulePlatformContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddScoped<CustomerRepository>();
+builder.Services.AddScoped<CustomerService>();
 
 var app = builder.Build();
 

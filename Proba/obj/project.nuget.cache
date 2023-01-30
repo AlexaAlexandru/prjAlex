@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "6a7JimA6KXCxaqVCpU1ODtx12z+kNdMl1N6cXVumeQmFYvtRmFcXSmM9hztpen0AKhAH+qXFKuWaEAgUYZ2nyg==",
+  "success": true,
+  "projectFilePath": "/Users/alexandrualexa/Documents/NET/BuildingProject/prjAlex/Proba/Proba.csproj",
+  "expectedPackageFiles": [
+    "/Users/alexandrualexa/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/alexandrualexa/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/alexandrualexa/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/Users/alexandrualexa/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/Users/alexandrualexa/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/Users/alexandrualexa/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

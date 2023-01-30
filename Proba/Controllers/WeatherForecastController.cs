@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SchedulePlatform.Api.Controllers;
+namespace Proba.Controllers;
 
 [ApiController]
 [Route("[controller]")]

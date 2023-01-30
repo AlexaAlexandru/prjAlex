@@ -1,4 +1,4 @@
-﻿namespace SchedulePlatform.Api;
+﻿namespace Proba;
 
 public class WeatherForecast
 {

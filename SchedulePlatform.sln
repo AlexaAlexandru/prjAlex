@@ -5,8 +5,6 @@ VisualStudioVersion = 25.0.1704.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulePlatform.Data", "SchedulePlatform.Data\SchedulePlatform.Data.csproj", "{9EB47433-14C0-44FD-AD10-BE3757317660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulePlatform.Web", "SchedulePlatform.Web\SchedulePlatform.Web.csproj", "{E7263D20-DDDB-443F-9CE6-2E028E67E3CD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulePlatform.Service", "SchedulePlatform.Service\SchedulePlatform.Service.csproj", "{02D3BCEA-D1F2-479E-BDD6-1677B0323BEB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulePlatform.Models", "SchedulePlatform.Models\SchedulePlatform.Models.csproj", "{9AAE32CA-2F6D-4232-A9AF-0EA59CA1D9CD}"
@@ -23,10 +21,6 @@ Global
 		{9EB47433-14C0-44FD-AD10-BE3757317660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EB47433-14C0-44FD-AD10-BE3757317660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EB47433-14C0-44FD-AD10-BE3757317660}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7263D20-DDDB-443F-9CE6-2E028E67E3CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7263D20-DDDB-443F-9CE6-2E028E67E3CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7263D20-DDDB-443F-9CE6-2E028E67E3CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7263D20-DDDB-443F-9CE6-2E028E67E3CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02D3BCEA-D1F2-479E-BDD6-1677B0323BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02D3BCEA-D1F2-479E-BDD6-1677B0323BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02D3BCEA-D1F2-479E-BDD6-1677B0323BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU

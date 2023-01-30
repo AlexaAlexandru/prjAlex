@@ -6,4 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SchedulePlatform.Data\SchedulePlatform.Data.csproj" />
+  </ItemGroup>
 </Project>

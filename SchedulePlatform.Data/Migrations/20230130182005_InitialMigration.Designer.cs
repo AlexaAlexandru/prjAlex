@@ -11,8 +11,8 @@ using SchedulePlatform.Data;
 namespace SchedulePlatform.Data.Migrations
 {
     [DbContext(typeof(SchedulePlatformContext))]
-    [Migration("20230130115611_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20230130182005_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
