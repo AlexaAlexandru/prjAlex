@@ -25,6 +25,20 @@ namespace SchedulePlatform.Api.Controllers
         {
             return _service.GetAllCustomers();
         }
+
+        [HttpPost ("Add")]
+
+        public Customer AddCustomer(Customer customer)
+        {
+            return _service.AddCustomer(customer);
+        }
+
+        [HttpGet ("GetId")]
+
+        public Customer GetById(Guid id)
+        {
+            return _service.GetById(id);
+        }
     }
 }
 

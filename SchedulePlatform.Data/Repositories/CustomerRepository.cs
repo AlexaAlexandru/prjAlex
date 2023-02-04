@@ -19,6 +19,31 @@ namespace SchedulePlatform.Data.Repositories
 		{
 			return _dbSet.ToArray();
         }
-	}
+
+        public Customer AddCustomer(Customer customer)
+        {
+            var customerToAdd = new Customer
+            {
+                Id= Guid.NewGuid(),
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                Age = customer.Age,
+                Email = customer.Email,
+                Phone = customer.Phone,
+                Height = customer.Height,
+                Weight= customer.Weight,
+                ScopeOfAppointment= customer.ScopeOfAppointment
+            };
+
+            _dbSet.Add(customerToAdd);
+            _context.SaveChanges();
+            return customerToAdd;
+        }
+
+        public Customer GetById(Guid id)
+        {
+            return _dbSet.FirstOrDefault((Customer customer) => customer.Id==id);
+        }
+    }
 }
 

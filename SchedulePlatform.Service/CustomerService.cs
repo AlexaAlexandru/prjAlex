@@ -13,10 +13,20 @@ namespace SchedulePlatform.Service
 			_customerRepository = customerRepository;
 		}
 
-		public Customer[] GetAllCustomers()
+        public Customer[] GetAllCustomers()
 		{
 			return _customerRepository.GetAll();
 		}
-	}
+
+        public Customer AddCustomer(Customer customer)
+        {
+            return _customerRepository.AddCustomer(customer);
+        }
+
+        public Customer GetById(Guid id)
+        {
+            return _customerRepository.GetById(id);
+        }
+    }
 }
 
