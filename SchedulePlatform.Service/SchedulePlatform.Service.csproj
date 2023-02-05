@@ -9,4 +9,10 @@
   <ItemGroup>
     <ProjectReference Include="..\SchedulePlatform.Data\SchedulePlatform.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
 </Project>

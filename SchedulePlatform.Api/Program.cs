@@ -2,8 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using SchedulePlatform.Data;
+using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Data.Repositories;
 using SchedulePlatform.Service;
+using SchedulePlatform.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +24,12 @@ ConfigurationManager configuration = builder.Configuration;
 var connectionString = configuration.GetConnectionString("connect");
 
 builder.Services.AddDbContext<SchedulePlatformContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddScoped<CustomerRepository>();
-builder.Services.AddScoped<CustomerService>();
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService,CustomerService>();
+
+builder.Services.AddScoped<IServiceProvidedRepository,ServiceProvidedRepository>();
+builder.Services.AddScoped<IServiceProvidedService,ServiceProvidedService>();
 
 var app = builder.Build();
 

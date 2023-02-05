@@ -1,5 +1,6 @@
 ﻿using System;
 using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Models.Enums;
 
 namespace SchedulePlatform.Models.Entities
 {

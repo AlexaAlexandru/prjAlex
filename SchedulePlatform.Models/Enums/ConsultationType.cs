@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SchedulePlatform.Models.Entities
+namespace SchedulePlatform.Models.Enums
 {
 	public enum ConsultationType
 	{
