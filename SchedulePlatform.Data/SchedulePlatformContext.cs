@@ -20,8 +20,8 @@ public partial class SchedulePlatformContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Customer>();
-
         modelBuilder.Entity<ServiceProvided>();
+        modelBuilder.Entity<Menu>();
 
         base.OnModelCreating(modelBuilder);
     }
@@ -31,5 +31,7 @@ public partial class SchedulePlatformContext : DbContext
     public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<ServiceProvided> Services { get; set; }
+
+    public virtual DbSet<Menu> Menus { get; set; }
     
 }

@@ -23,20 +23,10 @@ namespace SchedulePlatform.Data.Repositories
 
         public ServiceProvided Add(ServiceProvided serviceP)
         {
-            var serviceAdd = new ServiceProvided
-            {
-                Id = Guid.NewGuid(),
-                Description = serviceP.Description,
-                NameServiceProvided = serviceP.NameServiceProvided,
-                UrlPicture = serviceP.UrlPicture,
-                Type = serviceP.Type,
-                Price = serviceP.Price
-            };
-
-            _dbSet.Add(serviceAdd);
+            _dbSet.Add(serviceP);
             _context.SaveChanges();
 
-            return serviceAdd;
+            return serviceP;
         }
 
         public ServiceProvided? GetById(Guid id )
