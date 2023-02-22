@@ -21,7 +21,7 @@ namespace SchedulePlatform.Api.Controllers
         {
             _service = service;
         }
-        
+
         [HttpGet]
 
         public Customer[] GetCustomers()
@@ -29,14 +29,14 @@ namespace SchedulePlatform.Api.Controllers
             return _service.GetAllCustomers();
         }
 
-        [HttpPost ("Add")]
+        [HttpPost()]
 
         public Customer AddCustomer(Customer customer)
         {
             return _service.AddCustomer(customer);
         }
 
-        [HttpGet ("GetById")]
+        [HttpGet("{id}")]
 
         public IActionResult GetById(Guid id)
         {

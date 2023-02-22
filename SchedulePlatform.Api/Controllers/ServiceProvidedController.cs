@@ -8,11 +8,11 @@ using SchedulePlatform.Service.Interfaces;
 
 namespace SchedulePlatform.Api.Controllers
 {
-    [Route("api/[controller]")]
+	[Route("api/[controller]")]
 
-    [ApiController]
+	[ApiController]
 
-    public class ServiceProvidedController: ControllerBase
+	public class ServiceProvidedController : ControllerBase
 	{
 		private readonly IServiceProvidedService _serviceProvidedService;
 
@@ -28,14 +28,14 @@ namespace SchedulePlatform.Api.Controllers
 			return _serviceProvidedService.GetAll();
 		}
 
-		[HttpPost("Add")]
+		[HttpPost()]
 
-		public ServiceProvided Add( ServiceProvided serviceP)
+		public ServiceProvided Add(ServiceProvided serviceP)
 		{
 			return _serviceProvidedService.Add(serviceP);
 		}
 
-		[HttpGet("GetById")]
+		[HttpGet("{id}")]
 
 		public IActionResult GetById(Guid id)
 		{
