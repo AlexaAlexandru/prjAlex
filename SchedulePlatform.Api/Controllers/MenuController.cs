@@ -11,7 +11,7 @@ namespace SchedulePlatform.Api.Controllers
 
 	[ApiController]
 
-	public class MenuController:ControllerBase
+	public class MenuController : ControllerBase
 	{
 		private readonly IMenuService _service;
 
@@ -27,14 +27,14 @@ namespace SchedulePlatform.Api.Controllers
 			return _service.GetAll();
 		}
 
-		[HttpPost("Add")]
+		[HttpPost()]
 
 		public Menu AddMenu(Menu menu)
 		{
 			return _service.AddMenu(menu);
 		}
 
-		[HttpGet("GetById")]
+		[HttpGet("{id}")]
 
 		public IActionResult GetById(Guid id)
 		{
