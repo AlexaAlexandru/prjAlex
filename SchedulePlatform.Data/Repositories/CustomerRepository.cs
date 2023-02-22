@@ -47,6 +47,7 @@ namespace SchedulePlatform.Data.Repositories
         public Customer Delete(Guid id,Customer customer)
         {
             var findCustomer = _dbSet.First((Customer c) => c.Id == id);
+
             _dbSet.Remove(findCustomer);
             _context.SaveChanges();
 

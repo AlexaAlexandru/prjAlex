@@ -1,0 +1,16 @@
+﻿using System;
+namespace SchedulePlatform.Models.Entities
+{
+	public class Nutritionist: BaseEntity
+	{
+		public string? FirstName { get; set; }
+		public string? LastName { get; set; }
+		public string? Email { get; set; }
+		public string? Phone { get; set; }
+		public string? Biography { get; set; }
+		public Uri? MyProperty { get; set; }
+		public string? Address { get; set; }
+		List<ServiceProvided>? ListServices { get; set; }
+	}
+}
+
