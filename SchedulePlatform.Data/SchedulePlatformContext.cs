@@ -22,6 +22,15 @@ public partial class SchedulePlatformContext : DbContext
         modelBuilder.Entity<Customer>();
         modelBuilder.Entity<ServiceProvided>();
         modelBuilder.Entity<Menu>();
+        modelBuilder.Entity<Nutritionist>();
+        modelBuilder.Entity<NutritionistService>()
+            .HasOne(n => n.Nutritionist)
+            .WithMany(ns => ns.NutritionistService)
+            .HasForeignKey(ns => ns.NutritionistId);
+        modelBuilder.Entity<NutritionistService>()
+            .HasOne(n => n.Service)
+            .WithMany(ns => ns.NutritionistService)
+            .HasForeignKey(ns => ns.ServiceId);
 
         base.OnModelCreating(modelBuilder);
     }
@@ -33,5 +42,9 @@ public partial class SchedulePlatformContext : DbContext
     public virtual DbSet<ServiceProvided> Services { get; set; }
 
     public virtual DbSet<Menu> Menus { get; set; }
+
+    public virtual DbSet<Nutritionist> Nutritionists { get; set; }
+
+    public virtual DbSet<NutritionistService> NutritionistServices { get; set; }
     
 }

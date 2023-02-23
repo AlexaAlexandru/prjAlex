@@ -8,9 +8,9 @@ namespace SchedulePlatform.Models.Entities
 		public string? Email { get; set; }
 		public string? Phone { get; set; }
 		public string? Biography { get; set; }
-		public Uri? MyProperty { get; set; }
+		public Uri? PictureUrl { get; set; }
 		public string? Address { get; set; }
-		List<ServiceProvided>? ListServices { get; set; }
+		public List<NutritionistService>? NutritionistService { get; set; }
 	}
 }
 
