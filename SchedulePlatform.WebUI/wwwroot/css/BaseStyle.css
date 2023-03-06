@@ -84,7 +84,7 @@
     color: #F2E19D;
 }
 
-.content{
+.content-home{
     width:100%;
     position:absolute;
     top:50%;
@@ -92,6 +92,16 @@
     text-align:center;
     color:#fff;
 }
+
+
+.content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+}
+
 
 .content h1{
     font-size:50px;

@@ -17,4 +17,13 @@
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\Services.razor.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Services.razor.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
