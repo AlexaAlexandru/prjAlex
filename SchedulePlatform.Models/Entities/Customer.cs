@@ -12,6 +12,7 @@ namespace SchedulePlatform.Models.Entities
         public decimal Weight { get; set; }
         public int Age { get; set; }
         public string? ScopeOfAppointment { get; set; }
+        public List<Appointment> Appointments { get; set; }
 
     }
 

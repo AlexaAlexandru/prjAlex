@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
+
 namespace SchedulePlatform.Models.Entities
 {
 	public class Nutritionist: BaseEntity
@@ -11,6 +13,7 @@ namespace SchedulePlatform.Models.Entities
 		public Uri? PictureUrl { get; set; }
 		public string? Address { get; set; }
 		public List<NutritionistService>? NutritionistService { get; set; }
+		public List<Appointment> Appointments { get; set; }
 	}
 }
 

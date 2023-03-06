@@ -33,6 +33,14 @@ public partial class SchedulePlatformContext : DbContext
             .HasForeignKey(ns => ns.ServiceId);
 
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Appointment>()
+            .HasOne(n => n.Nutritionist)
+            .WithMany(ns => ns.Appointments)
+            .HasForeignKey(n => n.NutritionistId);
+        modelBuilder.Entity<Appointment>()
+            .HasOne(n => n.Customer)
+            .WithMany(ns => ns.Appointments)
+            .HasForeignKey(n => n.CustomerId);
     }
     
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
@@ -46,5 +54,7 @@ public partial class SchedulePlatformContext : DbContext
     public virtual DbSet<Nutritionist> Nutritionists { get; set; }
 
     public virtual DbSet<NutritionistService> NutritionistServices { get; set; }
+
+    public virtual DbSet<Appointment> Appointments { get; set; }
     
 }
