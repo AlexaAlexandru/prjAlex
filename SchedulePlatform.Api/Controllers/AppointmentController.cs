@@ -24,14 +24,14 @@ namespace SchedulePlatform.Api.Controllers
 
 		public Appointment[] GetAppointments()
 		{
-			return _service.GetAllAppointments();
+			return _service.GetAll();
 		}
 
 		[HttpPost]
 
 		public Appointment AddAppointment(Appointment appointment)
 		{
-			return _service.AddAppointment(appointment);
+			return _service.Add(appointment);
 		}
 
 		[HttpGet("{id}")]

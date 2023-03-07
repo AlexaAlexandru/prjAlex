@@ -7,9 +7,9 @@ namespace SchedulePlatform.Service
 {
 	public class NutritionistServiceS:INutritionistServiceS
 	{
-        private readonly IBaseRepository<Nutritionist> _nutritionistRepository;
+        private readonly INutritionistRepository _nutritionistRepository;
 
-        public NutritionistServiceS(IBaseRepository<Nutritionist> baseRepository)
+        public NutritionistServiceS(INutritionistRepository baseRepository)
         {
             _nutritionistRepository = baseRepository;
         }
@@ -23,7 +23,7 @@ namespace SchedulePlatform.Service
                  Biography=nutritionist.Biography,
                  Email=nutritionist.Email,
                  FirstName=nutritionist.FirstName,
-                 Id=nutritionist.Id,
+                 Id=Guid.NewGuid(),
                  LastName=nutritionist.LastName,
                  NutritionistService=nutritionist.NutritionistService,
                  Phone=nutritionist.Phone,

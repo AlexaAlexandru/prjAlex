@@ -29,7 +29,7 @@ namespace SchedulePlatform.Service
                 UrlPdf = menu.UrlPdf
             };
 
-            return _menuRepository.AddMenu(menuToAdd);
+            return _menuRepository.Add(menuToAdd);
         }
 
         public Menu? GetById(Guid id)

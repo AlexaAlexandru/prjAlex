@@ -1,8 +1,75 @@
 ﻿@page "/Appointment"
 
 
+<PageTitle>Appointment </PageTitle>
+<head>
+
+</head>
+
+
+
+
+
+
 
 @code {
 
+
+    private DraftAppointment appointment = new DraftAppointment();
+
+    public class DraftAppointment
+    {
+        public Guid Id { get; set; }
+
+        public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
+
+        public Boolean IsOnSite { get; set; }
+
+        public TypeAppointment Type { get; set; }
+
+        public Guid NutritionistId { get; set; }
+
+        public Nutritionist Nutritionist { get; set; }
+
+        public Guid CustomerId { get; set; }
+
+        public Customer Customer { get; set; }
+    }
+
+    public enum TypeAppointment
+    {
+        Finalised,
+        ToDo,
+        Canceled
+    }
+
+    public class Nutritionist
+    {
+        public Guid Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public string? Biography { get; set; }
+        public Uri? PictureUrl { get; set; }
+        public string? Address { get; set; }
+        public List<Appointment> Appointments { get; set; }
+    }
+
+    public class Customer
+    {
+        public Guid Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public List<Appointment> Appointments { get; set; }
+    }
+
+
 }
+
+
 

@@ -35,7 +35,7 @@ namespace SchedulePlatform.Service
                 ScopeOfAppointment = customer.ScopeOfAppointment
             };
 
-            return _customerRepository.AddCustomer(customerToAdd);
+            return _customerRepository.Add(customerToAdd);
         }
 
         public Customer? GetById(Guid id)

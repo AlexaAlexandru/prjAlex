@@ -6,14 +6,14 @@ namespace SchedulePlatform.Service.Interfaces
 {
 	public class AppointmentService: IAppointmentService
 	{
-        private IBaseRepository<Appointment> _appointmentRepository;
+        private IAppointmentRepository _appointmentRepository;
 
-        public AppointmentService(IBaseRepository<Appointment> repository)
+        public AppointmentService(IAppointmentRepository repository)
         {
             _appointmentRepository = repository;
         }
 
-        public Appointment AddAppointment(Appointment appointment)
+        public Appointment Add(Appointment appointment)
         {
             var appointmentToAdd = new Appointment
             {
@@ -34,7 +34,7 @@ namespace SchedulePlatform.Service.Interfaces
             return _appointmentRepository.Delete(id, appointment);
         }
 
-        public Appointment[] GetAllAppointments()
+        public Appointment[] GetAll()
         {
             return _appointmentRepository.GetAll();
         }

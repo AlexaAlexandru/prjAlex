@@ -35,11 +35,11 @@ builder.Services.AddScoped<IServiceProvidedService,ServiceProvidedService>();
 builder.Services.AddScoped<IMenuRepository, MenuRepository>();
 builder.Services.AddScoped<IMenuService, MenuService>();
 
-//builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped<INutritionistRepository, NutritionistRepository>();
+builder.Services.AddScoped<INutritionistServiceS, NutritionistServiceS>();
 
-//builder.Services.AddScoped<INutritionistServiceS, NutritionistServiceS>();
-
-//builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
 
 var app = builder.Build();

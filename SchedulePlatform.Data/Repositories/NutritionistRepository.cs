@@ -5,16 +5,18 @@ using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Data.Repositories
 {
-    public class ServiceProvidedRepository : BaseRepository<ServiceProvided>, IServiceProvidedRepository
+	public class NutritionistRepository: BaseRepository<Nutritionist>, INutritionistRepository
     {
         private readonly SchedulePlatformContext _context;
-        private readonly DbSet<ServiceProvided> _dbSet;
+        private readonly DbSet<Customer> _dbSet;
 
-        public ServiceProvidedRepository(SchedulePlatformContext context):base (context)
+        public NutritionistRepository(SchedulePlatformContext context) : base(context)
         {
             _context = context;
-            _dbSet = context.Set<ServiceProvided>();
+            _dbSet = context.Set<Customer>();
         }
+
     }
+
 }
 

@@ -3,8 +3,8 @@ using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Data.Interfaces
 {
-	public interface IMenuRepository : IBaseRepository<Menu>
+	public interface IAppointmentRepository: IBaseRepository<Appointment>
 	{
-    }
+	}
 }
 
