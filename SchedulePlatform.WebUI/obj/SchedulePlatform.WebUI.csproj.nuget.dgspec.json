@@ -1,31 +1,112 @@
 {
   "format": 1,
   "restore": {
-    "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/SchedulePlatform.WebUI.csproj": {}
+    "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\SchedulePlatform.WebUI.csproj": {}
   },
   "projects": {
-    "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/SchedulePlatform.WebUI.csproj": {
+    "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\SchedulePlatform.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/SchedulePlatform.WebUI.csproj",
-        "projectName": "SchedulePlatform.WebUI",
-        "projectPath": "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/SchedulePlatform.WebUI.csproj",
-        "packagesPath": "/Users/alexandrualexa/.nuget/packages/",
-        "outputPath": "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/obj/",
+        "projectUniqueName": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\SchedulePlatform.Models.csproj",
+        "projectName": "SchedulePlatform.Models",
+        "projectPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\SchedulePlatform.Models.csproj",
+        "packagesPath": "C:\\Users\\codri\\.nuget\\packages\\",
+        "outputPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/alexandrualexa/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\codri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ipslazure/Modernisation/_packaging/Modernised.NuGet/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ipslazure/Modernisation/_packaging/RefactorNuGetFeed/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ipslazure/_packaging/iPSLNuGet%40Local/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\SchedulePlatform.WebUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\SchedulePlatform.WebUI.csproj",
+        "projectName": "SchedulePlatform.WebUI",
+        "projectPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\SchedulePlatform.WebUI.csproj",
+        "packagesPath": "C:\\Users\\codri\\.nuget\\packages\\",
+        "outputPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\codri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ipslazure/Modernisation/_packaging/Modernised.NuGet/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ipslazure/Modernisation/_packaging/RefactorNuGetFeed/nuget/v3/index.json": {},
+          "https://pkgs.dev.azure.com/ipslazure/_packaging/iPSLNuGet%40Local/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\SchedulePlatform.Models.csproj": {
+                "projectPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\SchedulePlatform.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -47,6 +128,10 @@
               "target": "Package",
               "version": "[6.0.14, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
             "bootstrap": {
               "target": "Package",
               "version": "[5.2.3, )"
@@ -65,8 +150,20 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[6.0.14, 6.0.14]"
+              "version": "[6.0.13, 6.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.13, 6.0.13]"
             }
           ],
           "frameworkReferences": {
@@ -74,7 +171,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../build/SchedulePlatform.WebUI.props" />
+  <Import Project="..\build\SchedulePlatform.WebUI.props" />
 </Project>

@@ -9,57 +9,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = SchedulePlatform.WebUI
 build_property.RootNamespace = SchedulePlatform.WebUI
-build_property.ProjectDir = /Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/
+build_property.ProjectDir = D:\Programming\proiectAlex\prjAlex\SchedulePlatform.WebUI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI
+build_property.MSBuildProjectDirectory = D:\Programming\proiectAlex\prjAlex\SchedulePlatform.WebUI
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/App.razor]
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Pages/About.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWJvdXQucmF6b3I=
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/Pages/About.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/Pages/Homepage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZXBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRmV0Y2hEYXRhLnJhem9y
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Pages/Homepage.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZXBhZ2UucmF6b3I=
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/Shared/Navbar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdmJhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Pages/Services.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VydmljZXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Pages/Team.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGVhbS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Shared/SurveyPrompt.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/_Imports.razor]
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Shared/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-rxxwj1fcxr
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/Pages/Services.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VydmljZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-28qn6q2wbx
 
-[/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-afw1w7vsw5
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/Pages/Team.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-rrs1q09o35
+
+[D:/Programming/proiectAlex/prjAlex/SchedulePlatform.WebUI/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-efbb54fyhw

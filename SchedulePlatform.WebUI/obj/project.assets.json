@@ -628,6 +628,19 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -722,6 +735,16 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "SchedulePlatform.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SchedulePlatform.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SchedulePlatform.Models.dll": {}
         }
       }
     },
@@ -1352,6 +1375,19 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -1440,6 +1476,16 @@
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "SchedulePlatform.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SchedulePlatform.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SchedulePlatform.Models.dll": {}
         }
       }
     }
@@ -2148,6 +2194,36 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
+    "Newtonsoft.Json/13.0.2": {
+      "sha512": "R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "System.Diagnostics.DiagnosticSource/6.0.0": {
       "sha512": "frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
       "type": "package",
@@ -2303,40 +2379,56 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "SchedulePlatform.Models/1.0.0": {
+      "type": "project",
+      "path": "../SchedulePlatform.Models/SchedulePlatform.Models.csproj",
+      "msbuildProject": "../SchedulePlatform.Models/SchedulePlatform.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.AspNetCore.Components.WebAssembly >= 6.0.14",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 6.0.14",
+      "Newtonsoft.Json >= 13.0.2",
+      "SchedulePlatform.Models >= 1.0.0",
       "bootstrap >= 5.2.3"
     ]
   },
   "packageFolders": {
-    "/Users/alexandrualexa/.nuget/packages/": {}
+    "C:\\Users\\codri\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/SchedulePlatform.WebUI.csproj",
+      "projectUniqueName": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\SchedulePlatform.WebUI.csproj",
       "projectName": "SchedulePlatform.WebUI",
-      "projectPath": "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/SchedulePlatform.WebUI.csproj",
-      "packagesPath": "/Users/alexandrualexa/.nuget/packages/",
-      "outputPath": "/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.WebUI/obj/",
+      "projectPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\SchedulePlatform.WebUI.csproj",
+      "packagesPath": "C:\\Users\\codri\\.nuget\\packages\\",
+      "outputPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/alexandrualexa/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\codri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/ipslazure/Modernisation/_packaging/Modernised.NuGet/nuget/v3/index.json": {},
+        "https://pkgs.dev.azure.com/ipslazure/Modernisation/_packaging/RefactorNuGetFeed/nuget/v3/index.json": {},
+        "https://pkgs.dev.azure.com/ipslazure/_packaging/iPSLNuGet%40Local/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\SchedulePlatform.Models.csproj": {
+              "projectPath": "D:\\Programming\\proiectAlex\\prjAlex\\SchedulePlatform.Models\\SchedulePlatform.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -2358,6 +2450,10 @@
             "target": "Package",
             "version": "[6.0.14, )"
           },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.2, )"
+          },
           "bootstrap": {
             "target": "Package",
             "version": "[5.2.3, )"
@@ -2376,8 +2472,20 @@
         "warn": true,
         "downloadDependencies": [
           {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.13, 6.0.13]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.13, 6.0.13]"
+          },
+          {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-            "version": "[6.0.14, 6.0.14]"
+            "version": "[6.0.13, 6.0.13]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.13, 6.0.13]"
           }
         ],
         "frameworkReferences": {
@@ -2385,7 +2493,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.200/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

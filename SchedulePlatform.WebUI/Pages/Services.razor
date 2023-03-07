@@ -1,5 +1,8 @@
 ﻿@page "/Services"
-@inject HttpClient Http
+@using SchedulePlatform.Models.Entities
+@using SchedulePlatform.WebUI.Shared
+@inject HttpClient HttpClient
+@inherits LayoutComponentBase
 
 <PageTitle>Services</PageTitle>
 
@@ -9,37 +12,26 @@
 <body>
     <div>
         <div class="banner">
-            <div class="navbar">
-                <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Screenshot_2023-03-04_at_19.47.53-removebg-preview.png?alt=media&token=8152b2ad-defd-4db0-bd2a-9e944034af3c" class="logo-png" />
-                <div class="logo"><a>Nutritional Counseling platform</a></div>
-                <ul class="links">
-                    <li><a href="Homepage">Home</a></li>
-                    <li><a href="Team">Team</a></li>
-                    <li><a href="Services">Services</a></li>
-                    <li><a href="About">About us</a></li>
-                </ul>
-            </div>
-            <div>
-                <div class="content">
-                    @foreach (var item in services)
-                    {
-                        <div class="card mb-2" style="width:20rem" >
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="@item.UrlPicture" class="img-thumbnail" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5>@item.NameServiceProvided</h5>
-                                        <p class="card-text">Consultation: @item.Type</p>
-                                        <p class="card-text">Price: @item.Price</p>
-                                        <a href="#" class="btn btn-primary"> See service</a>
-                                    </div>
+            <Navbar />
+            <div class="content">
+                @foreach (var item in services)
+                {
+                    <div class="card mb-2" style="width:20rem" >
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="@item.UrlPicture" class="img-thumbnail" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5>@item.NameServiceProvided</h5>
+                                    <p class="card-text">Consultation: @item.Type</p>
+                                    <p class="card-text">Price: @item.Price</p>
+                                    <a href="#" class="btn btn-primary"> See service</a>
                                 </div>
                             </div>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         </div>
 
@@ -47,59 +39,3 @@
     </div>
    
 </body>
-
-
-@code {
-    private List<ServiceProvided> services = new List<ServiceProvided>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        services = await Http.GetFromJsonAsync<List<ServiceProvided>>("/api/ServiceProvided");
-    }
-
-    public class ServiceProvided
-    {
-        public Guid Id { get; set; }
-        public string? Description { get; set; }
-        public string? NameServiceProvided { get; set; }
-        public Uri? UrlPicture { get; set; }
-        public ConsultationType Type { get; set; }
-        public double Price { get; set; }
-        public List<NutritionistService>? NutritionistService { get; set; }
-    }
-
-    public enum ConsultationType
-    {
-        Sport_Nutrition,
-        Pregnancy,
-        Children_And_Adolescents,
-        Clinical_Nutrition
-    }
-
-    public class NutritionistService
-    {
-        public Guid NutritionistId { get; set; }
-        public Nutritionist Nutritionist { get; set; }
-        public Guid ServiceId { get; set; }
-        public ServiceProvided Service { get; set; }
-    }
-
-    public class Nutritionist
-    {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-        public string? Biography { get; set; }
-        public Uri? PictureUrl { get; set; }
-        public string? Address { get; set; }
-        public List<NutritionistService>? NutritionistService { get; set; }
-        public List<Appointment> Appointments { get; set; }
-    }
-
-    public class Appointment
-    {
-        public object MyProperty { get; set; }
-    }
-}
-
