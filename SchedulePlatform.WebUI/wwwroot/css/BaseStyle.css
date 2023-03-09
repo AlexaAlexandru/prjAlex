@@ -1,0 +1,158 @@
+﻿*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.banner {
+    width:100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.05)),url('https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/cesar-couto-sKuVjm0xyLY-unsplash.jpg?alt=media&token=597c5bb3-946a-4916-a282-9234f3ed3154');
+    background-size: cover;
+    background-position: center;
+}
+
+.logo-png{
+    width:120px;
+    cursor:pointer;
+}
+
+.navbar ul li {
+    list-style:none;
+    display:inline-block;
+    margin:0 20px;
+    position:relative;
+}
+
+.navbar ul li a {
+    text-decoration:none;
+    color: #fff;
+    text-transform:uppercase;
+    font-size:1rem;
+}
+
+.navbar ul li::after{
+    content:'';
+    height:3px;
+    width:0%;
+    background: #F2E19D;
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    transition:0.5s;
+}
+
+.navbar ul li:hover::after{
+    width:100%;
+}
+
+.navbar{
+    width:85%;
+    height:60px;
+    padding: 35px 0;
+    max-width:1200px;
+    margin : auto;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.navbar .logo a{
+    font-size:1rem;
+    font-weight:bold;
+}
+
+.navbar .links{
+    display:flex;
+    gap:2rem;
+}
+
+.action-btn {
+    background-color: black;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    color: #F2E19D;
+}
+
+.content-home{
+    width:100%;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    text-align:center;
+    color:#fff;
+}
+
+
+.content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+}
+
+.content1 {
+    width: 100%;
+    position: absolute;
+    top: 90%;
+    transform: translateY(-50%);
+    text-align: right;
+}
+
+
+.content h1{
+    font-size:50px;
+    margin-top:80px;
+}
+
+.content p{
+    margin:20px auto;
+    font-weight:100;
+    line-height:20px;
+}
+
+.appoint {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #F2E19D;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position:relative;
+    overflow:hidden;
+}
+
+span {
+    background: #F2E19D;
+    height: 100%;
+    width: 0%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.appoint:hover span{
+    width:100%;
+}
+
+.appoint:hover{
+    border:none;
+}

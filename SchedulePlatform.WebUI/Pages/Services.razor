@@ -1,0 +1,110 @@
+﻿@page "/Services"
+@inject HttpClient Http
+
+<PageTitle>Services</PageTitle>
+
+<head>
+    <link href="css/Basestyle.css" rel="stylesheet"/>
+</head>
+<body>
+    <div>
+        <div class="banner">
+            <NavBar></NavBar>
+                <div class="content">
+                    @foreach (var item in services)
+                    {
+                        <div class="card-m-12" style="width:20rem" >
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="@item.UrlPicture" class="img-thumbnail" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5>@item.NameServiceProvided</h5>
+                                        <p class="card-text">Consultation: @item.Type</p>
+                                        <p class="card-text">Price: @item.Price</p>
+                                        <a href="#" class="btn btn-primary"> See service</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="content1">
+                    <div class="card m-12" style="width:20rem">
+                        <div class="card-block">
+                            <h4 class="card-title">Card title</h4>
+                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                        </div>
+                        <img src="..." alt="Card image">
+                        <div class="card-block">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+      
+    </div>
+   
+</body>
+
+
+@code {
+    private List<ServiceProvided> services = new List<ServiceProvided>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        services = await Http.GetFromJsonAsync<List<ServiceProvided>>("/api/ServiceProvided");
+    }
+
+    public class ServiceProvided
+    {
+        public Guid Id { get; set; }
+        public string? Description { get; set; }
+        public string? NameServiceProvided { get; set; }
+        public Uri? UrlPicture { get; set; }
+        public ConsultationType Type { get; set; }
+        public double Price { get; set; }
+        public List<NutritionistService>? NutritionistService { get; set; }
+    }
+
+    public enum ConsultationType
+    {
+        Sport_Nutrition,
+        Pregnancy,
+        Children_And_Adolescents,
+        Clinical_Nutrition
+    }
+
+    public class NutritionistService
+    {
+        public Guid NutritionistId { get; set; }
+        public Nutritionist Nutritionist { get; set; }
+        public Guid ServiceId { get; set; }
+        public ServiceProvided Service { get; set; }
+    }
+
+    public class Nutritionist
+    {
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public string? Biography { get; set; }
+        public Uri? PictureUrl { get; set; }
+        public string? Address { get; set; }
+        public List<NutritionistService>? NutritionistService { get; set; }
+        public List<Appointment> Appointments { get; set; }
+    }
+
+    public class Appointment
+    {
+        public object MyProperty { get; set; }
+    }
+}
+
