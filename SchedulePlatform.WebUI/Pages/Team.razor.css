@@ -1,0 +1,56 @@
+﻿
+
+* {
+    font-family: "Montserrat", sans-serif;
+    color: #8d97ad;
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #3e4555;
+}
+
+.font-weight-medium {
+    font-weight: 500;
+}
+
+/*    .team1 .bg-light {
+        background-color: #f4f8fa !important;
+    }
+*/
+.subtitle {
+    color: #8d97ad;
+    line-height: 24px;
+}
+
+.pro-pic {
+    min-height: 200px;
+}
+
+.pro-pic .card-img-overlay {
+        background: rgba(26, 139, 243, 0.87);
+        display: none;
+    }
+
+.pro-pic .card-img-overlay ul {
+            top: 50%;
+        }
+
+.pro-pic .card-img-overlay ul li a {
+                -webkit-transition: 0.1s ease-in;
+                -o-transition: 0.1s ease-in;
+                transition: 0.1s ease-in;
+            }
+.pro-pic .card-img-overlay ul li a:hover {
+                    -webkit-transform: translate3d(0px, -5px, 0px);
+                    transform: translate3d(0px, -5px, 0px);
+                }
+
+.pro-pic:hover .card-img-overlay {
+        display: block;
+    }
