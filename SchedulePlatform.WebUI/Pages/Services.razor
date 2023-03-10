@@ -3,54 +3,9 @@
 
 <PageTitle>Services</PageTitle>
 
-<head>
-    <link href="css/Basestyle.css" rel="stylesheet"/>
-</head>
 <body>
-    <div>
-        <div class="banner">
-            <NavBar></NavBar>
-                <div class="content">
-                    @foreach (var item in services)
-                    {
-                        <div class="card-m-12" style="width:20rem" >
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="@item.UrlPicture" class="img-thumbnail" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5>@item.NameServiceProvided</h5>
-                                        <p class="card-text">Consultation: @item.Type</p>
-                                        <p class="card-text">Price: @item.Price</p>
-                                        <a href="#" class="btn btn-primary"> See service</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-                <div class="content1">
-                    <div class="card m-12" style="width:20rem">
-                        <div class="card-block">
-                            <h4 class="card-title">Card title</h4>
-                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                        </div>
-                        <img src="..." alt="Card image">
-                        <div class="card-block">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
+    <NavBar></NavBar>
 
-
-        </div>
-
-      
-    </div>
-   
 </body>
 
 
