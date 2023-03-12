@@ -16,6 +16,18 @@ section p {
     font-weight: 300;
 }
 
+.section-header {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: var(--color-secondary);
+}   
+
 button {
     max-width: 50%;
     border-radius: 50px !important;

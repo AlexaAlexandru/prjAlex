@@ -1,82 +1,87 @@
 ﻿@page "/Appointment"
-
+@using SchedulePlatform.WebUI.Pages;
+@inherits LayoutComponentBase
 
 <PageTitle>Appointment </PageTitle>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=delice-width,initial-scale=1" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link href="css/defaultStyle.css" rel="stylesheet" />
-</head>
 
 <body>
     <NavBar></NavBar>
+    <section id="Appointment" class="appointment">
+        <div class="containerAppointment" data-aos="fade-up">
+            <div class="row">
+                <div class="col-md-7 col-md-push-5">
+                    <div class="appointment-cta">
+                        <h1>Schedule your Appointment</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
+                            ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
+                            Perspiciatis.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-md-pull-7">
+                    <div class="appointment-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Date appointment</span>
+                                        <input class="form-control" type="date" required @bind="@DateTimeTest" @onclick="checkDate">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Service</span>
+                                        <select class="form-control">
+                                            <option>Service 1</option>
+                                            <option>Service 2</option>
+                                            <option>Service 3</option>
+                                            <option>Service 4</option>
+                                        </select>
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Nutritionist</span>
+                                        <select class="form-control">
+                                            <option>Nutritionist 1</option>
+                                            <option>Nutritionist 2</option>
+                                            <option>Nutritionist 3</option>
+                                            <option>Nutritionist 4</option>
+                                        </select>
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-btn">
+                                <button class="submit-btn">Check availability</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 
+@code
+{
+    public DateTime DateTimeTest { get; set; } = DateTime.Now;
 
-
-
-
-
-@code {
-
-
-    private DraftAppointment appointment = new DraftAppointment();
-
-    public class DraftAppointment
+    void checkDate()
     {
-        public Guid Id { get; set; }
-
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
-
-        public Boolean IsOnSite { get; set; }
-
-        public TypeAppointment Type { get; set; }
-
-        public Guid NutritionistId { get; set; }
-
-        public Nutritionist Nutritionist { get; set; }
-
-        public Guid CustomerId { get; set; }
-
-        public Customer Customer { get; set; }
+        if (DateTimeTest.DayOfWeek==DayOfWeek.Saturday||DateTimeTest.DayOfWeek==DayOfWeek.Sunday)
+        {
+            Console.WriteLine("Choose a day from Monday to Friday");
+        }
     }
-
-    public enum TypeAppointment
-    {
-        Finalised,
-        ToDo,
-        Canceled
-    }
-
-    public class Nutritionist
-    {
-        public Guid Id { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-        public string? Biography { get; set; }
-        public Uri? PictureUrl { get; set; }
-        public string? Address { get; set; }
-        public List<Appointment> Appointments { get; set; }
-    }
-
-    public class Customer
-    {
-        public Guid Id { get; set; }
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-        public List<Appointment> Appointments { get; set; }
-    }
-
-
 }
+
+
 
 
 
