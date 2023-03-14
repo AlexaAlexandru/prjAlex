@@ -1,0 +1,92 @@
+﻿@page "/"
+@page "/HomepageGrid"
+@inject NavigationManager navigationManager
+
+<PageTitle>Homepage</PageTitle>
+
+<body>
+
+    <NavBar></NavBar>
+
+    <section id="hero">
+        <div class="container-fluid">
+            <div class="row gx-5">
+                <div class="col ">
+                    <h1>Nutrition<br>One click away</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+                    <button @onclick=@Navigate type="button" class="btn btn-dark btn-large">Make an appointment </button>
+                </div>
+                <div class="col img-col">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Nutrition.webp?alt=media&token=8b9274bf-1f33-4116-b38f-b28e8c5785ce" class="img-thumbnail rounded mx-auto d-block" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 d-flex align-items-stretch">
+                    <div class="content">
+                        <h3>Why Choose Nutrition,One click-away?</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                            Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                        </p>
+                        <div class="text-center">
+                            <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 d-flex align-items-stretch">
+                    <div class="icon-boxes d-flex flex-column justify-content-center">
+                        <div class="row">
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0 ">
+                                    <img class="img-thumbnail rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/pngwing.com%20(1).png?alt=media&token=c0a75171-0d43-4ee4-be82-3005046a9be3" />
+                                    <h4>Corporis voluptates sit</h4>
+                                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <img class="img-thumbnail rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/91719-week-illness-mental-graphic-health-design-line.png?alt=media&token=76b3a368-ccb9-40d7-b3e7-952bd97c4be0" />
+                                    <h4>Ullamco laboris ladore pan</h4>
+                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <img class="img-thumbnail rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/5-2-health-free-png-image.png?alt=media&token=815bd145-fce0-441d-bf32-1f237a054fcb" />
+                                    <h4>Labore consequatur</h4>
+                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h1>Contact US</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+@code {
+
+    void Navigate()
+    {
+        navigationManager.NavigateTo("/Appointment");
+    }
+
+}
+

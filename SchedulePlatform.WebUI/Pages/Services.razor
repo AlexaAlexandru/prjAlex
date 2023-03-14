@@ -1,110 +1,127 @@
 ﻿@page "/Services"
-@inject HttpClient Http
+@using SchedulePlatform.Models.Entities
+@using SchedulePlatform.WebUI.Shared
+
+@inject HttpClient HttpClient
+@inherits LayoutComponentBase
 
 <PageTitle>Services</PageTitle>
 
-<head>
-    <link href="css/Basestyle.css" rel="stylesheet"/>
-</head>
 <body>
-    <div>
-        <div class="banner">
-            <NavBar></NavBar>
-                <div class="content">
-                    @foreach (var item in services)
-                    {
-                        <div class="card-m-12" style="width:20rem" >
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="@item.UrlPicture" class="img-thumbnail" alt="...">
+    <NavBar></NavBar>
+    <section id="services" class="services">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row gy-5">
+                @foreach (var item in services)
+                {
+                    <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="service-item">
+                            <div class="img">
+                                <img src="@item.UrlPicture" class="img-fluid" alt="">
+                            </div>
+                            <div class="details position-relative">
+                                <div class="icon">
+                                    <i class="bi bi-activity"></i>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5>@item.NameServiceProvided</h5>
-                                        <p class="card-text">Consultation: @item.Type</p>
-                                        <p class="card-text">Price: @item.Price</p>
-                                        <a href="#" class="btn btn-primary"> See service</a>
-                                    </div>
-                                </div>
+                                <a href="ServiceDetailPage" class="stretched-link">
+                                    <h3>@item.NameServiceProvided</h3>
+                                </a>
+                                <p> @item.Description</p>
                             </div>
                         </div>
-                    }
-                </div>
-                <div class="content1">
-                    <div class="card m-12" style="width:20rem">
-                        <div class="card-block">
-                            <h4 class="card-title">Card title</h4>
-                            <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                    </div>
+                }
+
+                <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="service-item">
+                        <div class="img">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Screenshot%202023-03-10%20at%2018.17.13.png?alt=media&token=eb179458-7edb-4e19-bf72-29646721fd1e" class="img-fluid" alt="">
                         </div>
-                        <img src="..." alt="Card image">
-                        <div class="card-block">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
+                        <div class="details position-relative">
+                            <div class="icon">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <a href="#" class="stretched-link">
+                                <h3>Eosle Commodi</h3>
+                            </a>
+                            <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
                         </div>
                     </div>
                 </div>
 
+                <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="service-item">
+                        <div class="img">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Screenshot%202023-03-10%20at%2018.17.13.png?alt=media&token=eb179458-7edb-4e19-bf72-29646721fd1e" class="img-fluid" alt="">
+                        </div>
+                        <div class="details position-relative">
+                            <div class="icon">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <a href="#" class="stretched-link">
+                                <h3>Ledo Markt</h3>
+                            </a>
+                            <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="service-item">
+                        <div class="img">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Screenshot%202023-03-10%20at%2018.17.13.png?alt=media&token=eb179458-7edb-4e19-bf72-29646721fd1e" class="img-fluid" alt="">
+                        </div>
+                        <div class="details position-relative">
+                            <div class="icon">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <a href="#" class="stretched-link">
+                                <h3>Asperiores Commodit</h3>
+                            </a>
+                            <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="service-item">
+                        <div class="img">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Screenshot%202023-03-10%20at%2018.17.13.png?alt=media&token=eb179458-7edb-4e19-bf72-29646721fd1e" class="img-fluid" alt="">
+                        </div>
+                        <div class="details position-relative">
+                            <div class="icon">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <a href="#" class="stretched-link">
+                                <h3>Velit Doloremque</h3>
+                            </a>
+                            <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="service-item">
+                        <div class="img">
+                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Screenshot%202023-03-10%20at%2018.17.13.png?alt=media&token=eb179458-7edb-4e19-bf72-29646721fd1e" class="img-fluid" alt="">
+                        </div>
+                        <div class="details position-relative">
+                            <div class="icon">
+                                <i class="bi bi-activity"></i>
+                            </div>
+                            <a href="#" class="stretched-link">
+                                <h3>Dolori Architecto</h3>
+                            </a>
+                            <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+                            <a href="#" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-
-      
-    </div>
-   
+    </section>
 </body>
-
-
-@code {
-    private List<ServiceProvided> services = new List<ServiceProvided>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        services = await Http.GetFromJsonAsync<List<ServiceProvided>>("/api/ServiceProvided");
-    }
-
-    public class ServiceProvided
-    {
-        public Guid Id { get; set; }
-        public string? Description { get; set; }
-        public string? NameServiceProvided { get; set; }
-        public Uri? UrlPicture { get; set; }
-        public ConsultationType Type { get; set; }
-        public double Price { get; set; }
-        public List<NutritionistService>? NutritionistService { get; set; }
-    }
-
-    public enum ConsultationType
-    {
-        Sport_Nutrition,
-        Pregnancy,
-        Children_And_Adolescents,
-        Clinical_Nutrition
-    }
-
-    public class NutritionistService
-    {
-        public Guid NutritionistId { get; set; }
-        public Nutritionist Nutritionist { get; set; }
-        public Guid ServiceId { get; set; }
-        public ServiceProvided Service { get; set; }
-    }
-
-    public class Nutritionist
-    {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-        public string? Biography { get; set; }
-        public Uri? PictureUrl { get; set; }
-        public string? Address { get; set; }
-        public List<NutritionistService>? NutritionistService { get; set; }
-        public List<Appointment> Appointments { get; set; }
-    }
-
-    public class Appointment
-    {
-        public object MyProperty { get; set; }
-    }
-}
-
