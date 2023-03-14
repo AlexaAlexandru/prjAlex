@@ -1,7 +1,8 @@
 ﻿@page "/Services"
 @using SchedulePlatform.Models.Entities
 @using SchedulePlatform.WebUI.Shared
-@inject HttpClient Http
+
+@inject HttpClient HttpClient
 @inherits LayoutComponentBase
 
 <PageTitle>Services</PageTitle>
@@ -12,22 +13,25 @@
         <div class="container" data-aos="fade-up">
 
             <div class="row gy-5">
-                <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="service-item">
-                        <div class="img">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Screenshot%202023-03-10%20at%2018.17.13.png?alt=media&token=eb179458-7edb-4e19-bf72-29646721fd1e" class="img-fluid" alt="">
-                        </div>
-                        <div class="details position-relative">
-                            <div class="icon">
-                                <i class="bi bi-activity"></i>
+                @foreach (var item in services)
+                {
+                    <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="service-item">
+                            <div class="img">
+                                <img src="@item.UrlPicture" class="img-fluid" alt="">
                             </div>
-                            <a href="ServiceDetailPage" class="stretched-link">
-                                <h3>Nesciunt Mete</h3>
-                            </a>
-                            <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.</p>
+                            <div class="details position-relative">
+                                <div class="icon">
+                                    <i class="bi bi-activity"></i>
+                                </div>
+                                <a href="ServiceDetailPage" class="stretched-link">
+                                    <h3>@item.NameServiceProvided</h3>
+                                </a>
+                                <p> @item.Description</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
 
                 <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
                     <div class="service-item">

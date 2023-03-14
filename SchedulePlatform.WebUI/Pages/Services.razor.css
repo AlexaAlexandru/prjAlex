@@ -1,11 +1,18 @@
 ﻿.services .img {
-     border-radius: 8px;
-     overflow: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+
+}
+
+.img {
+    height:100px;
+    width:100px;
 }
 
 .services{
     margin-top:150px;
 }
+
 .services .img img {
      transition: 0.6s;
 }
