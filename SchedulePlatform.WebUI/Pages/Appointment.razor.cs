@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SchedulePlatform.WebUI.Pages
 {
@@ -6,4 +7,5 @@ namespace SchedulePlatform.WebUI.Pages
     {
 
     }
+
 }
