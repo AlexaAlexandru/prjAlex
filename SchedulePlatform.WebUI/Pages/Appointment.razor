@@ -29,14 +29,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="form-label">Date appointment</span>
-                                        <MatDatePicker Label="Required" Required="true" TValue="DateTime?" @bind-Value="@DateTimeTest" @onclick="@DateValidator"></MatDatePicker>
+                                        <input type="date" @bind-value="DateTimeTest" @onclick="DateValidator" required>
 
                                         <MatButton @onclick="@(_ =>
                                                                {
                                                                    DateTimeTest = null;
                                                                })">
                                             Clear
-
                                         </MatButton>
                                     </div>
                                 </div>
@@ -68,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="form-btn">
-                                <button class="submit-btn" >Proceed with next step </button>
+                                <button class="submit-btn">Proceed with next step </button>
                             </div>
                         </form>
                     </div>
@@ -81,20 +80,22 @@
 
 @code
 {
-    
+
     public DateTime? DateTimeTest { get; set; }
 
     public void DateValidator(MouseEventArgs e)
     {
-        if (DateTimeTest?.DayOfWeek != DayOfWeek.Sunday && DateTimeTest?.DayOfWeek != DayOfWeek.Saturday)
+        if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
         {
             JsRuntime.InvokeAsync<object>("window.alert", "Please select a day from Monday to Friday");
+            DateTimeTest = null;
         }
 
         else
         {
-            JsRuntime.InvokeAsync<object>("window.alert", "Proceed with selecting an available spot");
+            JsRuntime.InvokeAsync<object>("windows.alert", "Proceed with next step");
         }
+
     }
 }
 
