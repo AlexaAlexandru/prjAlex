@@ -132,3 +132,37 @@
 .submit-btn {
 	background-color: #59C3C3;
 }
+
+.slot-days {
+	width: 1000px;
+	}
+
+.slot-day {
+	width: 130px;
+	height: 250px;
+	padding:15px;
+	float:left;
+	margin-right:7px;
+	margin-bottom:10px;
+}
+
+.slot-datelabel {
+	margin-bottom: 15px;
+}
+
+.slot-timeslot {
+	background-color: #52489C;
+	width: inherit;
+	color: white;
+	padding:7px;
+	margin-top: 5px;
+	font-size: 14px;
+	border-radius: 3px;
+	vertical-align: center;
+	text-align:center;
+}
+
+.slot-timeslot:hover { 
+	background-color: #59C3C3;
+	cursor: pointer;
+}
