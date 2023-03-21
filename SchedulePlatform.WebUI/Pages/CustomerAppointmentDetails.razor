@@ -1,12 +1,13 @@
 ﻿@page "/CustomerAppointmentDetails"
 @inherits LayoutComponentBase
+@inject NavigationManager _nav
 
 <PageTitle>Appointment Details </PageTitle>
 
 <body>
     <NavBar></NavBar>
 
-    <EditForm class="container mt-5 mb-5 d-flex justify-content-center" Model="@customer">
+    <EditForm class="container mt-5 mb-5 d-flex justify-content-center" Model="@customer" OnValidSubmit="@SubmitResult">
         <DataAnnotationsValidator/>
         <div class="card px-1 py-4">
             <div class="card-body">
@@ -86,5 +87,10 @@
 
 @code{
     private Customer customer = new();
+
+    void SubmitResult()
+    {
+        _nav.NavigateTo("/Confirmation");
+    }
 
 }
