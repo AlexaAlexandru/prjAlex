@@ -96,7 +96,7 @@
                                     <div class="slot-timeslot">10:00am</div>
                                     @foreach (var item in timeSlots)
                                         {
-                                           <div class="slot-timeslot">@item.ToString()</div>
+                                           <div class="slot-timeslot"></div>
                                         }
                                 </div>
                             </div>
@@ -113,40 +113,31 @@
 {
 
     public DateTime? DateTimeTest { get; set; }
-        public DateTime StartTime { get; set; } = DateTime.Parse("09:00");
-        public DateTime EndTime { get; set; } = DateTime.Parse("17:00");
-        public TimeSpan TimeLengh { get; set; } = new TimeSpan(0, 30, 0);
-        public DateTime TimeSlotSelected { get; set; }
-        private List<DateTime> timeSlots = new List<DateTime>();
+    public DateTime StartTime { get; set; } = DateTime.Today.AddHours(9);
+    public DateTime EndTime { get; set; } = DateTime.Today.AddHours(17);
+    public int TimeLengh { get; set; } = 30;
+    public int GapBeetweenSession { get; set; } = 10;
+    private List<string> timeSlots = new List<string>();
 
-        public void DateValidator(MouseEventArgs e)
+    public void DateValidator(MouseEventArgs e)
+    {
+        if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
         {
-            if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
-            {
-                JsRuntime.InvokeAsync<object>("window.alert", "Please select a day from Monday to Friday");
-                DateTimeTest = null;
-            }
+            JsRuntime.InvokeAsync<object>("window.alert", "Please select a day from Monday to Friday");
+            DateTimeTest = null;
+        }
 
-            else
-            {
-
-            }
+        else
+        {
 
         }
 
-        public void DisplaySlots()
-        {
-            while (StartTime < EndTime)
-            {
-                timeSlots.Add(StartTime);
-                StartTime += TimeLengh;
-            }
-        }
+    }
 
-        void Navigate()
-        {
-            _nav.NavigateTo("CustomerAppointmentDetails");
-        }
+    public void Navigate()
+    {
+        _nav.NavigateTo("CustomerAppointmentDetails");
+    }
 
 }
 

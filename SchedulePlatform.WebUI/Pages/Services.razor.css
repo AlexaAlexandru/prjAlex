@@ -1,12 +1,12 @@
 ﻿.services .img {
     border-radius: 8px;
     overflow: hidden;
-
 }
 
 .img {
-    height:100px;
-    width:100px;
+   object-fit:cover;
+   width:100px;
+   height:100px;
 }
 
 .services{
@@ -62,6 +62,11 @@
      margin-bottom: 0;
 }
 
+.service-item{
+    height:100px;
+    width:100px;
+    object-fit:cover;
+}
 .services .service-item:hover .details h3 {
      color: #4062BB;
 }
