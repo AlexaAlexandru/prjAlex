@@ -1,5 +1,10 @@
 ﻿@page "/Appointment"
-@using SchedulePlatform.WebUI.Pages;
+@using SchedulePlatform.Models.Entities;
+@using SchedulePlatform.WebUI.Shared;
+@using System.ComponentModel.DataAnnotations;
+@inject IJSRuntime JsRuntime
+@inject NavigationManager _nav
+
 @inherits LayoutComponentBase
 
 <PageTitle>Appointment </PageTitle>
@@ -26,43 +31,79 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <span class="form-label">Date appointment</span>
-                                        <input class="form-control" type="date" required @bind="@DateTimeTest" @onclick="checkDate">
+                                        <input type="date" @bind-value="DateTimeTest" @onclick="DateValidator" required>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <span class="form-label">Service</span>
-                                        <select class="form-control">
-                                            <option>Service 1</option>
-                                            <option>Service 2</option>
-                                            <option>Service 3</option>
-                                            <option>Service 4</option>
-                                        </select>
-                                        <span class="select-arrow"></span>
+                            @if (DateTimeTest.HasValue)
+                            {
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Service</span>
+                                            <select class="form-control">
+                                                <option>Service 1</option>
+                                                <option>Service 2</option>
+                                                <option>Service 3</option>
+                                                <option>Service 4</option>
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Nutritionist</span>
+                                            <select class="form-control">
+                                                <option>Nutritionist 1</option>
+                                                <option>Nutritionist 2</option>
+                                                <option>Nutritionist 3</option>
+                                                <option>Nutritionist 4</option>
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <span class="form-label">Nutritionist</span>
-                                        <select class="form-control">
-                                            <option>Nutritionist 1</option>
-                                            <option>Nutritionist 2</option>
-                                            <option>Nutritionist 3</option>
-                                            <option>Nutritionist 4</option>
-                                        </select>
-                                        <span class="select-arrow"></span>
-                                    </div>
+                                <div class="form-btn">
+                                    <input type="submit" class="submit-btn" value="Proceed with next step" @onclick=@Navigate />
                                 </div>
-                            </div>
-                            <div class="form-btn">
-                                <button class="submit-btn">Check availability</button>
-                            </div>
+                             }
+                             else
+                             {
+                                    <div class="row" hidden></div>
+
+                             }
                         </form>
                     </div>
                 </div>
             </div>
+            @if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
+             {
+                    <div class="row" hidden>
+
+                    </div>
+             }
+             else
+             {
+                <div class="row">
+                    <div class="col-md-7 col-md-push-5">
+                        <div class="slot">
+                            <div class="slot-days">
+                                <div class="slot-day">
+                                    <div class="slot-datelabel"><span class="font-weight-bold">@( DateTimeTest.HasValue ? DateTimeTest.Value.DayOfWeek.ToString() : "")</span></div>
+                                    <div class="slot-timeslot" >@(DateTimeTest.HasValue ? DateTimeTest.Value.AddHours(9).ToString() : "")</div>
+                                    <div class="slot-timeslot">9:30am</div>
+                                    <div class="slot-timeslot">10:00am</div>
+                                    @foreach (var item in timeSlots)
+                                        {
+                                           <div class="slot-timeslot"></div>
+                                        }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              }
         </div>
     </section>
 </body>
@@ -70,16 +111,37 @@
 
 @code
 {
-    public DateTime DateTimeTest { get; set; } = DateTime.Now;
 
-    void checkDate()
+    public DateTime? DateTimeTest { get; set; }
+    public DateTime StartTime { get; set; } = DateTime.Today.AddHours(9);
+    public DateTime EndTime { get; set; } = DateTime.Today.AddHours(17);
+    public int TimeLengh { get; set; } = 30;
+    public int GapBeetweenSession { get; set; } = 10;
+    private List<string> timeSlots = new List<string>();
+
+    public void DateValidator(MouseEventArgs e)
     {
-        if (DateTimeTest.DayOfWeek==DayOfWeek.Saturday||DateTimeTest.DayOfWeek==DayOfWeek.Sunday)
+        if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
         {
-            Console.WriteLine("Choose a day from Monday to Friday");
+            JsRuntime.InvokeAsync<object>("window.alert", "Please select a day from Monday to Friday");
+            DateTimeTest = null;
         }
+
+        else
+        {
+
+        }
+
     }
+
+    public void Navigate()
+    {
+        _nav.NavigateTo("CustomerAppointmentDetails");
+    }
+
 }
+
+
 
 
 

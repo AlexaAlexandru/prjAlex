@@ -1,0 +1,96 @@
+﻿@page "/CustomerAppointmentDetails"
+@inherits LayoutComponentBase
+@inject NavigationManager _nav
+
+<PageTitle>Appointment Details </PageTitle>
+
+<body>
+    <NavBar></NavBar>
+
+    <EditForm class="container mt-5 mb-5 d-flex justify-content-center" Model="@customer" OnValidSubmit="@SubmitResult">
+        <DataAnnotationsValidator/>
+        <div class="card px-1 py-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="First Name" @bind-value="@customer.FirstName">
+                            <ValidationMessage For="@(()=> customer.FirstName)"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Last Name" @bind-value="@customer.LastName">
+                            <ValidationMessage For="@(()=> customer.LastName)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="input-group"> <input class="form-control" type="text" placeholder="Phone" @bind-value="@customer.Phone"> </div>
+                            <ValidationMessage For="@(()=> customer.Phone)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <div class="input-group"> <input class="form-control" type="email" placeholder="Email" @bind-value="@customer.Email"> </div>
+                            <ValidationMessage For="@(()=> customer.Email)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" type="number" step="0.01" min="1.0" max="2.40" placeholder="Height (m)" @bind-value="@customer.Height">
+                            <ValidationMessage For="@(()=> customer.Height)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" type="number" step="0.1" min="1" placeholder="Weight (kg)" @bind-value="@customer.Weight">
+                            <ValidationMessage For="@(()=> customer.Weight)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" type="number" min="1" placeholder="Age" @bind-value="@customer.Age">
+                            <ValidationMessage For="@(()=> customer.Age)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Reason of the appointment" @bind-value="@customer.ScopeOfAppointment">
+                            <ValidationMessage For="@(()=> customer.ScopeOfAppointment)" />
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column text-center px-5 mt-3 mb-3"> <small class="agree-text">By Booking this appointment you agree to the</small> <a href="#" class="terms">Terms & Conditions</a> </div>
+                <button class="btn btn-primary btn-block confirm-button">Confirm</button>
+            </div>
+        </div>
+    </EditForm>
+
+</body>
+
+
+
+@code{
+    private Customer customer = new();
+
+    void SubmitResult()
+    {
+        _nav.NavigateTo("/Confirmation");
+    }
+
+}
