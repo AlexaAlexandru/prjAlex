@@ -42,7 +42,7 @@ namespace SchedulePlatform.Api.Controllers
         {
             var customerResult = _service.GetById(id);
 
-            if (customerResult==null)
+            if (customerResult == null)
             {
                 return NotFound();
             }
@@ -56,7 +56,7 @@ namespace SchedulePlatform.Api.Controllers
         {
             var customerSearch = _service.GetById(id);
 
-            if (customerSearch==null)
+            if (customerSearch == null)
             {
                 return NotFound();
             }
@@ -69,16 +69,16 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpDelete]
 
-        public IActionResult Delete(Guid id,Customer customer)
+        public IActionResult Delete(Guid id, Customer customer)
         {
             var customerSearch = _service.GetById(id);
 
-            if (customerSearch==null)
+            if (customerSearch == null)
             {
                 return NotFound();
             }
 
-            return Ok (_service.Delete(id,customer));
+            return Ok(_service.Delete(id, customer));
         }
     }
 }

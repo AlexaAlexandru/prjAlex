@@ -2,7 +2,7 @@
 
 namespace SchedulePlatform.Data.Interfaces
 {
-    public interface INutritionistRepository :IBaseRepository<Nutritionist>
+    public interface INutritionistRepository : IBaseRepository<Nutritionist>
     {
     }
 }

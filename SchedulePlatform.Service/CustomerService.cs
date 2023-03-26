@@ -6,19 +6,19 @@ using SchedulePlatform.Service.Interfaces;
 
 namespace SchedulePlatform.Service
 {
-	public class CustomerService: ICustomerService 
-	{
-		private readonly ICustomerRepository _customerRepository;
+    public class CustomerService : ICustomerService
+    {
+        private readonly ICustomerRepository _customerRepository;
 
-		public CustomerService( ICustomerRepository customerRepository)
-		{
-			_customerRepository = customerRepository;
-		}
+        public CustomerService(ICustomerRepository customerRepository)
+        {
+            _customerRepository = customerRepository;
+        }
 
         public Customer[] GetAllCustomers()
-		{
-			return _customerRepository.GetAll();
-		}
+        {
+            return _customerRepository.GetAll();
+        }
 
         public Customer AddCustomer(Customer customer)
         {
@@ -48,9 +48,9 @@ namespace SchedulePlatform.Service
             return _customerRepository.Update(customer);
         }
 
-        public Customer Delete(Guid id,Customer customer)
+        public Customer Delete(Guid id, Customer customer)
         {
-            return _customerRepository.Delete(id,customer);
+            return _customerRepository.Delete(id, customer);
         }
     }
 }

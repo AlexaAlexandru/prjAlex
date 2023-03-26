@@ -12,7 +12,7 @@ namespace SchedulePlatform.Api.Controllers
 
     [ApiController]
 
-    
+
     public class NutritionistController : ControllerBase
     {
         private readonly INutritionistServiceS _nutritionistService;
@@ -77,7 +77,7 @@ namespace SchedulePlatform.Api.Controllers
                 return NotFound();
             }
 
-            return Ok(_nutritionistService.Delete(id,nutritionist));
+            return Ok(_nutritionistService.Delete(id, nutritionist));
         }
     }
 

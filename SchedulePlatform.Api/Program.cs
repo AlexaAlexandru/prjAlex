@@ -27,10 +27,10 @@ var connectionString = configuration.GetConnectionString("connect");
 builder.Services.AddDbContext<SchedulePlatformContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-builder.Services.AddScoped<ICustomerService,CustomerService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
-builder.Services.AddScoped<IServiceProvidedRepository,ServiceProvidedRepository>();
-builder.Services.AddScoped<IServiceProvidedService,ServiceProvidedService>();
+builder.Services.AddScoped<IServiceProvidedRepository, ServiceProvidedRepository>();
+builder.Services.AddScoped<IServiceProvidedService, ServiceProvidedService>();
 
 builder.Services.AddScoped<IMenuRepository, MenuRepository>();
 builder.Services.AddScoped<IMenuService, MenuService>();

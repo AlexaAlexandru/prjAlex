@@ -6,10 +6,10 @@ using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Api.Mappings
 {
-	public static class CustomerMappingExtensions
-	{
-		public static Customer Map(this Customer customer, CustomerPatchModel model)
-		{
+    public static class CustomerMappingExtensions
+    {
+        public static Customer Map(this Customer customer, CustomerPatchModel model)
+        {
             if (!string.IsNullOrEmpty(model.FirstName))
             {
                 customer.FirstName = model.FirstName;
@@ -46,7 +46,7 @@ namespace SchedulePlatform.Api.Mappings
             }
 
             return customer;
-		}
-	}
+        }
+    }
 }
 

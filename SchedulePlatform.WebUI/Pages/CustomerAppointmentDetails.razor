@@ -8,14 +8,14 @@
     <NavBar></NavBar>
 
     <EditForm class="container mt-5 mb-5 d-flex justify-content-center" Model="@customer" OnValidSubmit="@SubmitResult">
-        <DataAnnotationsValidator/>
+        <DataAnnotationsValidator />
         <div class="card px-1 py-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="First Name" @bind-value="@customer.FirstName">
-                            <ValidationMessage For="@(()=> customer.FirstName)"/>
+                            <ValidationMessage For="@(()=> customer.FirstName)" />
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">   
+                <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
                             <div class="input-group"> <input class="form-control" type="text" placeholder="Phone" @bind-value="@customer.Phone"> </div>

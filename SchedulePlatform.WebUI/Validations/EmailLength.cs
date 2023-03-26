@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SchedulePlatform.WebUI.Validations
 {
-	public class EmailLength:ValidationAttribute
-	{
-		public int Value { get; set; }
+    public class EmailLength : ValidationAttribute
+    {
+        public int Value { get; set; }
 
         public override bool IsValid(object? value)
         {
@@ -19,7 +19,7 @@ namespace SchedulePlatform.WebUI.Validations
                 return false;
             }
 
-            if (username.Length<3 || domain.Length<4)
+            if (username.Length < 3 || domain.Length < 4)
             {
                 return false;
             }

@@ -10,7 +10,7 @@ namespace SchedulePlatform.Data.Repositories
         private readonly SchedulePlatformContext _context;
         private readonly DbSet<ServiceProvided> _dbSet;
 
-        public ServiceProvidedRepository(SchedulePlatformContext context):base (context)
+        public ServiceProvidedRepository(SchedulePlatformContext context) : base(context)
         {
             _context = context;
             _dbSet = context.Set<ServiceProvided>();

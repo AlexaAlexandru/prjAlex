@@ -1,25 +1,24 @@
-﻿#containerAbout{
-    margin-top:100px;
-
+﻿#containerAbout {
+    margin-top: 100px;
 }
 
 .about .about-img {
-     position: relative;
-     margin: 60px 0 0 60px;
+    position: relative;
+    margin: 60px 0 0 60px;
 }
 
-.about-img{
-    margin-top:200px;
+.about-img {
+    margin-top: 200px;
 }
 
 
 .about .about-img:before {
-     position: absolute;
-     inset: -60px 0 0 -60px;
-     z-index: -1;
-     content: "";
-     background: url(https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/rehabilitation-dietitian-acc.jpg?alt=media&token=5c97c24f-ccb9-44d3-bc08-f1f9e3e1beb2) top left;
-     background-repeat: no-repeat;
+    position: absolute;
+    inset: -60px 0 0 -60px;
+    z-index: -1;
+    content: "";
+    background: url(https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/rehabilitation-dietitian-acc.jpg?alt=media&token=5c97c24f-ccb9-44d3-bc08-f1f9e3e1beb2) top left;
+    background-repeat: no-repeat;
 }
 
 @media (max-width: 575px) {
@@ -27,17 +26,17 @@
         margin: 30px 0 0 30px;
     }
 
-    .about .about-img:before {
-        inset: -30px 0 0 -30px;
-    }
+        .about .about-img:before {
+            inset: -30px 0 0 -30px;
+        }
 }
 
 .about h3 {
-     color: var(--color-secondary);
-     font-family: var(--font-secondary);
-     font-weight: 300;
-     font-size: 32px;
-     margin-bottom: 20px;
+    color: var(--color-secondary);
+    font-family: var(--font-secondary);
+    font-weight: 300;
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
@@ -50,9 +49,9 @@
     border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.2);
 }
 
-.about .nav-pills li+li {
-    margin-left: 40px;
-}
+    .about .nav-pills li + li {
+        margin-left: 40px;
+    }
 
 .about .nav-link {
     background: none;
@@ -65,11 +64,11 @@
     font-family: var(--font-secondary);
 }
 
-.about .nav-link.active {
-     color: var(--color-primary);
-     background: none;
-     border-bottom: 3px solid var(#EBEBEB);
-}
+    .about .nav-link.active {
+        color: var(--color-primary);
+        background: none;
+        border-bottom: 3px solid var(#EBEBEB);
+    }
 
 @media (max-width: 575px) {
     .about .nav-link {
@@ -78,16 +77,15 @@
 }
 
 .about .tab-content h4 {
-     font-size: 18px;
-     margin: 0;
-     font-weight: 700;
-     color: var(--color-secondary);
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+    color: var(--color-secondary);
 }
 
 .about .tab-content i {
-     font-size: 22px;
-     line-height: 0;
-     margin-right: 8px;
-     color: var(--color-primary);
+    font-size: 22px;
+    line-height: 0;
+    margin-right: 8px;
+    color: var(--color-primary);
 }
-

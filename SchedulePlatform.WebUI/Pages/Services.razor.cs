@@ -25,6 +25,6 @@ namespace SchedulePlatform.WebUI.Pages
         }
     }
 
-    
+
 }
 

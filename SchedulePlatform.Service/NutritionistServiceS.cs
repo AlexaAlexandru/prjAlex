@@ -5,8 +5,8 @@ using SchedulePlatform.Service.Interfaces;
 
 namespace SchedulePlatform.Service
 {
-	public class NutritionistServiceS:INutritionistServiceS
-	{
+    public class NutritionistServiceS : INutritionistServiceS
+    {
         private readonly INutritionistRepository _nutritionistRepository;
 
         public NutritionistServiceS(INutritionistRepository baseRepository)
@@ -18,16 +18,16 @@ namespace SchedulePlatform.Service
         {
             var newNutritionist = new Nutritionist()
             {
-                 Address=nutritionist.Address,
-                 Appointments=nutritionist.Appointments,
-                 Biography=nutritionist.Biography,
-                 Email=nutritionist.Email,
-                 FirstName=nutritionist.FirstName,
-                 Id=Guid.NewGuid(),
-                 LastName=nutritionist.LastName,
-                 NutritionistService=nutritionist.NutritionistService,
-                 Phone=nutritionist.Phone,
-                 PictureUrl=nutritionist.PictureUrl
+                Address = nutritionist.Address,
+                Appointments = nutritionist.Appointments,
+                Biography = nutritionist.Biography,
+                Email = nutritionist.Email,
+                FirstName = nutritionist.FirstName,
+                Id = Guid.NewGuid(),
+                LastName = nutritionist.LastName,
+                NutritionistService = nutritionist.NutritionistService,
+                Phone = nutritionist.Phone,
+                PictureUrl = nutritionist.PictureUrl
             };
 
             return _nutritionistRepository.Add(newNutritionist);

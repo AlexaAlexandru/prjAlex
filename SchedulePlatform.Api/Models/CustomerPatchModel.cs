@@ -1,8 +1,8 @@
 ﻿using System;
 namespace SchedulePlatform.Api.Models
 {
-	public class CustomerPatchModel
-	{
+    public class CustomerPatchModel
+    {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Email { get; set; }

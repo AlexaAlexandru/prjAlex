@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Data;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Service.Interfaces
 {
-	public class AppointmentService: IAppointmentService
-	{
+    public class AppointmentService : IAppointmentService
+    {
         private IAppointmentRepository _appointmentRepository;
 
         public AppointmentService(IAppointmentRepository repository)
@@ -28,6 +29,43 @@ namespace SchedulePlatform.Service.Interfaces
 
             return _appointmentRepository.Add(appointmentToAdd);
         }
+
+        public IEnumerable<DateTime> GetFreeSlots(DateTime date)
+        {
+            var bookedAppointments = _appointmentRepository
+                .GetAll()
+                .Where(a => a.StartDate == date)
+                .ToList();
+
+            var startHour = new DateTime(date.Year, date.Month, date.Day, 8, 0, 0);
+            var endHour = new DateTime(date.Year, date.Month, date.Day, 16, 0, 0);
+            var currentSlot = startHour;
+            var availableSlots = new List<DateTime>();
+
+            while (currentSlot + TimeSpan.FromHours(1) <= endHour)
+            {
+                var isAvailable = true;
+
+                foreach (var item in bookedAppointments)
+                {
+                    if (currentSlot >= item.StartDate && currentSlot < item.StartDate)
+                    {
+                        isAvailable = false;
+                        break;
+                    }
+                }
+
+                if (isAvailable)
+                {
+                    availableSlots.Add(currentSlot);
+                }
+
+                currentSlot += TimeSpan.FromHours(1);
+            }
+
+            return availableSlots;
+        }
+
 
         public Appointment Delete(Guid id, Appointment appointment)
         {

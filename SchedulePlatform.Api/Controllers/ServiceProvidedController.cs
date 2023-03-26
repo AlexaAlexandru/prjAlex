@@ -8,77 +8,77 @@ using SchedulePlatform.Service.Interfaces;
 
 namespace SchedulePlatform.Api.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 
-	[ApiController]
+    [ApiController]
 
-	public class ServiceProvidedController : ControllerBase
-	{
-		private readonly IServiceProvidedService _serviceProvidedService;
+    public class ServiceProvidedController : ControllerBase
+    {
+        private readonly IServiceProvidedService _serviceProvidedService;
 
-		public ServiceProvidedController(IServiceProvidedService service)
-		{
-			_serviceProvidedService = service;
-		}
+        public ServiceProvidedController(IServiceProvidedService service)
+        {
+            _serviceProvidedService = service;
+        }
 
-		[HttpGet]
+        [HttpGet]
 
-		public ServiceProvided[] GetAll()
-		{
-			return _serviceProvidedService.GetAll();
-		}
+        public ServiceProvided[] GetAll()
+        {
+            return _serviceProvidedService.GetAll();
+        }
 
-		[HttpPost()]
+        [HttpPost()]
 
-		public ServiceProvided Add(ServiceProvided serviceP)
-		{
-			return _serviceProvidedService.Add(serviceP);
-		}
+        public ServiceProvided Add(ServiceProvided serviceP)
+        {
+            return _serviceProvidedService.Add(serviceP);
+        }
 
-		[HttpGet("{id}")]
+        [HttpGet("{id}")]
 
-		public IActionResult GetById(Guid id)
-		{
-			var serviceResult = _serviceProvidedService.GetById(id);
+        public IActionResult GetById(Guid id)
+        {
+            var serviceResult = _serviceProvidedService.GetById(id);
 
-            if (serviceResult==null)
-			{
-				NotFound();
-			}
+            if (serviceResult == null)
+            {
+                NotFound();
+            }
 
-			return Ok(serviceResult);
-		}
+            return Ok(serviceResult);
+        }
 
-		[HttpPatch]
+        [HttpPatch]
 
-		public IActionResult Update(Guid id, ServiceProvidedPatchModel model)
-		{
-			var findService = _serviceProvidedService.GetById(id);
+        public IActionResult Update(Guid id, ServiceProvidedPatchModel model)
+        {
+            var findService = _serviceProvidedService.GetById(id);
 
-			if (findService==null)
-			{
-				return NotFound();
-			}
+            if (findService == null)
+            {
+                return NotFound();
+            }
 
-			var serviceUpdated = findService.Map(model);
+            var serviceUpdated = findService.Map(model);
 
-			return Ok(_serviceProvidedService.Update(serviceUpdated));
-		}
+            return Ok(_serviceProvidedService.Update(serviceUpdated));
+        }
 
-		[HttpDelete]
+        [HttpDelete]
 
-		public IActionResult Delete(Guid id, ServiceProvided serviceP)
-		{
-			var findService = _serviceProvidedService.GetById(id);
+        public IActionResult Delete(Guid id, ServiceProvided serviceP)
+        {
+            var findService = _serviceProvidedService.GetById(id);
 
-			if (findService==null)
-			{
-				return NotFound();
-			}
+            if (findService == null)
+            {
+                return NotFound();
+            }
 
-			return Ok(_serviceProvidedService.Delete(id,serviceP));
-		}
+            return Ok(_serviceProvidedService.Delete(id, serviceP));
+        }
 
-	}
+    }
 }
 

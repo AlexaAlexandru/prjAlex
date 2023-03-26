@@ -3,12 +3,12 @@ using SchedulePlatform.Models.Enums;
 
 namespace SchedulePlatform.Api.Models
 {
-	public class AppointmentPatchModel
-	{
-		public DateTime? StartDate { get; set; }
-		public DateTime? EndDate { get; set; }
-		public Boolean? IsOnSite { get; set; }
-		public TypeAppointment? Type { get; set; }
-	}
+    public class AppointmentPatchModel
+    {
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public Boolean? IsOnSite { get; set; }
+        public TypeAppointment? Type { get; set; }
+    }
 }
 

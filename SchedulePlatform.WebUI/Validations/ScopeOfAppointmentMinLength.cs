@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SchedulePlatform.WebUI.Validations
 {
-	public class ScopeOfAppointmentMinLength:ValidationAttribute
-	{
+    public class ScopeOfAppointmentMinLength : ValidationAttribute
+    {
         public int Value { get; set; }
 
         public override bool IsValid(object? value)
