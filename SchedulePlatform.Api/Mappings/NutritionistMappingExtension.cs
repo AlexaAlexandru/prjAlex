@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using SchedulePlatform.Api.Models;
+using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Api.Mappings

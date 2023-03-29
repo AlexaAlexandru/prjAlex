@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using SchedulePlatform.Api.Mappings;
-using SchedulePlatform.Api.Models;
+using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;

@@ -1,5 +1,5 @@
 ﻿using System;
-using SchedulePlatform.Api.Models;
+using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Api.Mappings
@@ -11,10 +11,6 @@ namespace SchedulePlatform.Api.Mappings
             if (model.StartDate.HasValue)
             {
                 appointment.StartDate = (DateTime)model.StartDate;
-            }
-            if (model.EndDate.HasValue)
-            {
-                appointment.EndDate = (DateTime)model.EndDate;
             }
             if (model.Type != null)
             {

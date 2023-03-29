@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using SchedulePlatform.Api.Models;
 using SchedulePlatform.Api.Mappings;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Api.Models.Patch;
+using SchedulePlatform.Service.Models.Appointment;
+using SchedulePlatform.Service.Models;
 
 namespace SchedulePlatform.Api.Controllers
 {
@@ -20,6 +22,14 @@ namespace SchedulePlatform.Api.Controllers
             _service = service;
         }
 
+        [HttpGet("{NutritionistId}/{DateOfAppoitments}")]
+
+        public List<Appointment> GetAppoinmentsByDate(Guid nutritionistId, DateTime date)
+        {
+            return _service.GetAllByDate(nutritionistId, date);
+
+        }
+
         [HttpGet]
 
         public Appointment[] GetAppointments()
@@ -29,12 +39,19 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpPost]
 
-        public Appointment AddAppointment(Appointment appointment)
+        public IActionResult AddAppointment(AppointmentRequestModel requestappointment)
         {
-            return _service.Add(appointment);
+            try
+            {
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.Add(requestappointment)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] {$"{ex.Message}"}));
+            }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{Id}")]
 
         public IActionResult GetById(Guid id)
         {
@@ -75,6 +92,13 @@ namespace SchedulePlatform.Api.Controllers
             }
 
             return Ok(_service.Delete(id, appointment));
+        }
+
+        [HttpGet("[action]{Date}")]
+
+        public List<DateTime> GetFreeSlots(DateTime date)
+        {
+            return _service.GetFreeSlots(date);
         }
     }
 }

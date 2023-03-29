@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SchedulePlatform.Api.Models
+namespace SchedulePlatform.Api.Models.Patch
 {
     public class NutritionistPatchModel
     {
