@@ -15,6 +15,13 @@ namespace SchedulePlatform.Data.Repositories
             _context = context;
             _dbSet = context.Set<Appointment>();
         }
+
+        public List<Appointment> GetAllByDate(Guid nutritionistId, DateTime date)
+        {
+            return (List<Appointment>)_dbSet.ToList()
+                .Where(n => n.NutritionistId == nutritionistId)
+                .Where(n => n.StartDate == date);
+        }
     }
 }
 
