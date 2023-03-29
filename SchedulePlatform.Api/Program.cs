@@ -41,6 +41,7 @@ builder.Services.AddScoped<INutritionistServiceS, NutritionistServiceS>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
+builder.Services.AddAutoMapper(typeof(Appointment));
 
 var app = builder.Build();
 
