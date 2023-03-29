@@ -24,7 +24,7 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet]
 
-        public Nutritionist[] GetAll()
+        public List<Nutritionist>GetAll()
         {
             return _nutritionistService.GetAll();
         }

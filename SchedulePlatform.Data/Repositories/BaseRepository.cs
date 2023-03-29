@@ -16,9 +16,9 @@ namespace SchedulePlatform.Data.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public T[] GetAll()
+        public List<T> GetAll()
         {
-            return _dbSet.ToArray();
+            return _dbSet.ToList();
         }
 
         public T Add(T entity)

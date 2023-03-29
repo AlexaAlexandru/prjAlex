@@ -6,7 +6,7 @@ namespace SchedulePlatform.Service.Interfaces
     public interface IMenuService
     {
         Menu AddMenu(Menu menu);
-        Menu[] GetAll();
+        List<Menu> GetAll();
         Menu? GetById(Guid id);
         Menu Update(Menu menu);
         Menu Delete(Guid id, Menu menu);

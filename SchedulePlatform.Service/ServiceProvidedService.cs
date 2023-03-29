@@ -15,7 +15,7 @@ namespace SchedulePlatform.Service
             _serviceRepository = serviceRepository;
         }
 
-        public ServiceProvided[] GetAll()
+        public List<ServiceProvided> GetAll()
         {
             return _serviceRepository.GetAll();
         }

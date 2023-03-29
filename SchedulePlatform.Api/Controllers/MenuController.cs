@@ -22,7 +22,7 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet]
 
-        public Menu[] GetAllMenus()
+        public List<Menu> GetAllMenus()
         {
             return _service.GetAll();
         }

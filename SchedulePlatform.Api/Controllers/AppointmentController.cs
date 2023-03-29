@@ -24,17 +24,34 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet("{NutritionistId}/{DateOfAppoitments}")]
 
-        public List<Appointment> GetAppoinmentsByDate(Guid nutritionistId, DateTime date)
+        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppoinmentsByDate(Guid nutritionistId, DateTime date)
         {
-            return _service.GetAllByDate(nutritionistId, date);
-
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAllByDate(nutritionistId, date)));
+            }
+            catch (Exception ex)
+            {
+                if (_service.GetAll().ToList().First(a=> a.NutritionistId==nutritionistId)==null)
+                {
+                    return NotFound(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpGet]
 
-        public Appointment[] GetAppointments()
+        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppointments()
         {
-            return _service.GetAll();
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAll()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpPost]
@@ -47,7 +64,7 @@ namespace SchedulePlatform.Api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] {$"{ex.Message}"}));
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
             }
         }
 
@@ -55,13 +72,18 @@ namespace SchedulePlatform.Api.Controllers
 
         public IActionResult GetById(Guid id)
         {
-            var appointmentResult = _service.GetById(id);
-
-            if (appointmentResult == null)
+            try
             {
-                return NotFound();
+                return Ok(ApiGenericsResult<Appointment>.Success(_service.GetById(id)));
             }
-            return Ok(appointmentResult);
+            catch (Exception ex)
+            {
+                if (_service.GetAll().ToList().First(a => a.Id == id) == null)
+                {
+                    return NotFound(ex.Message);
+                }
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPatch]
@@ -82,16 +104,21 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpDelete]
 
-        public IActionResult Delete(Guid id, Appointment appointment)
+        public IActionResult Delete(Guid id, Appointment appointmentResponse)
         {
-            var appointmentSearch = _service.GetById(id);
-
-            if (appointmentSearch == null)
+            try
             {
-                return NotFound();
+                return Ok(ApiGenericsResult<Appointment>.Success(_service.Delete(id, appointmentResponse)));
             }
+            catch (Exception ex)
+            {
+                if (_service.GetAll().ToList().First(a => a.Id == id) == null)
+                {
+                    return NotFound(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
 
-            return Ok(_service.Delete(id, appointment));
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpGet("[action]{Date}")]

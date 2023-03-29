@@ -38,7 +38,7 @@ namespace SchedulePlatform.Service
             return _nutritionistRepository.Delete(id, nutritionist);
         }
 
-        public Nutritionist[] GetAll()
+        public List<Nutritionist> GetAll()
         {
             return _nutritionistRepository.GetAll();
         }

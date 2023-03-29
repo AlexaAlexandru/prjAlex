@@ -6,7 +6,7 @@ namespace SchedulePlatform.Data.Interfaces
     {
         T Add(T entity);
         T Delete(Guid id, T entity);
-        T[] GetAll();
+        List<T> GetAll();
         T? GetById(Guid id);
         T Update(T entity);
     }

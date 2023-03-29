@@ -5,7 +5,7 @@ namespace SchedulePlatform.Service.Interfaces
 {
     public interface ICustomerService
     {
-        Customer[] GetAllCustomers();
+        List<Customer> GetAllCustomers();
         Customer AddCustomer(Customer customer);
         Customer? GetById(Guid id);
         Customer Update(Customer customer);

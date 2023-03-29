@@ -15,7 +15,7 @@ namespace SchedulePlatform.Service
             _customerRepository = customerRepository;
         }
 
-        public Customer[] GetAllCustomers()
+        public List<Customer> GetAllCustomers()
         {
             return _customerRepository.GetAll();
         }

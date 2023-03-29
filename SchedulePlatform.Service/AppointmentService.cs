@@ -1,36 +1,32 @@
 ﻿using System;
 using System.Data;
+using AutoMapper;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Models.Appointment;
 
 namespace SchedulePlatform.Service.Interfaces
 {
     public class AppointmentService : IAppointmentService
     {
         private IAppointmentRepository _appointmentRepository;
+        private readonly IMapper _mapper;
 
-        public AppointmentService(IAppointmentRepository repository)
+        public AppointmentService(IAppointmentRepository repository, IMapper mapper)
         {
             _appointmentRepository = repository;
+            _mapper = mapper;
         }
 
-        public Appointment Add(Appointment appointment)
+        public AppointmentResponseModel Add(AppointmentRequestModel appointmentRequest)
         {
-            var appointmentToAdd = new Appointment
-            {
-                Id = Guid.NewGuid(),
-                StartDate = appointment.StartDate,
-                EndDate = appointment.EndDate,
-                IsOnSite = appointment.IsOnSite,
-                Type = appointment.Type,
-                NutritionistId = appointment.NutritionistId,
-                CustomerId = appointment.CustomerId
-            };
+            var appointmentToAdd = _mapper.Map<Appointment>(appointmentRequest);
+            _appointmentRepository.Add(appointmentToAdd);
 
-            return _appointmentRepository.Add(appointmentToAdd);
+            return _mapper.Map<AppointmentResponseModel>(appointmentToAdd);
         }
 
-        public IEnumerable<DateTime> GetFreeSlots(DateTime date)
+        public List<DateTime> GetFreeSlots(DateTime date)
         {
             var bookedAppointments = _appointmentRepository
                 .GetAll()
@@ -72,9 +68,11 @@ namespace SchedulePlatform.Service.Interfaces
             return _appointmentRepository.Delete(id, appointment);
         }
 
-        public Appointment[] GetAll()
+        public IEnumerable<AppointmentResponseModel> GetAll()
         {
-            return _appointmentRepository.GetAll();
+            var allAppointments= _appointmentRepository.GetAll();
+
+            return _mapper.Map<IEnumerable<AppointmentResponseModel>>(allAppointments);
         }
 
         public Appointment? GetById(Guid id)
@@ -85,6 +83,12 @@ namespace SchedulePlatform.Service.Interfaces
         public Appointment Update(Appointment appointment)
         {
             return _appointmentRepository.Update(appointment);
+        }
+
+        public IEnumerable<AppointmentResponseModel> GetAllByDate(Guid nutritionistId, DateTime date)
+        {
+            var appointmentsByDate = _appointmentRepository.GetAll().Where(a => a.NutritionistId == nutritionistId && a.StartDate == date);
+            return _mapper.Map<IEnumerable<AppointmentResponseModel>>(appointmentsByDate);
         }
     }
 }

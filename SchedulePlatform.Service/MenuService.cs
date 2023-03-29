@@ -14,7 +14,7 @@ namespace SchedulePlatform.Service
             _menuRepository = menuRepository;
         }
 
-        public Menu[] GetAll()
+        public List<Menu> GetAll()
         {
             return _menuRepository.GetAll();
         }

@@ -24,7 +24,7 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet]
 
-        public Customer[] GetCustomers()
+        public List<Customer> GetCustomers()
         {
             return _service.GetAllCustomers();
         }

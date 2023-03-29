@@ -23,7 +23,7 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet]
 
-        public ServiceProvided[] GetAll()
+        public List<ServiceProvided> GetAll()
         {
             return _serviceProvidedService.GetAll();
         }
