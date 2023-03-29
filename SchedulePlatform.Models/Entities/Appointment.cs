@@ -7,8 +7,6 @@ namespace SchedulePlatform.Models.Entities
     {
         public DateTime StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
-
         public Boolean IsOnSite { get; set; }
 
         public TypeAppointment Type { get; set; }
