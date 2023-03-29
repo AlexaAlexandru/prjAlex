@@ -49,7 +49,7 @@
                             @_service.Description
                         </p>
                     </div>
-                    <button type="button" class="btn btn-dark btn-large">Make an appointment </button>
+                    <button type="button" @onclick="Navigate" class="btn btn-dark btn-large">Make an appointment </button>
                 </div>
             </div>
         </div>
@@ -68,10 +68,10 @@
         _service = await HttpClient.GetFromJsonAsync<ServiceProvided>($"api/ServiceProvided/{Id}");
     }
 
-    //void Navigate()
-    //{
-    //    _nav.NavigateTo("/Appointment");
-    //}
+    void Navigate()
+    {
+        _nav.NavigateTo("/Appointment");
+    }
 
 
 }

@@ -4,9 +4,8 @@
 }
 
 .img {
-    object-fit: cover;
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 250px;
 }
 
 .services {
@@ -63,9 +62,8 @@
         }
 
 .service-item {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
+    width: 250px;
+    height: 250px;
 }
 
 .services .service-item:hover .details h3 {
