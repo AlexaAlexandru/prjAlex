@@ -1,6 +1,5 @@
 ﻿using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Models.Nutritionist;
-using SchedulePlatform.Service.Models.PatchModel;
 
 namespace SchedulePlatform.Service.Interfaces
 {
@@ -9,7 +8,7 @@ namespace SchedulePlatform.Service.Interfaces
         NutritionistResponseModel AddNutritionist(NutritionistRequestModel nutritionist);
         IEnumerable<NutritionistResponseModel> GetAll();
         NutritionistResponseModel GetById(Guid id);
-        UpdateNutritionistResponseModel Update(Guid id,UpdateNutritionistRequestModel nutritionist);
+        UpdateNutritionistResponseModel Update(UpdateNutritionistRequestModel nutritionist);
         NutritionistResponseModel Delete(Guid id);
     }
 }

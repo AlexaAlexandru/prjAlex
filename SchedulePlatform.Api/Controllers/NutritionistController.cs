@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using SchedulePlatform.Api.Mappings;
@@ -19,10 +20,12 @@ namespace SchedulePlatform.Api.Controllers
     public class NutritionistController : ControllerBase
     {
         private readonly INutritionistServiceS _nutritionistService;
+        private readonly IMapper _mapper;
 
-        public NutritionistController(INutritionistServiceS service)
+        public NutritionistController(INutritionistServiceS service,IMapper mapper)
         {
             _nutritionistService = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -84,9 +87,11 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpPatch]
 
-        public IActionResult Update(Guid id, UpdateNutritionistRequestModel model)
+        public IActionResult Update(Guid id, UpdateNutritionistPatchModel model)
         {
             var findNutritionist = _nutritionistService.GetById(id);
+
+
 
             if (findNutritionist == null)
             {
@@ -94,9 +99,13 @@ namespace SchedulePlatform.Api.Controllers
             }
             else
             {
+                var updateNutritionist = findNutritionist.Map(model);
+
+                var mappedNutritionist = _mapper.Map<UpdateNutritionistRequestModel>(updateNutritionist);
+
                 try
                 {
-                    return Ok(ApiGenericsResult<UpdateNutritionistResponseModel>.Success(_nutritionistService.Update(id, model)));
+                    return Ok(ApiGenericsResult<UpdateNutritionistResponseModel>.Success(_nutritionistService.Update(mappedNutritionist)));
                 }
                 catch (Exception ex)
                 {

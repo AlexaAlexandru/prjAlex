@@ -2,7 +2,6 @@
 using AutoMapper;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Models.Nutritionist;
-using SchedulePlatform.Service.Models.PatchModel;
 
 namespace SchedulePlatform.Service.MappingProfiles
 {
@@ -12,6 +11,7 @@ namespace SchedulePlatform.Service.MappingProfiles
 		{
 			CreateMap<Nutritionist, NutritionistResponseModel>();
 			CreateMap<NutritionistRequestModel, Nutritionist>();
+			CreateMap<NutritionistResponseModel, UpdateNutritionistRequestModel>();
 			CreateMap<Nutritionist, UpdateNutritionistResponseModel>();
 			CreateMap<UpdateNutritionistRequestModel, Nutritionist>();
 			CreateMap<Nutritionist, UpdateNutritionistRequestModel>();

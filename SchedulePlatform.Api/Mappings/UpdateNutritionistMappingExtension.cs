@@ -7,7 +7,7 @@ namespace SchedulePlatform.Api.Mappings
 {
     public static class UpdateNutritionistMappingExtension
     {
-        public static Nutritionist Map(this Nutritionist nutritionist, UpdateNutritionistRequestModel model)
+        public static NutritionistResponseModel Map(this NutritionistResponseModel nutritionist, UpdateNutritionistPatchModel model)
         {
             if (!string.IsNullOrEmpty(model.Address))
             {

@@ -3,9 +3,7 @@ using AutoMapper;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
-using SchedulePlatform.Service.Mappings;
 using SchedulePlatform.Service.Models.Nutritionist;
-using SchedulePlatform.Service.Models.PatchModel;
 
 namespace SchedulePlatform.Service
 {
@@ -13,10 +11,12 @@ namespace SchedulePlatform.Service
     {
         private readonly INutritionistRepository _nutritionistRepository;
         private readonly IMapper _mapper;
-        public NutritionistServiceS(INutritionistRepository baseRepository, IMapper mapper)
+        private readonly INutritionistServiceRepository _nutritionistServiceRepository;
+        public NutritionistServiceS(INutritionistRepository baseRepository, IMapper mapper, INutritionistServiceRepository service)
         {
             _nutritionistRepository = baseRepository;
             _mapper = mapper;
+            _nutritionistServiceRepository = service;
         }
 
         public NutritionistResponseModel AddNutritionist(NutritionistRequestModel nutritionist)
@@ -53,15 +53,13 @@ namespace SchedulePlatform.Service
             return _mapper.Map<NutritionistResponseModel>(findNutritionist);
         }
 
-        public UpdateNutritionistResponseModel Update(Guid id, UpdateNutritionistRequestModel nutritionist)
+        public UpdateNutritionistResponseModel Update(UpdateNutritionistRequestModel nutritionist)
         {
-            var findNutritionist = _nutritionistRepository.GetById(id);
+            var updatedNutritionist = _mapper.Map<Nutritionist>(nutritionist);
 
-            var mappendNutritionsit = _mapper.Map<UpdateNutritionistRequestModel>(findNutritionist);
+            _nutritionistRepository.Update(updatedNutritionist);
 
-            var updateNutritionist = findNutritionist.Map(mappendNutritionsit);
-
-            return _mapper.Map<UpdateNutritionistResponseModel>(updateNutritionist);
+            return _mapper.Map<UpdateNutritionistResponseModel>(updatedNutritionist);
         }
     }
 }
