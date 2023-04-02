@@ -1,10 +1,13 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using SchedulePlatform.Api.Mappings;
 using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Service.Models;
+using SchedulePlatform.Service.Models.Nutritionist;
 
 namespace SchedulePlatform.Api.Controllers
 {
@@ -24,35 +27,64 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet]
 
-        public List<Nutritionist>GetAll()
+        public ActionResult<IEnumerable<NutritionistResponseModel>> GetAll()
         {
-            return _nutritionistService.GetAll();
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<NutritionistResponseModel>>.Success(_nutritionistService.GetAll()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<NutritionistResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpPost()]
 
-        public Nutritionist Add(Nutritionist nutritionist)
+        public IActionResult Add(NutritionistRequestModel nutritionist)
         {
-            return _nutritionistService.AddNutritionist(nutritionist);
+            try
+            {
+                return Ok(ApiGenericsResult<NutritionistResponseModel>.Success(_nutritionistService.AddNutritionist(nutritionist)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<NutritionistResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpGet("{id}")]
 
         public IActionResult GetById(Guid id)
         {
-            var nutritionistFound = _nutritionistService.GetById(id);
+            var findNutritionist = _nutritionistService.GetById(id);
 
-            if (nutritionistFound == null)
+            if (findNutritionist == null)
             {
-                NotFound();
+                return NotFound();
             }
 
-            return Ok(nutritionistFound);
+            else
+            {
+                try
+                {
+                    return Ok(ApiGenericsResult<NutritionistResponseModel>.Success(_nutritionistService.GetById(id)));
+                }
+                catch (Exception ex)
+                {
+                    if (_nutritionistService.GetAll().ToList().FirstOrDefault(n => n.Id == id) == null)
+                    {
+                        return NotFound(ex.Message);
+                    }
+                    return BadRequest(ex.Message);
+                }
+            }
+
         }
 
         [HttpPatch]
 
-        public IActionResult Update(Guid id, NutritionistPatchModel model)
+        public IActionResult Update(Guid id, UpdateNutritionistRequestModel model)
         {
             var findNutritionist = _nutritionistService.GetById(id);
 
@@ -60,15 +92,27 @@ namespace SchedulePlatform.Api.Controllers
             {
                 return NotFound();
             }
+            else
+            {
+                try
+                {
+                    return Ok(ApiGenericsResult<UpdateNutritionistResponseModel>.Success(_nutritionistService.Update(id, model)));
+                }
+                catch (Exception ex)
+                {
+                    if (findNutritionist == null)
+                    {
+                        return NotFound(ex.Message);
+                    }
+                    return BadRequest(ApiGenericsResult<UpdateNutritionistResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+            }
 
-            var nutritionistUpdated = findNutritionist.Map(model);
-
-            return Ok(_nutritionistService.Update(nutritionistUpdated));
         }
 
         [HttpDelete]
 
-        public IActionResult Delete(Guid id, Nutritionist nutritionist)
+        public IActionResult Delete(Guid id)
         {
             var findNutritionist = _nutritionistService.GetById(id);
 
@@ -76,8 +120,21 @@ namespace SchedulePlatform.Api.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(_nutritionistService.Delete(id, nutritionist));
+            else
+            {
+                try
+                {
+                    return Ok(ApiGenericsResult<NutritionistResponseModel>.Success(_nutritionistService.Delete(id)));
+                }
+                catch (Exception ex)
+                {
+                    if (findNutritionist == null)
+                    {
+                        return NotFound(ApiGenericsResult<NutritionistResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                    }
+                    return BadRequest(ApiGenericsResult<NutritionistResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+            }
         }
     }
 

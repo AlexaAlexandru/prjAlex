@@ -65,7 +65,7 @@ namespace SchedulePlatform.Service.Interfaces
 
         public Appointment Delete(Guid id, Appointment appointment)
         {
-            return _appointmentRepository.Delete(id, appointment);
+            return _appointmentRepository.Delete(appointment);
         }
 
         public IEnumerable<AppointmentResponseModel> GetAll()

@@ -5,6 +5,8 @@ using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Service.Models;
+using SchedulePlatform.Service.Models.Customer;
 
 namespace SchedulePlatform.Api.Controllers
 {
@@ -24,9 +26,16 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet]
 
-        public List<Customer> GetCustomers()
+        public ActionResult<IEnumerable<Customer>> GetCustomers()
         {
-            return _service.GetAllCustomers();
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<Customer>>.Success(_service.GetAllCustomers()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<Customer>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpPost()]
@@ -42,11 +51,10 @@ namespace SchedulePlatform.Api.Controllers
         {
             var customerResult = _service.GetById(id);
 
-            if (customerResult == null)
+            if (customerResult==null)
             {
                 return NotFound();
             }
-
             return Ok(customerResult);
         }
 
@@ -55,16 +63,12 @@ namespace SchedulePlatform.Api.Controllers
         public IActionResult Update(Guid id, CustomerPatchModel model)
         {
             var customerSearch = _service.GetById(id);
-
-            if (customerSearch == null)
+            if (customerSearch==null)
             {
                 return NotFound();
             }
-
             var customerUpdated = customerSearch.Map(model);
-
             return Ok(_service.Update(customerUpdated));
-
         }
 
         [HttpDelete]

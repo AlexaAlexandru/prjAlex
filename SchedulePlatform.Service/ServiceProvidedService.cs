@@ -47,7 +47,7 @@ namespace SchedulePlatform.Service
 
         public ServiceProvided Delete(Guid id, ServiceProvided serviceP)
         {
-            return _serviceRepository.Delete(id, serviceP);
+            return _serviceRepository.Delete(serviceP);
         }
 
     }

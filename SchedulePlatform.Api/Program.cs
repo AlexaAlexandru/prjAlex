@@ -7,6 +7,7 @@ using SchedulePlatform.Data.Repositories;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Service.MappingProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,7 +42,9 @@ builder.Services.AddScoped<INutritionistServiceS, NutritionistServiceS>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
-builder.Services.AddAutoMapper(typeof(Appointment));
+builder.Services.AddAutoMapper(typeof(AppointmentProfile));
+builder.Services.AddAutoMapper(typeof(NutritionistProfile));
+
 
 var app = builder.Build();
 

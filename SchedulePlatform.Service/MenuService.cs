@@ -44,7 +44,7 @@ namespace SchedulePlatform.Service
 
         public Menu Delete(Guid id, Menu menu)
         {
-            return _menuRepository.Delete(id, menu);
+            return _menuRepository.Delete(menu);
         }
 
     }

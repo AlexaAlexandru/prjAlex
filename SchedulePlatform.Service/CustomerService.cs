@@ -1,8 +1,10 @@
 ﻿using System;
+using AutoMapper;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Data.Repositories;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Service.Models.Customer;
 
 namespace SchedulePlatform.Service
 {
@@ -15,7 +17,7 @@ namespace SchedulePlatform.Service
             _customerRepository = customerRepository;
         }
 
-        public List<Customer> GetAllCustomers()
+        public IEnumerable<Customer> GetAllCustomers()
         {
             return _customerRepository.GetAll();
         }
@@ -38,7 +40,7 @@ namespace SchedulePlatform.Service
             return _customerRepository.Add(customerToAdd);
         }
 
-        public Customer? GetById(Guid id)
+        public Customer GetById(Guid id)
         {
             return _customerRepository.GetById(id);
         }
@@ -50,7 +52,7 @@ namespace SchedulePlatform.Service
 
         public Customer Delete(Guid id, Customer customer)
         {
-            return _customerRepository.Delete(id, customer);
+            return _customerRepository.Delete(customer);
         }
     }
 }

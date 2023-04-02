@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
+using SchedulePlatform.Models.Entities;
 
-namespace SchedulePlatform.Models.Entities
+namespace SchedulePlatform.Service.Models.Nutritionist
 {
-    public class Nutritionist : BaseEntity
-    {
+	public class NutritionistResponseModel
+	{
+        public Guid Id { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Email { get; set; }
@@ -12,8 +13,7 @@ namespace SchedulePlatform.Models.Entities
         public string? Biography { get; set; }
         public Uri? PictureUrl { get; set; }
         public string? Address { get; set; }
-        public List<NutritionistService>? NutritionistService { get; set; }
-        public List<Appointment>? Appointments { get; set; }
+        public List<NutritionistService> NutritionistService = new List<NutritionistService>();
     }
 }
 
