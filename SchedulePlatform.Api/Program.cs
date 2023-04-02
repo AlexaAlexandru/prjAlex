@@ -39,6 +39,8 @@ builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INutritionistRepository, NutritionistRepository>();
 builder.Services.AddScoped<INutritionistServiceS, NutritionistServiceS>();
 
+builder.Services.AddScoped<INutritionistServiceRepository, NutritionistServiceRepository>();
+
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
