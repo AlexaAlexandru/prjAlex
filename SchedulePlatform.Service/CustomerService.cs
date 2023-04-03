@@ -1,20 +1,23 @@
 ﻿using System;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Data.Repositories;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
 using SchedulePlatform.Service.Models.Customer;
+using SchedulePlatform.Service.Models.Nutritionist;
 
 namespace SchedulePlatform.Service
 {
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
-
-        public CustomerService(ICustomerRepository customerRepository)
+        private readonly IMapper _mapper;
+        public CustomerService(ICustomerRepository customerRepository, IMapper mapper)
         {
             _customerRepository = customerRepository;
+            _mapper = mapper;
         }
 
         public IEnumerable<Customer> GetAllCustomers()
@@ -22,37 +25,39 @@ namespace SchedulePlatform.Service
             return _customerRepository.GetAll();
         }
 
-        public Customer AddCustomer(Customer customer)
+        public CustomerResponseModel AddCustomer(CustomerCreateModel customer)
         {
-            var customerToAdd = new Customer
-            {
-                Id = Guid.NewGuid(),
-                FirstName = customer.FirstName,
-                LastName = customer.LastName,
-                Age = customer.Age,
-                Email = customer.Email,
-                Phone = customer.Phone,
-                Height = customer.Height,
-                Weight = customer.Weight,
-                ScopeOfAppointment = customer.ScopeOfAppointment
-            };
 
-            return _customerRepository.Add(customerToAdd);
+            var customerToAdd = _mapper.Map<Customer>(customer);
+
+            _customerRepository.Add(customerToAdd);
+
+            return _mapper.Map<CustomerResponseModel>(customerToAdd);
         }
 
-        public Customer GetById(Guid id)
+        public CustomerResponseModel GetById(Guid id)
         {
-            return _customerRepository.GetById(id);
+            var findCustomer = _customerRepository.GetById(id);
+
+            return _mapper.Map<CustomerResponseModel>(findCustomer);
         }
 
-        public Customer Update(Customer customer)
+        public UpdateCustomerResponseModel Update(UpdateCustomerRequestModel model)
         {
-            return _customerRepository.Update(customer);
+            var updateCustomer = _mapper.Map<Customer>(model);
+            _customerRepository.Update(updateCustomer);
+
+            return _mapper.Map<UpdateCustomerResponseModel>(updateCustomer);
+
         }
 
-        public Customer Delete(Guid id, Customer customer)
+        public CustomerResponseModel Delete(Guid id)
         {
-            return _customerRepository.Delete(customer);
+            var findCustomer = _customerRepository.GetById(id);
+
+            _customerRepository.Delete(findCustomer);
+
+            return _mapper.Map<CustomerResponseModel>(findCustomer);
         }
     }
 }

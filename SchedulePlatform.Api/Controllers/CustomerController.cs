@@ -1,4 +1,5 @@
 ﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SchedulePlatform.Api.Mappings;
 using SchedulePlatform.Api.Models.Patch;
@@ -7,6 +8,7 @@ using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;
 using SchedulePlatform.Service.Models;
 using SchedulePlatform.Service.Models.Customer;
+using SchedulePlatform.Service.Models.Nutritionist;
 
 namespace SchedulePlatform.Api.Controllers
 {
@@ -18,10 +20,12 @@ namespace SchedulePlatform.Api.Controllers
     {
 
         private readonly ICustomerService _service;
+        private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerService service)
+        public CustomerController(ICustomerService service,IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -40,9 +44,16 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpPost()]
 
-        public Customer AddCustomer(Customer customer)
+        public IActionResult AddCustomer(CustomerCreateModel customer)
         {
-            return _service.AddCustomer(customer);
+            try
+            {
+                return Ok(ApiGenericsResult<CustomerResponseModel>.Success(_service.AddCustomer(customer)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<CustomerResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpGet("{id}")]
@@ -55,7 +66,14 @@ namespace SchedulePlatform.Api.Controllers
             {
                 return NotFound();
             }
-            return Ok(customerResult);
+            try
+            {
+                return Ok(ApiGenericsResult<CustomerResponseModel>.Success(_service.GetById(id)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPatch]
@@ -67,13 +85,21 @@ namespace SchedulePlatform.Api.Controllers
             {
                 return NotFound();
             }
-            var customerUpdated = customerSearch.Map(model);
-            return Ok(_service.Update(customerUpdated));
+            try
+            {
+                var updateCustomer = customerSearch.Map(model);
+                var mappedCustomer = _mapper.Map<UpdateCustomerRequestModel>(updateCustomer);
+                return Ok(ApiGenericsResult<UpdateCustomerResponseModel>.Success(_service.Update(mappedCustomer)));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ApiGenericsResult<UpdateCustomerResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpDelete]
 
-        public IActionResult Delete(Guid id, Customer customer)
+        public IActionResult Delete(Guid id)
         {
             var customerSearch = _service.GetById(id);
 
@@ -81,8 +107,14 @@ namespace SchedulePlatform.Api.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(_service.Delete(id, customer));
+            try
+            {
+                return Ok(ApiGenericsResult<CustomerResponseModel>.Success(_service.Delete(id)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<CustomerResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
     }
 }

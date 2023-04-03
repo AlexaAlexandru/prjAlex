@@ -1,8 +1,7 @@
 ﻿using System;
-using SchedulePlatform.Models.Entities;
 namespace SchedulePlatform.Service.Models.Customer
 {
-	public class CustomerResponseModel
+	public class UpdateCustomerRequestModel
 	{
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

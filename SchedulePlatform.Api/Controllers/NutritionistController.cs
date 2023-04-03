@@ -22,7 +22,7 @@ namespace SchedulePlatform.Api.Controllers
         private readonly INutritionistServiceS _nutritionistService;
         private readonly IMapper _mapper;
 
-        public NutritionistController(INutritionistServiceS service,IMapper mapper)
+        public NutritionistController(INutritionistServiceS service, IMapper mapper)
         {
             _nutritionistService = service;
             _mapper = mapper;
@@ -90,8 +90,6 @@ namespace SchedulePlatform.Api.Controllers
         public IActionResult Update(Guid id, UpdateNutritionistPatchModel model)
         {
             var findNutritionist = _nutritionistService.GetById(id);
-
-
 
             if (findNutritionist == null)
             {

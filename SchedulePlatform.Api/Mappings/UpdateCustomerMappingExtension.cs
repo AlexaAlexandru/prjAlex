@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using Microsoft.IdentityModel.Tokens;
 using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Models.Customer;
+using SchedulePlatform.Service.Models.Nutritionist;
 
 namespace SchedulePlatform.Api.Mappings
 {
-    public static class CustomerMappingExtensions
-    {
-        public static Customer Map(this Customer customer, CustomerPatchModel model)
-        {
+	public static class UpdateCustomerMappingExtension
+	{
+		public static  CustomerResponseModel Map(this CustomerResponseModel customer, CustomerPatchModel model)
+		{
             if (!string.IsNullOrEmpty(model.FirstName))
             {
                 customer.FirstName = model.FirstName;
@@ -47,6 +47,6 @@ namespace SchedulePlatform.Api.Mappings
 
             return customer;
         }
-    }
+	}
 }
 
