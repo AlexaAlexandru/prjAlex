@@ -5,6 +5,7 @@ namespace SchedulePlatform.Service.Models.Appointment
 {
 	public class AppointmentRequestModel
     {
+        public Guid Id = Guid.NewGuid();
         public DateTime? StartDate { get; set; }
         public Boolean IsOnSite { get; set; } = true;
         public TypeAppointment Type { get; set; } = TypeAppointment.ToDo;

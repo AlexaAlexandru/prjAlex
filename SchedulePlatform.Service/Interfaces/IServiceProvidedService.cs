@@ -1,13 +1,15 @@
 ﻿using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Models.ServiceProvided;
 
 namespace SchedulePlatform.Service.Interfaces
 {
     public interface IServiceProvidedService
     {
-        ServiceProvided Add(ServiceProvided serviceP);
-        List<ServiceProvided> GetAll();
-        ServiceProvided? GetById(Guid id);
-        ServiceProvided Update(ServiceProvided serviceP);
-        ServiceProvided Delete(Guid id, ServiceProvided serviceP);
+        ServiceProvidedResponseModel Add(ServiceProvidedRequestModel serviceP);
+        IEnumerable<ServiceProvidedResponseModel> GetAll();
+        ServiceProvidedResponseModel GetById(Guid id);
+        IEnumerable<ServiceProvidedResponseModel> GetAllServicesByNutritionistId(Guid nutritionistId);
+        UpdateServiceProvidedResponseModel Update(Guid id,UpdateServiceProvidedRequestModel serviceP);
+        ServiceProvidedResponseModel Delete(Guid id);
     }
 }

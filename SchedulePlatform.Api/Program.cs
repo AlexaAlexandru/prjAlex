@@ -47,7 +47,7 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddAutoMapper(typeof(AppointmentProfile));
 builder.Services.AddAutoMapper(typeof(NutritionistProfile));
 builder.Services.AddAutoMapper(typeof(CustomerProfile));
-
+builder.Services.AddAutoMapper(typeof(ServiceProvidedProfile));
 
 var app = builder.Build();
 

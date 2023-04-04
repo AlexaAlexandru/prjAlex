@@ -17,6 +17,7 @@
     <None Remove="Models\Customer\" />
     <None Remove="Models\Nutritionist\" />
     <None Remove="Exceptions\" />
+    <None Remove="Models\ServiceProvided\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />
@@ -26,6 +27,7 @@
     <Folder Include="Models\Customer\" />
     <Folder Include="Models\Nutritionist\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="Models\ServiceProvided\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
