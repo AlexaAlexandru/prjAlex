@@ -6,6 +6,7 @@ using SchedulePlatform.Service.Interfaces;
 using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Service.Models.Appointment;
 using SchedulePlatform.Service.Models;
+using AutoMapper;
 
 namespace SchedulePlatform.Api.Controllers
 {
@@ -16,23 +17,43 @@ namespace SchedulePlatform.Api.Controllers
     public class AppointmentController : ControllerBase
     {
         private readonly IAppointmentService _service;
+        private readonly IMapper _mapper;
 
-        public AppointmentController(IAppointmentService service)
+        public AppointmentController(IAppointmentService service,IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
-        [HttpGet("{NutritionistId}/{DateOfAppoitments}")]
+        [HttpGet("allApp/{nutritionistId}")]
 
-        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppoinmentsByDate(Guid nutritionistId, DateTime date)
+        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppoinmentByNutritionist(Guid nutritionistId)
         {
             try
             {
-                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAllByDate(nutritionistId, date)));
+                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAppointmentByNutritionist(nutritionistId)));
             }
             catch (Exception ex)
             {
-                if (_service.GetAll().ToList().First(a=> a.NutritionistId==nutritionistId)==null)
+                if (_service.GetAll().ToList().FirstOrDefault(n => n.NutritionistId == nutritionistId) == null)
+                {
+                    return NotFound(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
+
+        [HttpGet("all/{customerId}")]
+
+        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppointmentByCustomer(Guid customerId)
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAppointmentByCustomer(customerId)));
+            }
+            catch (Exception ex)
+            {
+                if (_service.GetAll().ToList().FirstOrDefault(c => c.CustomerId == customerId) == null)
                 {
                     return NotFound(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
                 }
@@ -64,21 +85,26 @@ namespace SchedulePlatform.Api.Controllers
             }
             catch (Exception ex)
             {
+
                 return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
             }
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{id}")]
 
         public IActionResult GetById(Guid id)
         {
+            if (_service.GetById(id)==null)
+            {
+                return NotFound();
+            }
             try
             {
-                return Ok(ApiGenericsResult<Appointment>.Success(_service.GetById(id)));
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.GetById(id)));
             }
             catch (Exception ex)
             {
-                if (_service.GetAll().ToList().First(a => a.Id == id) == null)
+                if (_service.GetById(id)==null)
                 {
                     return NotFound(ex.Message);
                 }
@@ -99,16 +125,28 @@ namespace SchedulePlatform.Api.Controllers
 
             var appointmentUpdated = appointmentSearch.Map(model);
 
-            return Ok(_service.Update(appointmentUpdated));
+            try
+            {
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.Update(appointmentUpdated)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpDelete]
 
-        public IActionResult Delete(Guid id, Appointment appointmentResponse)
+        public IActionResult Delete(Guid id)
         {
+            if (_service.GetById(id)==null)
+            {
+                return NotFound();
+            }
+
             try
             {
-                return Ok(ApiGenericsResult<Appointment>.Success(_service.Delete(id, appointmentResponse)));
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.Delete(id)));
             }
             catch (Exception ex)
             {
@@ -121,7 +159,7 @@ namespace SchedulePlatform.Api.Controllers
             }
         }
 
-        [HttpGet("[action]{Date}")]
+        [HttpGet("free/{date}")]
 
         public List<DateTime> GetFreeSlots(DateTime date)
         {

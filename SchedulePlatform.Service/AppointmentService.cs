@@ -3,6 +3,7 @@ using System.Data;
 using AutoMapper;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Exceptions;
 using SchedulePlatform.Service.Models.Appointment;
 
 namespace SchedulePlatform.Service.Interfaces
@@ -34,7 +35,7 @@ namespace SchedulePlatform.Service.Interfaces
                 .ToList();
 
             var startHour = new DateTime(date.Year, date.Month, date.Day, 8, 0, 0);
-            var endHour = new DateTime(date.Year, date.Month, date.Day, 16, 0, 0);
+            var endHour = new DateTime(date.Year, date.Month, date.Day, 18, 0, 0);
             var currentSlot = startHour;
             var availableSlots = new List<DateTime>();
 
@@ -63,32 +64,63 @@ namespace SchedulePlatform.Service.Interfaces
         }
 
 
-        public Appointment Delete(Guid id, Appointment appointment)
+        public AppointmentResponseModel Delete(Guid id)
         {
-            return _appointmentRepository.Delete(appointment);
+            var findAppointment = _appointmentRepository.GetById(id);
+
+            _appointmentRepository.Delete(findAppointment);
+
+            return _mapper.Map<AppointmentResponseModel>(findAppointment);
         }
 
         public IEnumerable<AppointmentResponseModel> GetAll()
         {
-            var allAppointments= _appointmentRepository.GetAll();
+            var allAppointments = _appointmentRepository.GetAll();
 
             return _mapper.Map<IEnumerable<AppointmentResponseModel>>(allAppointments);
         }
 
-        public Appointment? GetById(Guid id)
+        public AppointmentResponseModel GetById(Guid id)
         {
-            return _appointmentRepository.GetById(id);
+            var findAppointment = _appointmentRepository.GetById(id);
+            return _mapper.Map<AppointmentResponseModel>(findAppointment);
         }
 
-        public Appointment Update(Appointment appointment)
+        public AppointmentResponseModel Update(AppointmentResponseModel appointment)
         {
-            return _appointmentRepository.Update(appointment);
+            var findAppointment = _appointmentRepository.GetById(appointment.Id);
+
+            if (findAppointment == null)
+            {
+                throw new NotFoundException("The appointment was not found");
+            }
+
+            findAppointment.StartDate = appointment.StartDate;
+            findAppointment.IsOnSite = (bool)appointment.IsOnSite;
+            findAppointment.Type = appointment.Type;
+
+            _appointmentRepository.Update(findAppointment);
+
+            return new AppointmentResponseModel
+            {
+                CustomerId = findAppointment.Id,
+                IsOnSite = findAppointment.IsOnSite,
+                NutritionistId = findAppointment.NutritionistId,
+                StartDate = findAppointment.StartDate,
+                Type = findAppointment.Type
+            };
         }
 
-        public IEnumerable<AppointmentResponseModel> GetAllByDate(Guid nutritionistId, DateTime date)
+        public IEnumerable<AppointmentResponseModel> GetAppointmentByNutritionist(Guid nutritionistId)
         {
-            var appointmentsByDate = _appointmentRepository.GetAll().Where(a => a.NutritionistId == nutritionistId && a.StartDate == date);
-            return _mapper.Map<IEnumerable<AppointmentResponseModel>>(appointmentsByDate);
+            var appointmentsByNutritionist = _appointmentRepository.GetAll().Where(a => a.NutritionistId == nutritionistId);
+            return _mapper.Map<IEnumerable<AppointmentResponseModel>>(appointmentsByNutritionist);
+        }
+
+        public IEnumerable<AppointmentResponseModel> GetAppointmentByCustomer(Guid customerId)
+        {
+            var appointmentsByCustomer = _appointmentRepository.GetAll().Where(a => a.CustomerId == customerId);
+            return _mapper.Map<IEnumerable<AppointmentResponseModel>>(appointmentsByCustomer);
         }
     }
 }

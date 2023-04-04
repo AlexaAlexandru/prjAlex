@@ -8,11 +8,12 @@ namespace SchedulePlatform.Service.Interfaces
     {
         IEnumerable<AppointmentResponseModel> GetAll();
         AppointmentResponseModel Add(AppointmentRequestModel appointment);
-        Appointment GetById(Guid id);
-        Appointment Update(Appointment appointment);
-        Appointment Delete(Guid id, Appointment appointment);
+        AppointmentResponseModel GetById(Guid id);
+        AppointmentResponseModel Update(AppointmentResponseModel appointment);
+        AppointmentResponseModel Delete(Guid id);
         List<DateTime> GetFreeSlots(DateTime date);
-        IEnumerable<AppointmentResponseModel>GetAllByDate(Guid nutritionistId, DateTime date);
+        IEnumerable<AppointmentResponseModel> GetAppointmentByNutritionist(Guid nutritionistId);
+        IEnumerable<AppointmentResponseModel> GetAppointmentByCustomer(Guid customerId);
     }
 }
 

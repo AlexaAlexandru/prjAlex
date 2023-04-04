@@ -1,12 +1,13 @@
 ﻿using System;
 using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Models.Appointment;
 
 namespace SchedulePlatform.Api.Mappings
 {
     public static class AppointmentMappingExtension
     {
-        public static Appointment Map(this Appointment appointment, AppointmentPatchModel model)
+        public static AppointmentResponseModel Map(this AppointmentResponseModel appointment, AppointmentPatchModel model)
         {
             if (model.StartDate.HasValue)
             {
