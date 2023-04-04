@@ -103,6 +103,7 @@ namespace SchedulePlatform.Service.Interfaces
 
             return new AppointmentResponseModel
             {
+
                 CustomerId = findAppointment.Id,
                 IsOnSite = findAppointment.IsOnSite,
                 NutritionistId = findAppointment.NutritionistId,
