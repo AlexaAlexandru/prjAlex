@@ -53,11 +53,43 @@ namespace SchedulePlatform.Service
             return _mapper.Map<NutritionistResponseModel>(findNutritionist);
         }
 
-        public UpdateNutritionistResponseModel Update(UpdateNutritionistRequestModel nutritionist)
+        public UpdateNutritionistResponseModel Update(Guid id,UpdateNutritionistRequestModel nutritionist)
         {
-            var updatedNutritionist = _mapper.Map<Nutritionist>(nutritionist);
+            var updatedNutritionist = _nutritionistRepository.GetById(id);
+
+            if (!string.IsNullOrEmpty(nutritionist.Address))
+            {
+                updatedNutritionist.Address = nutritionist.Address;
+            }
+            if (!string.IsNullOrEmpty(nutritionist.Biography))
+            {
+                updatedNutritionist.Biography = nutritionist.Biography;
+            }
+            if (!string.IsNullOrEmpty(nutritionist.Email))
+            {
+                updatedNutritionist.Email = nutritionist.Email;
+            }
+            if (!string.IsNullOrEmpty(nutritionist.FirstName))
+            {
+                updatedNutritionist.FirstName = nutritionist.FirstName;
+            }
+            if (!string.IsNullOrEmpty(nutritionist.LastName))
+            {
+                updatedNutritionist.LastName = nutritionist.LastName;
+            }
+            if (!string.IsNullOrEmpty(nutritionist.Phone))
+            {
+                updatedNutritionist.Phone = nutritionist.Phone;
+            }
 
             _nutritionistRepository.Update(updatedNutritionist);
+
+            _nutritionistServiceRepository.Add(new NutritionistService
+            {
+                Id = Guid.NewGuid(),
+                ServiceId = nutritionist.newNutritionServiceId,
+                NutritionistId = updatedNutritionist.Id
+            });
 
             return _mapper.Map<UpdateNutritionistResponseModel>(updatedNutritionist);
         }

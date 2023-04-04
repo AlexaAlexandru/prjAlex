@@ -10,7 +10,7 @@ namespace SchedulePlatform.Api.Models.Patch
         public string? Biography { get; set; }
         public string? Address { get; set; }
         public Uri? PictureUrl { get; set; }
-        public Guid? newNutritionServiceId { get; set; }
+        public Guid newNutritionServiceId { get; set; }
     }
 }
 

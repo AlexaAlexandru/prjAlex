@@ -34,10 +34,6 @@ namespace SchedulePlatform.Api.Mappings
                 nutritionist.Phone = model.Phone;
             }
 
-            if (!model.newNutritionServiceId.HasValue)
-            {
-                nutritionist.NutritionistService.ToList().Where(s => s.ServiceId == model.newNutritionServiceId);
-            }
             return nutritionist;
         }
     }

@@ -8,7 +8,7 @@ namespace SchedulePlatform.Service.Interfaces
         NutritionistResponseModel AddNutritionist(NutritionistRequestModel nutritionist);
         IEnumerable<NutritionistResponseModel> GetAll();
         NutritionistResponseModel GetById(Guid id);
-        UpdateNutritionistResponseModel Update(UpdateNutritionistRequestModel nutritionist);
+        UpdateNutritionistResponseModel Update(Guid id,UpdateNutritionistRequestModel nutritionist);
         NutritionistResponseModel Delete(Guid id);
     }
 }

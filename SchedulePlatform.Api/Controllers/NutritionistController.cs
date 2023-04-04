@@ -87,7 +87,7 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpPatch]
 
-        public IActionResult Update(Guid id, UpdateNutritionistPatchModel model)
+        public IActionResult Update(Guid id, UpdateNutritionistRequestModel model)
         {
             var findNutritionist = _nutritionistService.GetById(id);
 
@@ -95,24 +95,18 @@ namespace SchedulePlatform.Api.Controllers
             {
                 return NotFound();
             }
-            else
+
+            try
             {
-                var updateNutritionist = findNutritionist.Map(model);
-
-                var mappedNutritionist = _mapper.Map<UpdateNutritionistRequestModel>(updateNutritionist);
-
-                try
+                return Ok(ApiGenericsResult<UpdateNutritionistResponseModel>.Success(_nutritionistService.Update(id,model)));
+            }
+            catch (Exception ex)
+            {
+                if (findNutritionist == null)
                 {
-                    return Ok(ApiGenericsResult<UpdateNutritionistResponseModel>.Success(_nutritionistService.Update(mappedNutritionist)));
+                    return NotFound(ex.Message);
                 }
-                catch (Exception ex)
-                {
-                    if (findNutritionist == null)
-                    {
-                        return NotFound(ex.Message);
-                    }
-                    return BadRequest(ApiGenericsResult<UpdateNutritionistResponseModel>.Failure(new[] { $"{ex.Message}" }));
-                }
+                return BadRequest(ApiGenericsResult<UpdateNutritionistResponseModel>.Failure(new[] { $"{ex.Message}" }));
             }
 
         }
