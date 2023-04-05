@@ -1,84 +1,136 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using SchedulePlatform.Api.Mappings;
-using SchedulePlatform.Api.Models;
+using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Service.Models;
+using SchedulePlatform.Service.Models.ServiceProvided;
 
 namespace SchedulePlatform.Api.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 
-	[ApiController]
+    [ApiController]
 
-	public class ServiceProvidedController : ControllerBase
-	{
-		private readonly IServiceProvidedService _serviceProvidedService;
+    public class ServiceProvidedController : ControllerBase
+    {
+        private readonly IServiceProvidedService _serviceProvidedService;
 
-		public ServiceProvidedController(IServiceProvidedService service)
-		{
-			_serviceProvidedService = service;
-		}
+        public ServiceProvidedController(IServiceProvidedService service)
+        {
+            _serviceProvidedService = service;
+        }
 
-		[HttpGet]
+        [HttpGet]
 
-		public ServiceProvided[] GetAll()
-		{
-			return _serviceProvidedService.GetAll();
-		}
+        public ActionResult<IEnumerable<ServiceProvidedResponseModel>> GetAll()
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<ServiceProvidedResponseModel>>.Success(_serviceProvidedService.GetAll()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-		[HttpPost()]
+        [HttpPost()]
 
-		public ServiceProvided Add(ServiceProvided serviceP)
-		{
-			return _serviceProvidedService.Add(serviceP);
-		}
+        public IActionResult Add(ServiceProvidedRequestModel serviceP)
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<ServiceProvidedResponseModel>.Success(_serviceProvidedService.Add(serviceP)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-		[HttpGet("{id}")]
+        [HttpGet("{id}")]
 
-		public IActionResult GetById(Guid id)
-		{
-			var serviceResult = _serviceProvidedService.GetById(id);
+        public IActionResult GetById(Guid id)
+        {
+            if (_serviceProvidedService.GetById(id) == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                return Ok(ApiGenericsResult<ServiceProvidedResponseModel>.Success(_serviceProvidedService.GetById(id)));
+            }
+            catch (Exception ex)
+            {
+                if (_serviceProvidedService.GetById(id) == null)
+                {
+                    return NotFound(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+                return BadRequest(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-            if (serviceResult==null)
-			{
-				NotFound();
-			}
+        [HttpGet("all/{nutritionistId}")]
 
-			return Ok(serviceResult);
-		}
+        public ActionResult<IEnumerable<ServiceProvidedResponseModel>> GetAllServicesByNutritionistId(Guid nutritionistId)
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<ServiceProvidedResponseModel>>.Success(_serviceProvidedService.GetAllServicesByNutritionistId(nutritionistId)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-		[HttpPatch]
+        [HttpPatch]
 
-		public IActionResult Update(Guid id, ServiceProvidedPatchModel model)
-		{
-			var findService = _serviceProvidedService.GetById(id);
+        public IActionResult Update(Guid id, UpdateServiceProvidedRequestModel model)
+        {
+            if (_serviceProvidedService.GetById(id) == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                return Ok(ApiGenericsResult<UpdateServiceProvidedResponseModel>.Success(_serviceProvidedService.Update(id, model)));
+            }
+            catch (Exception ex)
+            {
+                if (_serviceProvidedService.GetById(id) == null)
+                {
+                    return NotFound(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+                return BadRequest(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-			if (findService==null)
-			{
-				return NotFound();
-			}
+        [HttpDelete]
 
-			var serviceUpdated = findService.Map(model);
+        public IActionResult Delete(Guid id)
+        {
+            if (_serviceProvidedService.GetById(id) == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                return Ok(ApiGenericsResult<ServiceProvidedResponseModel>.Success(_serviceProvidedService.Delete(id)));
+            }
+            catch (Exception ex)
+            {
+                if (_serviceProvidedService.GetById(id) == null)
+                {
+                    return NotFound(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+                return BadRequest(ApiGenericsResult<ServiceProvidedResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-			return Ok(_serviceProvidedService.Update(serviceUpdated));
-		}
-
-		[HttpDelete]
-
-		public IActionResult Delete(Guid id, ServiceProvided serviceP)
-		{
-			var findService = _serviceProvidedService.GetById(id);
-
-			if (findService==null)
-			{
-				return NotFound();
-			}
-
-			return Ok(_serviceProvidedService.Delete(id,serviceP));
-		}
-
-	}
+    }
 }
 

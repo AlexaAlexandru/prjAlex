@@ -1,81 +1,170 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using SchedulePlatform.Api.Models;
 using SchedulePlatform.Api.Mappings;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Api.Models.Patch;
+using SchedulePlatform.Service.Models.Appointment;
+using SchedulePlatform.Service.Models;
+using AutoMapper;
 
 namespace SchedulePlatform.Api.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 
-	[ApiController]
+    [ApiController]
 
-	public class AppointmentController : ControllerBase
-	{
-		private readonly IAppointmentService _service;
+    public class AppointmentController : ControllerBase
+    {
+        private readonly IAppointmentService _service;
+        private readonly IMapper _mapper;
 
-		public AppointmentController(IAppointmentService service)
-		{
-			_service = service;
-		}
+        public AppointmentController(IAppointmentService service,IMapper mapper)
+        {
+            _service = service;
+            _mapper = mapper;
+        }
 
-		[HttpGet]
+        [HttpGet("allApp/{nutritionistId}")]
 
-		public Appointment[] GetAppointments()
-		{
-			return _service.GetAll();
-		}
+        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppoinmentByNutritionist(Guid nutritionistId)
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAppointmentByNutritionist(nutritionistId)));
+            }
+            catch (Exception ex)
+            {
+                if (_service.GetAll().ToList().FirstOrDefault(n => n.NutritionistId == nutritionistId) == null)
+                {
+                    return NotFound(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-		[HttpPost]
+        [HttpGet("all/{customerId}")]
 
-		public Appointment AddAppointment(Appointment appointment)
-		{
-			return _service.Add(appointment);
-		}
+        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppointmentByCustomer(Guid customerId)
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAppointmentByCustomer(customerId)));
+            }
+            catch (Exception ex)
+            {
+                if (_service.GetAll().ToList().FirstOrDefault(c => c.CustomerId == customerId) == null)
+                {
+                    return NotFound(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-		[HttpGet("{id}")]
+        [HttpGet]
 
-		public IActionResult GetById(Guid id)
-		{
-			var appointmentResult = _service.GetById(id);
+        public ActionResult<IEnumerable<AppointmentResponseModel>> GetAppointments()
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Success(_service.GetAll()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<IEnumerable<AppointmentResponseModel>>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-			if (appointmentResult==null)
-			{
-				return NotFound();
-			}
-			return Ok(appointmentResult);
-		}
+        [HttpPost]
 
-		[HttpPatch]
+        public IActionResult AddAppointment(AppointmentRequestModel requestappointment)
+        {
+            try
+            {
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.Add(requestappointment)));
+            }
+            catch (Exception ex)
+            {
 
-		public IActionResult Update(Guid id, AppointmentPatchModel model)
-		{
-			var appointmentSearch = _service.GetById(id);
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
 
-			if (appointmentSearch==null)
-			{
-				return NotFound();
-			}
+        [HttpGet("{id}")]
 
-			var appointmentUpdated = appointmentSearch.Map(model);
+        public IActionResult GetById(Guid id)
+        {
+            if (_service.GetById(id)==null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.GetById(id)));
+            }
+            catch (Exception ex)
+            {
+                if (_service.GetById(id)==null)
+                {
+                    return NotFound(ex.Message);
+                }
+                return BadRequest(ex.Message);
+            }
+        }
 
-			return Ok(_service.Update(appointmentUpdated));
-		}
+        [HttpPatch]
 
-		[HttpDelete]
+        public IActionResult Update(Guid id, AppointmentPatchModel model)
+        {
+            var appointmentSearch = _service.GetById(id);
 
-		public IActionResult Delete(Guid id,Appointment appointment)
-		{
-			var appointmentSearch = _service.GetById(id);
+            if (appointmentSearch == null)
+            {
+                return NotFound();
+            }
 
-			if (appointmentSearch==null)
-			{
-				return NotFound();
-			}
+            var appointmentUpdated = appointmentSearch.Map(model);
 
-			return Ok(_service.Delete(id, appointment));
-		}
-	}
+            try
+            {
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.Update(appointmentUpdated)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
+
+        [HttpDelete]
+
+        public IActionResult Delete(Guid id)
+        {
+            if (_service.GetById(id)==null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.Delete(id)));
+            }
+            catch (Exception ex)
+            {
+                if (_service.GetAll().ToList().First(a => a.Id == id) == null)
+                {
+                    return NotFound(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+                }
+
+                return BadRequest(ApiGenericsResult<AppointmentResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
+        }
+
+        [HttpGet("free/{date}")]
+
+        public List<DateTime> GetFreeSlots(DateTime date)
+        {
+            return _service.GetFreeSlots(date);
+        }
+    }
 }
 

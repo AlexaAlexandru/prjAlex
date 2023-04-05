@@ -1,13 +1,14 @@
 ﻿using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Models.Nutritionist;
 
 namespace SchedulePlatform.Service.Interfaces
 {
     public interface INutritionistServiceS
     {
-        Nutritionist AddNutritionist(Nutritionist nutritionist);
-        Nutritionist[] GetAll();
-        Nutritionist? GetById(Guid id);
-        Nutritionist Update(Nutritionist nutritionist);
-        Nutritionist Delete(Guid id, Nutritionist nutritionist);
+        NutritionistResponseModel AddNutritionist(NutritionistRequestModel nutritionist);
+        IEnumerable<NutritionistResponseModel> GetAll();
+        NutritionistResponseModel GetById(Guid id);
+        UpdateNutritionistResponseModel Update(Guid id,UpdateNutritionistRequestModel nutritionist);
+        NutritionistResponseModel Delete(Guid id);
     }
 }

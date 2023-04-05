@@ -2,7 +2,7 @@
 
 namespace SchedulePlatform.Data.Interfaces
 {
-    public interface IServiceProvidedRepository: IBaseRepository<ServiceProvided>
+    public interface IServiceProvidedRepository : IBaseRepository<ServiceProvided>
     {
     }
 }

@@ -42,7 +42,7 @@ public partial class SchedulePlatformContext : DbContext
             .WithMany(ns => ns.Appointments)
             .HasForeignKey(n => n.CustomerId);
     }
-    
+
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
     public virtual DbSet<Customer> Customers { get; set; }
@@ -56,5 +56,5 @@ public partial class SchedulePlatformContext : DbContext
     public virtual DbSet<NutritionistService> NutritionistServices { get; set; }
 
     public virtual DbSet<Appointment> Appointments { get; set; }
-    
+
 }

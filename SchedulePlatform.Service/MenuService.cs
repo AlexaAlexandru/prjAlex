@@ -5,16 +5,16 @@ using SchedulePlatform.Service.Interfaces;
 
 namespace SchedulePlatform.Service
 {
-	public class MenuService : IMenuService
-	{
-		private readonly IMenuRepository _menuRepository;
+    public class MenuService : IMenuService
+    {
+        private readonly IMenuRepository _menuRepository;
 
-		public MenuService(IMenuRepository menuRepository)
-		{
-			_menuRepository = menuRepository;
-		}
+        public MenuService(IMenuRepository menuRepository)
+        {
+            _menuRepository = menuRepository;
+        }
 
-        public Menu[] GetAll()
+        public List<Menu> GetAll()
         {
             return _menuRepository.GetAll();
         }
@@ -44,7 +44,7 @@ namespace SchedulePlatform.Service
 
         public Menu Delete(Guid id, Menu menu)
         {
-            return _menuRepository.Delete(id,menu);
+            return _menuRepository.Delete(menu);
         }
 
     }

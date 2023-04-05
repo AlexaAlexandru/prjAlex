@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SchedulePlatform.WebUI.Validations
 {
-	public class FirstLastNameLength:ValidationAttribute
-	{
+    public class FirstLastNameLength : ValidationAttribute
+    {
         public int Value { get; set; }
 
         public override bool IsValid(object? value)
@@ -15,14 +15,14 @@ namespace SchedulePlatform.WebUI.Validations
             {
                 return false;
             }
-            if (nameLength.Length<Value)
+            if (nameLength.Length < Value)
             {
                 return false;
             }
 
             return true;
         }
-        
+
     }
 }
 

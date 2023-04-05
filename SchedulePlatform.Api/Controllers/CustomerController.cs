@@ -1,10 +1,14 @@
 ﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SchedulePlatform.Api.Mappings;
-using SchedulePlatform.Api.Models;
+using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Service.Models;
+using SchedulePlatform.Service.Models.Customer;
+using SchedulePlatform.Service.Models.Nutritionist;
 
 namespace SchedulePlatform.Api.Controllers
 {
@@ -16,24 +20,40 @@ namespace SchedulePlatform.Api.Controllers
     {
 
         private readonly ICustomerService _service;
+        private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerService service)
+        public CustomerController(ICustomerService service,IMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
 
-        public Customer[] GetCustomers()
+        public ActionResult<IEnumerable<Customer>> GetCustomers()
         {
-            return _service.GetAllCustomers();
+            try
+            {
+                return Ok(ApiGenericsResult<IEnumerable<Customer>>.Success(_service.GetAllCustomers()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<Customer>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpPost()]
 
-        public Customer AddCustomer(Customer customer)
+        public IActionResult AddCustomer(CustomerCreateModel customer)
         {
-            return _service.AddCustomer(customer);
+            try
+            {
+                return Ok(ApiGenericsResult<CustomerResponseModel>.Success(_service.AddCustomer(customer)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<CustomerResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpGet("{id}")]
@@ -46,8 +66,14 @@ namespace SchedulePlatform.Api.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(customerResult);
+            try
+            {
+                return Ok(ApiGenericsResult<CustomerResponseModel>.Success(_service.GetById(id)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPatch]
@@ -55,30 +81,40 @@ namespace SchedulePlatform.Api.Controllers
         public IActionResult Update(Guid id, CustomerPatchModel model)
         {
             var customerSearch = _service.GetById(id);
-
             if (customerSearch==null)
             {
                 return NotFound();
             }
-
-            var customerUpdated = customerSearch.Map(model);
-
-            return Ok(_service.Update(customerUpdated));
-
+            try
+            {
+                var updateCustomer = customerSearch.Map(model);
+                var mappedCustomer = _mapper.Map<UpdateCustomerRequestModel>(updateCustomer);
+                return Ok(ApiGenericsResult<UpdateCustomerResponseModel>.Success(_service.Update(mappedCustomer)));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ApiGenericsResult<UpdateCustomerResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
 
         [HttpDelete]
 
-        public IActionResult Delete(Guid id,Customer customer)
+        public IActionResult Delete(Guid id)
         {
             var customerSearch = _service.GetById(id);
 
-            if (customerSearch==null)
+            if (customerSearch == null)
             {
                 return NotFound();
             }
-
-            return Ok (_service.Delete(id,customer));
+            try
+            {
+                return Ok(ApiGenericsResult<CustomerResponseModel>.Success(_service.Delete(id)));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ApiGenericsResult<CustomerResponseModel>.Failure(new[] { $"{ex.Message}" }));
+            }
         }
     }
 }

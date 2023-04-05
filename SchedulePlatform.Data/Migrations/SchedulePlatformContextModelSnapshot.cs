@@ -31,9 +31,6 @@ namespace SchedulePlatform.Data.Migrations
                     b.Property<Guid>("CustomerId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("IsOnSite")
                         .HasColumnType("bit");
 

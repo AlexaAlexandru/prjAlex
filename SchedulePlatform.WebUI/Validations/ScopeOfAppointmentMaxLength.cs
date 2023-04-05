@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SchedulePlatform.WebUI.Validations
 {
-	public class ScopeOfAppointmentMaxLength:ValidationAttribute
-	{
-		public int Value { get; set; }
+    public class ScopeOfAppointmentMaxLength : ValidationAttribute
+    {
+        public int Value { get; set; }
 
         public override bool IsValid(object? value)
         {

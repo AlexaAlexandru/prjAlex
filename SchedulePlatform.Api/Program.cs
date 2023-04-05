@@ -7,6 +7,7 @@ using SchedulePlatform.Data.Repositories;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service;
 using SchedulePlatform.Service.Interfaces;
+using SchedulePlatform.Service.MappingProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,10 +28,10 @@ var connectionString = configuration.GetConnectionString("connect");
 builder.Services.AddDbContext<SchedulePlatformContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
-builder.Services.AddScoped<ICustomerService,CustomerService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
-builder.Services.AddScoped<IServiceProvidedRepository,ServiceProvidedRepository>();
-builder.Services.AddScoped<IServiceProvidedService,ServiceProvidedService>();
+builder.Services.AddScoped<IServiceProvidedRepository, ServiceProvidedRepository>();
+builder.Services.AddScoped<IServiceProvidedService, ServiceProvidedService>();
 
 builder.Services.AddScoped<IMenuRepository, MenuRepository>();
 builder.Services.AddScoped<IMenuService, MenuService>();
@@ -38,9 +39,15 @@ builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<INutritionistRepository, NutritionistRepository>();
 builder.Services.AddScoped<INutritionistServiceS, NutritionistServiceS>();
 
+builder.Services.AddScoped<INutritionistServiceRepository, NutritionistServiceRepository>();
+
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
+builder.Services.AddAutoMapper(typeof(AppointmentProfile));
+builder.Services.AddAutoMapper(typeof(NutritionistProfile));
+builder.Services.AddAutoMapper(typeof(CustomerProfile));
+builder.Services.AddAutoMapper(typeof(ServiceProvidedProfile));
 
 var app = builder.Build();
 

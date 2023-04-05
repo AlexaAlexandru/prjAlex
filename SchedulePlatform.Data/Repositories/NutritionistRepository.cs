@@ -5,7 +5,7 @@ using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.Data.Repositories
 {
-	public class NutritionistRepository: BaseRepository<Nutritionist>, INutritionistRepository
+    public class NutritionistRepository : BaseRepository<Nutritionist>, INutritionistRepository
     {
         private readonly SchedulePlatformContext _context;
         private readonly DbSet<Customer> _dbSet;

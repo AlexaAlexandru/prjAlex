@@ -1,7 +1,7 @@
 ﻿using System;
-namespace SchedulePlatform.Api.Models
+namespace SchedulePlatform.Service.Models.Customer
 {
-	public class CustomerPatchModel
+	public class UpdateCustomerRequestModel
 	{
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -11,7 +11,6 @@ namespace SchedulePlatform.Api.Models
         public decimal? Weight { get; set; }
         public int? Age { get; set; }
         public string? ScopeOfAppointment { get; set; }
-
     }
 }
 

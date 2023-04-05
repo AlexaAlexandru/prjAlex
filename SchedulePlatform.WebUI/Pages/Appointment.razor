@@ -67,43 +67,43 @@
                                 <div class="form-btn">
                                     <input type="submit" class="submit-btn" value="Proceed with next step" @onclick=@Navigate />
                                 </div>
-                             }
-                             else
-                             {
-                                    <div class="row" hidden></div>
+                            }
+                            else
+                            {
+                                <div class="row" hidden></div>
 
-                             }
+                            }
                         </form>
                     </div>
                 </div>
             </div>
             @if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
-             {
-                    <div class="row" hidden>
+            {
+                <div class="row" hidden>
 
-                    </div>
-             }
-             else
-             {
+                </div>
+            }
+            else
+            {
                 <div class="row">
                     <div class="col-md-7 col-md-push-5">
                         <div class="slot">
                             <div class="slot-days">
                                 <div class="slot-day">
                                     <div class="slot-datelabel"><span class="font-weight-bold">@( DateTimeTest.HasValue ? DateTimeTest.Value.DayOfWeek.ToString() : "")</span></div>
-                                    <div class="slot-timeslot" >@(DateTimeTest.HasValue ? DateTimeTest.Value.AddHours(9).ToString() : "")</div>
+                                    <div class="slot-timeslot">@(DateTimeTest.HasValue ? DateTimeTest.Value.AddHours(9).ToString() : "")</div>
                                     <div class="slot-timeslot">9:30am</div>
                                     <div class="slot-timeslot">10:00am</div>
                                     @foreach (var item in timeSlots)
-                                        {
-                                           <div class="slot-timeslot"></div>
-                                        }
+                                    {
+                                        <div class="slot-timeslot"></div>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-              }
+            }
         </div>
     </section>
 </body>

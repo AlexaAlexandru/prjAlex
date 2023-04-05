@@ -21,10 +21,9 @@ namespace SchedulePlatform.WebUI.Pages
             var json = await response.Content.ReadAsStringAsync();
 
             services = JsonConvert.DeserializeObject<List<ServiceProvided>>(json);
-
         }
     }
 
-    
+
 }
 

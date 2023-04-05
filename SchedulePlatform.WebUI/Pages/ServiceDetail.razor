@@ -1,0 +1,77 @@
+﻿@page "/ServiceDetailPage/{Id:guid}"
+@using SchedulePlatform.Models.Entities
+@using SchedulePlatform.WebUI.Shared
+@using Newtonsoft.Json;
+@inject NavigationManager _nav
+@inject HttpClient HttpClient
+@inherits LayoutComponentBase
+
+<PageTitle>DetailsPage</PageTitle>
+
+<body>
+    <NavBar></NavBar>
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container" data-aos="fade-up">
+            <div class="row gy-4">
+                <div class="col-lg-8">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="@_service.UrlPicture" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/Girl-Runner_BBF-e1484345831561.jpg?alt=media&token=ba6cd322-754a-42af-8f8b-e49416eeec6e" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/ezgif.com-webp-to-jpg.jpg?alt=media&token=5ced01e4-5fa2-4f84-ae28-9d2d5a19f14d" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>@_service.NameServiceProvided</h3>
+                        <ul>
+                            <li><strong>Category</strong>: @_service.Type</li>
+                        </ul>
+                    </div>
+                    <div class="portfolio-description">
+                        <h2>This is an example of service detail</h2>
+                        <p>
+                            @_service.Description
+                        </p>
+                    </div>
+                    <button type="button" @onclick="Navigate" class="btn btn-dark btn-large">Make an appointment </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+@code{
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private ServiceProvided? _service = new ServiceProvided();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        _service = await HttpClient.GetFromJsonAsync<ServiceProvided>($"api/ServiceProvided/{Id}");
+    }
+
+    void Navigate()
+    {
+        _nav.NavigateTo("/Appointment");
+    }
+
+
+}

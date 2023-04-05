@@ -1,15 +1,19 @@
 ﻿using System;
 using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Models.Appointment;
 
 namespace SchedulePlatform.Service.Interfaces
 {
-	public interface IAppointmentService
-	{
-		Appointment[] GetAll();
-		Appointment Add(Appointment appointment);
-		Appointment? GetById(Guid id);
-		Appointment Update(Appointment appointment);
-		Appointment Delete(Guid id, Appointment appointment);
+    public interface IAppointmentService
+    {
+        IEnumerable<AppointmentResponseModel> GetAll();
+        AppointmentResponseModel Add(AppointmentRequestModel appointment);
+        AppointmentResponseModel GetById(Guid id);
+        AppointmentResponseModel Update(AppointmentResponseModel appointment);
+        AppointmentResponseModel Delete(Guid id);
+        List<DateTime> GetFreeSlots(DateTime date);
+        IEnumerable<AppointmentResponseModel> GetAppointmentByNutritionist(Guid nutritionistId);
+        IEnumerable<AppointmentResponseModel> GetAppointmentByCustomer(Guid customerId);
     }
 }
 

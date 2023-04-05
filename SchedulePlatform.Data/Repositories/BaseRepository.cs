@@ -16,9 +16,9 @@ namespace SchedulePlatform.Data.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public T[] GetAll()
+        public List<T> GetAll()
         {
-            return _dbSet.ToArray();
+            return _dbSet.ToList();
         }
 
         public T Add(T entity)
@@ -42,11 +42,9 @@ namespace SchedulePlatform.Data.Repositories
             return entity;
         }
 
-        public T Delete(Guid id, T entity)
+        public T Delete(T entity)
         {
-            var findEntity = _dbSet.First((T m) => m.Id == id);
-
-            _dbSet.Remove(findEntity);
+            _dbSet.Remove(entity);
             _context.SaveChanges();
 
             return entity;

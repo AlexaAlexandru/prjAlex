@@ -3,7 +3,7 @@
 }
 
 .row {
-    margin-left:100px;
+    margin-left: 100px;
 }
 
 .h4 {
@@ -15,154 +15,154 @@
 }
 
 .section {
-	position: relative;
-	height: 100vh;
+    position: relative;
+    height: 100vh;
 }
 
 .appointment-form {
-	background-color: #fff;
-	padding: 50px 20px;
-	-webkit-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
-	box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
-	border-radius: 4px;
+    background-color: #fff;
+    padding: 50px 20px;
+    -webkit-box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 }
 
-.appointment-form .form-group {
-	position: relative;
-	margin-bottom: 30px;
-}
+    .appointment-form .form-group {
+        position: relative;
+        margin-bottom: 30px;
+    }
 
-.appointment-form .form-control {
-	background-color: #ebecee;
-	border-radius: 4px;
-	border: none;
-	height: 40px;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	color: #3e485c;
-	font-size: 14px;
-}
+    .appointment-form .form-control {
+        background-color: #ebecee;
+        border-radius: 4px;
+        border: none;
+        height: 40px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        color: #3e485c;
+        font-size: 14px;
+    }
 
-.appointment-form .form-control::-webkit-input-placeholder {
-	color: rgba(62, 72, 92, 0.3);
-}
+        .appointment-form .form-control::-webkit-input-placeholder {
+            color: rgba(62, 72, 92, 0.3);
+        }
 
-.appointment-form .form-control:-ms-input-placeholder {
-	color: rgba(62, 72, 92, 0.3);
-}
+        .appointment-form .form-control:-ms-input-placeholder {
+            color: rgba(62, 72, 92, 0.3);
+        }
 
-.appointment-form .form-control::placeholder {
-	color: rgba(62, 72, 92, 0.3);
-}
+        .appointment-form .form-control::placeholder {
+            color: rgba(62, 72, 92, 0.3);
+        }
 
-.appointment-form input[type="date"].form-control:invalid {
-	color: rgba(62, 72, 92, 0.3);
-}
+    .appointment-form input[type="date"].form-control:invalid {
+        color: rgba(62, 72, 92, 0.3);
+    }
 
-.appointment-form select.form-control {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
+    .appointment-form select.form-control {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
 
-.appointment-form select.form-control+.select-arrow {
-	position: absolute;
-	right: 0px;
-	bottom: 4px;
-	width: 32px;
-	line-height: 32px;
-	height: 32px;
-	text-align: center;
-	pointer-events: none;
-	color: rgba(62, 72, 92, 0.3);
-	font-size: 14px;
-}
+        .appointment-form select.form-control + .select-arrow {
+            position: absolute;
+            right: 0px;
+            bottom: 4px;
+            width: 32px;
+            line-height: 32px;
+            height: 32px;
+            text-align: center;
+            pointer-events: none;
+            color: rgba(62, 72, 92, 0.3);
+            font-size: 14px;
+        }
 
-.appointment-form select.form-control+.select-arrow:after {
-	content: '\279C';
-	display: block;
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
-}
+            .appointment-form select.form-control + .select-arrow:after {
+                content: '\279C';
+                display: block;
+                -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
 
-.appointment-form .form-label {
-	display: inline-block;
-	color: #3e485c;
-	font-weight: 700;
-	margin-bottom: 6px;
-	margin-left: 7px;
-}
+    .appointment-form .form-label {
+        display: inline-block;
+        color: #3e485c;
+        font-weight: 700;
+        margin-bottom: 6px;
+        margin-left: 7px;
+    }
 
-.appointment-form .submit-btn {
-	display: inline-block;
-	color: #fff;
-	background-color: #59C3C3;
-	font-weight: 700;
-	padding: 14px 30px;
-	border-radius: 4px;
-	border: none;
-	-webkit-transition: 0.2s all;
-	transition: 0.2s all;
-}
+    .appointment-form .submit-btn {
+        display: inline-block;
+        color: #fff;
+        background-color: #59C3C3;
+        font-weight: 700;
+        padding: 14px 30px;
+        border-radius: 4px;
+        border: none;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
 
-.appointment-form .submit-btn:hover,
-.appointment-form .submit-btn:focus {
-	opacity: 1.0;
-	color:#4062BB;
-}
+        .appointment-form .submit-btn:hover,
+        .appointment-form .submit-btn:focus {
+            opacity: 1.0;
+            color: #4062BB;
+        }
 
 .appointment-cta {
-	margin-top: 80px;
-	margin-bottom: 30px;
+    margin-top: 80px;
+    margin-bottom: 30px;
 }
 
-.appointment-cta h1 {
-	font-size: 40px;
-	text-transform: uppercase;
-	color: #F45B69;
-	font-weight: 700;
-}
+    .appointment-cta h1 {
+        font-size: 40px;
+        text-transform: uppercase;
+        color: #F45B69;
+        font-weight: 700;
+    }
 
-.appointment-cta p {
-	line-height: 24px;
-    font-size: 14px;
-    margin-bottom: 0;
-}
+    .appointment-cta p {
+        line-height: 24px;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
 
 .submit-btn {
-	background-color: #59C3C3;
+    background-color: #59C3C3;
 }
 
 .slot-days {
-	width: 1000px;
-	}
+    width: 1000px;
+}
 
 .slot-day {
-	width: 130px;
-	height: 250px;
-	padding:15px;
-	float:left;
-	margin-right:7px;
-	margin-bottom:10px;
+    width: 130px;
+    height: 250px;
+    padding: 15px;
+    float: left;
+    margin-right: 7px;
+    margin-bottom: 10px;
 }
 
 .slot-datelabel {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .slot-timeslot {
-	background-color: #52489C;
-	width: inherit;
-	color: white;
-	padding:7px;
-	margin-top: 5px;
-	font-size: 14px;
-	border-radius: 3px;
-	vertical-align: center;
-	text-align:center;
+    background-color: #52489C;
+    width: inherit;
+    color: white;
+    padding: 7px;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 3px;
+    vertical-align: center;
+    text-align: center;
 }
 
-.slot-timeslot:hover { 
-	background-color: #59C3C3;
-	cursor: pointer;
-}
+    .slot-timeslot:hover {
+        background-color: #59C3C3;
+        cursor: pointer;
+    }

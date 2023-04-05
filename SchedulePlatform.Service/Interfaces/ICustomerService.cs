@@ -1,15 +1,16 @@
 ﻿using System;
 using SchedulePlatform.Models.Entities;
+using SchedulePlatform.Service.Models.Customer;
 
 namespace SchedulePlatform.Service.Interfaces
 {
-	public interface ICustomerService
-	{
-        Customer[] GetAllCustomers();
-        Customer AddCustomer(Customer customer);
-        Customer? GetById(Guid id);
-        Customer Update(Customer customer);
-        Customer Delete(Guid id,Customer customer);
+    public interface ICustomerService
+    {
+        IEnumerable<Customer> GetAllCustomers();
+        CustomerResponseModel AddCustomer(CustomerCreateModel customer);
+        CustomerResponseModel GetById(Guid id);
+        UpdateCustomerResponseModel? Update(UpdateCustomerRequestModel model);
+        CustomerResponseModel Delete(Guid id);
     }
 }
 
