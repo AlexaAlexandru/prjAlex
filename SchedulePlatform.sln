@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulePlatform.Api", "Sch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulePlatform.WebUI", "SchedulePlatform.WebUI\SchedulePlatform.WebUI.csproj", "{6795D4D3-D198-4A09-8997-B8DB54816AA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulePlatform.Shared", "SchedulePlatform.Shared\SchedulePlatform.Shared.csproj", "{742F000A-A495-4019-8188-7CD9933AC41F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6795D4D3-D198-4A09-8997-B8DB54816AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6795D4D3-D198-4A09-8997-B8DB54816AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6795D4D3-D198-4A09-8997-B8DB54816AA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{742F000A-A495-4019-8188-7CD9933AC41F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{742F000A-A495-4019-8188-7CD9933AC41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{742F000A-A495-4019-8188-7CD9933AC41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{742F000A-A495-4019-8188-7CD9933AC41F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -38,6 +38,9 @@
     <ProjectReference Include="..\SchedulePlatform.Models\SchedulePlatform.Models.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\SchedulePlatform.Shared\SchedulePlatform.Shared.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Validations\" />

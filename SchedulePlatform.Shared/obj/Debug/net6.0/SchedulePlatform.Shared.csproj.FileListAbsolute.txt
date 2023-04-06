@@ -1,0 +1,15 @@
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/bin/Debug/net6.0/SchedulePlatform.Shared.deps.json
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/bin/Debug/net6.0/SchedulePlatform.Shared.dll
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/bin/Debug/net6.0/SchedulePlatform.Shared.pdb
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.csproj.AssemblyReference.cache
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.AssemblyInfoInputs.cache
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.AssemblyInfo.cs
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.csproj.CoreCompileInputs.cache
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.dll
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/refint/SchedulePlatform.Shared.dll
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.pdb
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/ref/SchedulePlatform.Shared.dll
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/bin/Debug/net6.0/SchedulePlatform.Models.dll
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/bin/Debug/net6.0/SchedulePlatform.Models.pdb
+/Users/alexandrualexa/Documents/ProjectAlexRepo/SchedulePlatform.Shared/obj/Debug/net6.0/SchedulePlatform.Shared.csproj.CopyComplete
