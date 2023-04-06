@@ -1,4 +1,5 @@
 ﻿@page "/Team"
+
 <PageTitle>Meet the team</PageTitle>
 
 <body>
@@ -10,60 +11,26 @@
                 <p>Architecto nobis eos vel nam quidem vitae temporibus voluptates qui hic deserunt iusto omnis nam voluptas asperiores sequi tenetur dolores incidunt enim voluptatem magnam cumque fuga.</p>
             </div>
             <div class="row gy-5">
-                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="team-member">
-                        <div class="member-img">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/team-1.jpg?alt=media&token=6d3f764e-a427-4693-99d8-ddef35a2e415" class="img-fluid" alt="">
-                        </div>
-                        <div class="member-info">
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
+                @foreach (var item in nutritionists)
+                {
+                    <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="team-member">
+                            <div class="member-img">
+                                <img src="@item.PictureUrl" class="img-fluid" alt="">
                             </div>
-                            <h4>Tester Nutritionist</h4>
-                            <span>Sports Nutritionist</span>
+                            <div class="member-info">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                                <h4>@item.FirstName @item.LastName</h4>
+                                <span>@item.Biography</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="team-member">
-                        <div class="member-img">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/team-1.jpg?alt=media&token=6d3f764e-a427-4693-99d8-ddef35a2e415" class="img-fluid" alt="">
-                        </div>
-                        <div class="member-info">
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                            <h4>Tester Nutritionist</h4>
-                            <span>Clinical nutritionist</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="team-member">
-                        <div class="member-img">
-                            <img src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/team-1.jpg?alt=media&token=6d3f764e-a427-4693-99d8-ddef35a2e415" class="img-fluid" alt="">
-                        </div>
-                        <div class="member-info">
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                            <h4>Tester Nutritionist</h4>
-                            <span>Pediatric Nutritionist</span>
-                        </div>
-                    </div>
-                </div>
-
+                }
             </div>
         </div>
     </section>
