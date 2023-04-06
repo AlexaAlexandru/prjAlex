@@ -27,11 +27,11 @@ namespace SchedulePlatform.Service.Interfaces
             return _mapper.Map<AppointmentResponseModel>(appointmentToAdd);
         }
 
-        public List<DateTime> GetFreeSlots(DateTime date)
+        public List<DateTime> GetFreeSlots(DateTime date,Guid nutritionistId)
         {
             var bookedAppointments = _appointmentRepository
                 .GetAll()
-                .Where(a => a.StartDate == date)
+                .Where(a => a.StartDate == date && a.NutritionistId==nutritionistId)
                 .ToList();
 
             var startHour = new DateTime(date.Year, date.Month, date.Day, 8, 0, 0);

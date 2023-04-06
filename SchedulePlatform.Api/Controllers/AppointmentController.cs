@@ -161,9 +161,13 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet("free/{date}")]
 
-        public List<DateTime> GetFreeSlots(DateTime date)
+        public ActionResult<List<DateTime>> GetFreeSlots(DateTime date,Guid nutritionistId)
         {
-            return _service.GetFreeSlots(date);
+            if (_service.GetAll().ToList().FirstOrDefault(n=>n.NutritionistId==nutritionistId)==null)
+            {
+                return NotFound();
+            }
+            return _service.GetFreeSlots(date,nutritionistId);
         }
     }
 }
