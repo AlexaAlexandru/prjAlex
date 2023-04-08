@@ -46,22 +46,24 @@ namespace SchedulePlatform.Service
 
         public IEnumerable<ServiceProvidedResponseModel> GetAllServicesByNutritionistId(Guid nutritionistId)
         {
-            if (_nutritionistServiceRepository.GetAll().ToList().Find(n=>n.NutritionistId==nutritionistId)==null)
+            var allServices = _nutritionistServiceRepository.GetAll().ToList().Where(n => n.NutritionistId == nutritionistId);
+
+            if (allServices == null)
             {
                 throw new Exception("The nutrionist has no related services");
             }
 
-            var fullList = _nutritionistServiceRepository.GetAll().ToList();
-            var allServices = _nutritionistServiceRepository.GetAll().ToList().Where(n => n.NutritionistId == nutritionistId);
+            var  nutritionistServices= _serviceRepository.GetAll().ToList();
+            
             var tempList = allServices.Select(l => l.ServiceId).ToList();
 
-            var tempListServices = new List<NutritionistService>();
+            var tempListServices = new List<ServiceProvided>();
 
-            foreach (var item in fullList)
+            foreach (var item in nutritionistServices)
             {
                 foreach (var id in tempList)
                 {
-                    if (item.ServiceId==id)
+                    if (item.Id==id)
                     {
                         tempListServices.Add(item);
                     }

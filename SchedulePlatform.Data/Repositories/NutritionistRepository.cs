@@ -16,7 +16,7 @@ namespace SchedulePlatform.Data.Repositories
             _dbSet = context.Set<Nutritionist>();
 
             var listServices = _context.NutritionistServices
-                .Include(s => s.Nutritionist)
+                .Include(s => s.Service)
                 .ToList();
 
             var listAppointments = _context.Appointments
