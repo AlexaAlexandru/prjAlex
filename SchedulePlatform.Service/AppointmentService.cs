@@ -4,7 +4,7 @@ using AutoMapper;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Exceptions;
-using SchedulePlatform.Service.Models.Appointment;
+using SchedulePlatform.Service.Models.AppointmentModel;
 
 namespace SchedulePlatform.Service.Interfaces
 {

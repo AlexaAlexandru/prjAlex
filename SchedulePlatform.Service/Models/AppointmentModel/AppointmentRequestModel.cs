@@ -1,7 +1,7 @@
 ﻿using System;
 using SchedulePlatform.Models.Enums;
 
-namespace SchedulePlatform.Service.Models.Appointment
+namespace SchedulePlatform.Service.Models.AppointmentModel
 {
 	public class AppointmentRequestModel
     {
