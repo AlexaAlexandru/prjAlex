@@ -14,6 +14,10 @@ namespace SchedulePlatform.Data.Repositories
         {
             _context = context;
             _dbSet = context.Set<ServiceProvided>();
+
+            var listNutritionists = _context.NutritionistServices
+                .Include(n => n.Nutritionist)
+                .ToList();
         }
     }
 }

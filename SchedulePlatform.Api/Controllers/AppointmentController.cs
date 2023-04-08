@@ -4,7 +4,7 @@ using SchedulePlatform.Api.Mappings;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
 using SchedulePlatform.Api.Models.Patch;
-using SchedulePlatform.Service.Models.Appointment;
+using SchedulePlatform.Service.Models.AppointmentModel;
 using SchedulePlatform.Service.Models;
 using AutoMapper;
 
