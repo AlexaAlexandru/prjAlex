@@ -17,12 +17,12 @@ namespace SchedulePlatform.Api.Controllers
     [ApiController]
 
 
-    public class NutritionistController : ControllerBase
+    public class NutritionistsController : ControllerBase
     {
         private readonly INutritionistServiceS _nutritionistService;
         private readonly IMapper _mapper;
 
-        public NutritionistController(INutritionistServiceS service, IMapper mapper)
+        public NutritionistsController(INutritionistServiceS service, IMapper mapper)
         {
             _nutritionistService = service;
             _mapper = mapper;

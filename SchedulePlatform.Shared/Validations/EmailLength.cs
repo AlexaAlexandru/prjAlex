@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchedulePlatform.WebUI.Validations
+namespace SchedulePlatform.Shared.Validations
 {
     public class EmailLength : ValidationAttribute
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using SchedulePlatform.WebUI.Validations;
+using SchedulePlatform.Shared.Validations;
 namespace SchedulePlatform.WebUI.Pages
 {
     public partial class Customer

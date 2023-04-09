@@ -37,6 +37,9 @@ namespace SchedulePlatform.Data.Migrations
                     b.Property<Guid>("NutritionistId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("ServiceProvidedId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -48,6 +51,8 @@ namespace SchedulePlatform.Data.Migrations
                     b.HasIndex("CustomerId");
 
                     b.HasIndex("NutritionistId");
+
+                    b.HasIndex("ServiceProvidedId");
 
                     b.ToTable("Appointments");
                 });
@@ -200,9 +205,17 @@ namespace SchedulePlatform.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SchedulePlatform.Models.Entities.ServiceProvided", "ServiceProvided")
+                        .WithMany("Appointments")
+                        .HasForeignKey("ServiceProvidedId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Customer");
 
                     b.Navigation("Nutritionist");
+
+                    b.Navigation("ServiceProvided");
                 });
 
             modelBuilder.Entity("SchedulePlatform.Models.Entities.NutritionistService", b =>
@@ -238,6 +251,8 @@ namespace SchedulePlatform.Data.Migrations
 
             modelBuilder.Entity("SchedulePlatform.Models.Entities.ServiceProvided", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("NutritionistService");
                 });
 #pragma warning restore 612, 618

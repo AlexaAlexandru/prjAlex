@@ -41,6 +41,10 @@ public partial class SchedulePlatformContext : DbContext
             .HasOne(n => n.Customer)
             .WithMany(ns => ns.Appointments)
             .HasForeignKey(n => n.CustomerId);
+        modelBuilder.Entity<Appointment>()
+            .HasOne(n => n.ServiceProvided)
+            .WithMany(ns => ns.Appointments)
+            .HasForeignKey(n => n.ServiceProvidedId);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

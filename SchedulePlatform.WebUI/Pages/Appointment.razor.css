@@ -112,7 +112,7 @@
         }
 
 .appointment-cta {
-    margin-top: 80px;
+    margin-top: 40;
     margin-bottom: 30px;
 }
 
@@ -133,36 +133,82 @@
     background-color: #59C3C3;
 }
 
-.slot-days {
-    width: 1000px;
+
+.body {
+    background-color: #FFEBEE;
+    margin-top: 100px;
 }
 
-.slot-day {
-    width: 130px;
-    height: 250px;
-    padding: 15px;
-    float: left;
-    margin-right: 7px;
-    margin-bottom: 10px;
+.card {
+    width: 400px;
+    background-color: #fff;
+    border: none;
+    border-radius: 12px;
 }
 
-.slot-datelabel {
-    margin-bottom: 15px;
+.label.radio {
+    cursor: pointer;
+    width: 100%;
 }
 
-.slot-timeslot {
-    background-color: #52489C;
-    width: inherit;
-    color: white;
-    padding: 7px;
-    margin-top: 5px;
-    font-size: 14px;
-    border-radius: 3px;
-    vertical-align: center;
-    text-align: center;
-}
+    .label.radio input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 
-    .slot-timeslot:hover {
+    .label.radio span {
+        padding: 7px 14px;
+        border: 2px solid #eee;
+        display: inline-block;
+        color: #52489C;
+        border-radius: 10px;
+        width: 100%;
+        height: 48px;
+        line-height: 27px;
+    }
+
+    .label.radio input:checked + span {
+        border-color: #039BE5;
         background-color: #59C3C3;
-        cursor: pointer;
+        color: #fff;
+        border-radius: 9px;
+        height: 48px;
+        line-height: 27px;
+    }
+
+.form-control {
+    margin-top: 10px;
+    height: 48px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+}
+
+    .form-control:focus {
+        box-shadow: none;
+        border: 2px solid #52489C;
+    }
+
+.agree-text {
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: justify-all;
+}
+
+.terms {
+    font-size: 12px;
+    text-decoration: none;
+    color: #039BE5;
+}
+
+.confirm-button {
+    height: 50px;
+    border-radius: 10px;
+    background-color: #52489C;
+}
+
+    .confirm-button:hover {
+        background-color: #59C3C3;
     }

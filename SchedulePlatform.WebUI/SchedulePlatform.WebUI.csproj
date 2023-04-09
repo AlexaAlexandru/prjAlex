@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <None Remove="Pages\Services.razor.css" />
-    <None Remove="Validations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Services.razor.css">
@@ -38,8 +37,8 @@
     <ProjectReference Include="..\SchedulePlatform.Models\SchedulePlatform.Models.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Validations\" />
+    <ProjectReference Include="..\SchedulePlatform.Shared\SchedulePlatform.Shared.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

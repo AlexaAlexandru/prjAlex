@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using SchedulePlatform.Models.Entities;
-using SchedulePlatform.Service.Models.Appointment;
+using SchedulePlatform.Service.Models.AppointmentModel;
 
 namespace SchedulePlatform.Service.MappingProfiles
 {

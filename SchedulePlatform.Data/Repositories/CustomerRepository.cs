@@ -15,6 +15,10 @@ namespace SchedulePlatform.Data.Repositories
         {
             _context = context;
             _dbSet = context.Set<Customer>();
+
+            var listAppointments = _context.Appointments
+                .Include(a => a.Customer)
+                .ToList();
         }
 
     }

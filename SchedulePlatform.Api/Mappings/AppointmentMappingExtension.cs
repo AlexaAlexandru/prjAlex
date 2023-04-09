@@ -1,7 +1,7 @@
 ﻿using System;
 using SchedulePlatform.Api.Models.Patch;
 using SchedulePlatform.Models.Entities;
-using SchedulePlatform.Service.Models.Appointment;
+using SchedulePlatform.Service.Models.AppointmentModel;
 
 namespace SchedulePlatform.Api.Mappings
 {

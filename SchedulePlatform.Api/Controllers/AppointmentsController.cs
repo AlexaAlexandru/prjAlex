@@ -4,7 +4,7 @@ using SchedulePlatform.Api.Mappings;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
 using SchedulePlatform.Api.Models.Patch;
-using SchedulePlatform.Service.Models.Appointment;
+using SchedulePlatform.Service.Models.AppointmentModel;
 using SchedulePlatform.Service.Models;
 using AutoMapper;
 
@@ -14,12 +14,12 @@ namespace SchedulePlatform.Api.Controllers
 
     [ApiController]
 
-    public class AppointmentController : ControllerBase
+    public class AppointmentsController : ControllerBase
     {
         private readonly IAppointmentService _service;
         private readonly IMapper _mapper;
 
-        public AppointmentController(IAppointmentService service,IMapper mapper)
+        public AppointmentsController(IAppointmentService service,IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -161,9 +161,13 @@ namespace SchedulePlatform.Api.Controllers
 
         [HttpGet("free/{date}")]
 
-        public List<DateTime> GetFreeSlots(DateTime date)
+        public ActionResult<List<DateTime>> GetFreeSlots(DateTime date,Guid nutritionistId)
         {
-            return _service.GetFreeSlots(date);
+            if (_service.GetAll().ToList().FirstOrDefault(n=>n.NutritionistId==nutritionistId)==null)
+            {
+                return NotFound();
+            }
+            return _service.GetFreeSlots(date,nutritionistId);
         }
     }
 }

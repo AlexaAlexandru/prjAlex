@@ -1,7 +1,7 @@
 ﻿using System;
 using SchedulePlatform.Models.Enums;
 
-namespace SchedulePlatform.Service.Models.Appointment
+namespace SchedulePlatform.Service.Models.AppointmentModel
 {
     public class AppointmentResponseModel
     {
@@ -11,6 +11,7 @@ namespace SchedulePlatform.Service.Models.Appointment
         public TypeAppointment Type { get; set; }
         public Guid NutritionistId { get; set; }
         public Guid CustomerId { get; set; }
+        public Guid ServiceProvidedId { get; set; }
     }
 }
 

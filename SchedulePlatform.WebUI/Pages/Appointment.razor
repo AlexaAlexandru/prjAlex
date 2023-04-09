@@ -14,7 +14,7 @@
     <section id="Appointment" class="appointment">
         <div class="containerAppointment" data-aos="fade-up">
             <div class="row">
-                <div class="col-md-7 col-md-push-5">
+                <div class="col-md-7 col-md-push-7">
                     <div class="appointment-cta">
                         <h1>Schedule your Appointment</h1>
                         <p>
@@ -23,87 +23,151 @@
                             Perspiciatis.
                         </p>
                     </div>
+                    <div id="Customer">
+                        <EditForm class="container  d-flex justify-content-left" method="POST" Model="@customer" OnValidSubmit="@SubmitCustomer">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary />
+                            <div class="card px-1 py-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="First Name" @bind-value="@customer.FirstName">
+                                                <ValidationMessage For="@(()=> customer.FirstName)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Last Name" @bind-value="@customer.LastName">
+                                                <ValidationMessage For="@(()=> customer.LastName)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="input-group"> <input class="form-control" type="text" placeholder="Phone" @bind-value="@customer.Phone"> </div>
+                                                <ValidationMessage For="@(()=> customer.Phone)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class="input-group"> <input class="form-control" type="email" placeholder="Email" @bind-value="@customer.Email"> </div>
+                                                <ValidationMessage For="@(()=> customer.Email)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" step="0.01" min="1.0" max="2.40" placeholder="Height (m)" @bind-value="@customer.Height">
+                                                <ValidationMessage For="@(()=> customer.Height)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" step="0.1" min="1" placeholder="Weight (kg)" @bind-value="@customer.Weight">
+                                                <ValidationMessage For="@(()=> customer.Weight)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="number" min="1" placeholder="Age" @bind-value="@customer.Age">
+                                                <ValidationMessage For="@(()=> customer.Age)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Reason of the appointment" @bind-value="@customer.ScopeOfAppointment">
+                                                <ValidationMessage For="@(()=> customer.ScopeOfAppointment)" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block confirm-button">Please first confirm your Data</button>
+                            </div>
+                        </EditForm>
+                    </div>
                 </div>
                 <div class="col-md-4 col-md-pull-7">
-                    <div class="appointment-form">
-                        <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <span class="form-label">Date appointment</span>
-                                        <input type="date" @bind-value="DateTimeTest" @onclick="DateValidator" required>
-
-                                    </div>
+                    <EditForm method="POST" Model="@newAppointment" OnValidSubmit="SubmitAppointment">
+                        <div class="appointment-form">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <span class="form-label">Date appointment</span>
+                                    <input type="date" @bind-value="DateTimeTest" @onclick="DateValidator" required>
                                 </div>
                             </div>
                             @if (DateTimeTest.HasValue)
                             {
-                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <span class="form-label">Nutritionist</span>
+                                        <select class="form-control" placeholder="Select a nutritionist" onselect="@HandleServicesByNutritionist(newAppointment.NutritionistId)" @bind="newAppointment.NutritionistId" @onclick="@HandleFreeSlots">
+                                            @foreach (var nutritionist in nutritionists)
+                                            {
+                                                <option value="none" selected disabled hidden>Select</option>
+                                                <option value="@nutritionist.Id">@nutritionist.FirstName @nutritionist.LastName</option>
+                                            }
+                                        </select>
+                                        <span class="select-arrow"></span>
+                                    </div>
+                                </div>
+
+                                @if (newAppointment.NutritionistId != Guid.Empty)
+                                {
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <span class="form-label">Service</span>
-                                            <select class="form-control">
-                                                <option>Service 1</option>
-                                                <option>Service 2</option>
-                                                <option>Service 3</option>
-                                                <option>Service 4</option>
+                                            <select class="form-control" placeholder="Select a service" @bind="newAppointment.ServiceProvidedId">
+                                                @foreach (var service in services)
+                                                {
+                                                    <option value="@service.Id">@service.NameServiceProvided</option>
+                                                }
                                             </select>
                                             <span class="select-arrow"></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <span class="form-label">Nutritionist</span>
-                                            <select class="form-control">
-                                                <option>Nutritionist 1</option>
-                                                <option>Nutritionist 2</option>
-                                                <option>Nutritionist 3</option>
-                                                <option>Nutritionist 4</option>
-                                            </select>
-                                            <span class="select-arrow"></span>
+                                            <div class="form-label">
+                                                <span class="form-label">Available slots </span>
+                                                <select class="form-control" placeholder="Select an hour" @bind="_requestHour">
+                                                    @foreach (var item in availableSlots)
+                                                    {
+                                                        <option value="@item.ToString()"> @item.Hour:00</option>
+                                                    }
+                                                </select>
+                                                <span class="select-arrow"></span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-btn">
-                                    <input type="submit" class="submit-btn" value="Proceed with next step" @onclick=@Navigate />
+                                }
+
+                                <button type="submit" class="btn btn-primary btn-block confirm-button">Confirm appointment </button>
+                                <div class="col-sm-6">
+                                    <small class="agree-text">By Booking this appointment you agree to the </small>
+                                    <a href="#" class="terms">Terms & Conditions</a>
                                 </div>
                             }
                             else
                             {
                                 <div class="row" hidden></div>
-
                             }
-                        </form>
-                    </div>
+                        </div>
+                    </EditForm>
                 </div>
             </div>
-            @if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
-            {
-                <div class="row" hidden>
-
-                </div>
-            }
-            else
-            {
-                <div class="row">
-                    <div class="col-md-7 col-md-push-5">
-                        <div class="slot">
-                            <div class="slot-days">
-                                <div class="slot-day">
-                                    <div class="slot-datelabel"><span class="font-weight-bold">@( DateTimeTest.HasValue ? DateTimeTest.Value.DayOfWeek.ToString() : "")</span></div>
-                                    <div class="slot-timeslot">@(DateTimeTest.HasValue ? DateTimeTest.Value.AddHours(9).ToString() : "")</div>
-                                    <div class="slot-timeslot">9:30am</div>
-                                    <div class="slot-timeslot">10:00am</div>
-                                    @foreach (var item in timeSlots)
-                                    {
-                                        <div class="slot-timeslot"></div>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
         </div>
     </section>
 </body>
@@ -112,32 +176,6 @@
 @code
 {
 
-    public DateTime? DateTimeTest { get; set; }
-    public DateTime StartTime { get; set; } = DateTime.Today.AddHours(9);
-    public DateTime EndTime { get; set; } = DateTime.Today.AddHours(17);
-    public int TimeLengh { get; set; } = 30;
-    public int GapBeetweenSession { get; set; } = 10;
-    private List<string> timeSlots = new List<string>();
-
-    public void DateValidator(MouseEventArgs e)
-    {
-        if (DateTimeTest?.DayOfWeek == DayOfWeek.Sunday || DateTimeTest?.DayOfWeek == DayOfWeek.Saturday)
-        {
-            JsRuntime.InvokeAsync<object>("window.alert", "Please select a day from Monday to Friday");
-            DateTimeTest = null;
-        }
-
-        else
-        {
-
-        }
-
-    }
-
-    public void Navigate()
-    {
-        _nav.NavigateTo("CustomerAppointmentDetails");
-    }
 
 }
 
