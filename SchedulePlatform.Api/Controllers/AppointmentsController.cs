@@ -14,12 +14,12 @@ namespace SchedulePlatform.Api.Controllers
 
     [ApiController]
 
-    public class AppointmentController : ControllerBase
+    public class AppointmentsController : ControllerBase
     {
         private readonly IAppointmentService _service;
         private readonly IMapper _mapper;
 
-        public AppointmentController(IAppointmentService service,IMapper mapper)
+        public AppointmentsController(IAppointmentService service,IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

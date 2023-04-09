@@ -16,13 +16,13 @@ namespace SchedulePlatform.Api.Controllers
 
     [ApiController]
 
-    public class CustomerController : ControllerBase
+    public class CustomersController : ControllerBase
     {
 
         private readonly ICustomerService _service;
         private readonly IMapper _mapper;
 
-        public CustomerController(ICustomerService service,IMapper mapper)
+        public CustomersController(ICustomerService service,IMapper mapper)
         {
             _service = service;
             _mapper = mapper;

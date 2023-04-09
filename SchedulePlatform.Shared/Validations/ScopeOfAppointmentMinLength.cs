@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchedulePlatform.WebUI.Validations
+namespace SchedulePlatform.Shared.Validations
 {
-    public class ScopeOfAppointmentMaxLength : ValidationAttribute
+    public class ScopeOfAppointmentMinLength : ValidationAttribute
     {
         public int Value { get; set; }
 
@@ -15,7 +15,7 @@ namespace SchedulePlatform.WebUI.Validations
             {
                 return false;
             }
-            if (length.Length > Value)
+            if (length.Length < Value)
             {
                 return false;
             }

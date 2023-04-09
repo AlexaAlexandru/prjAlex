@@ -1,27 +1,28 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchedulePlatform.WebUI.Validations
+namespace SchedulePlatform.Shared.Validations
 {
-    public class ScopeOfAppointmentMinLength : ValidationAttribute
+    public class FirstLastNameLength : ValidationAttribute
     {
         public int Value { get; set; }
 
         public override bool IsValid(object? value)
         {
-            var length = value as string;
+            var nameLength = value as string;
 
-            if (length.Length == null)
+            if (nameLength.Length == null)
             {
                 return false;
             }
-            if (length.Length < Value)
+            if (nameLength.Length < Value)
             {
                 return false;
             }
 
             return true;
         }
+
     }
 }
 

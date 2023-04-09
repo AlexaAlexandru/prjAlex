@@ -11,11 +11,11 @@ namespace SchedulePlatform.Api.Controllers
 
     [ApiController]
 
-    public class MenuController : ControllerBase
+    public class MenusController : ControllerBase
     {
         private readonly IMenuService _service;
 
-        public MenuController(IMenuService service)
+        public MenusController(IMenuService service)
         {
             _service = service;
         }

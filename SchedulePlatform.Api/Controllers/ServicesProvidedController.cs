@@ -14,11 +14,11 @@ namespace SchedulePlatform.Api.Controllers
 
     [ApiController]
 
-    public class ServiceProvidedController : ControllerBase
+    public class ServicesProvidedController : ControllerBase
     {
         private readonly IServiceProvidedService _serviceProvidedService;
 
-        public ServiceProvidedController(IServiceProvidedService service)
+        public ServicesProvidedController(IServiceProvidedService service)
         {
             _serviceProvidedService = service;
         }

@@ -1,28 +1,30 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchedulePlatform.WebUI.Validations
+namespace SchedulePlatform.Shared.Validations
 {
-    public class FirstLastNameLength : ValidationAttribute
+    public class PhoneLength : ValidationAttribute
     {
         public int Value { get; set; }
 
         public override bool IsValid(object? value)
         {
-            var nameLength = value as string;
+            var intValue = value as string;
 
-            if (nameLength.Length == null)
+            if (intValue == null)
             {
                 return false;
             }
-            if (nameLength.Length < Value)
+            if (intValue.Length < Value)
             {
                 return false;
             }
-
+            if (intValue.Length == 0)
+            {
+                return false;
+            }
             return true;
         }
-
     }
 }
 
