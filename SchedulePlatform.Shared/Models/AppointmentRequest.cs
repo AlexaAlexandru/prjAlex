@@ -6,7 +6,7 @@ namespace SchedulePlatform.Shared.Models
 	public class AppointmentRequest
 	{
         public Guid Id = Guid.NewGuid();
-        public string? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         public Boolean? IsOnSite { get; set; } = true;
         public TypeAppointment Type { get; set; } = TypeAppointment.ToDo;
         public Guid NutritionistId { get; set; }

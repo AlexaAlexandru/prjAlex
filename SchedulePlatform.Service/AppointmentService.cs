@@ -27,16 +27,17 @@ namespace SchedulePlatform.Service.Interfaces
             return _mapper.Map<AppointmentResponseModel>(appointmentToAdd);
         }
 
-        public List<DateTime> GetFreeSlots(DateTime date,Guid nutritionistId)
+        public List<DateTime> GetFreeSlots(DateTime date, Guid nutritionistId)
         {
             var bookedAppointments = _appointmentRepository
                 .GetAll()
-                .Where(a => a.StartDate == date && a.NutritionistId==nutritionistId)
+                .Where(a => a.NutritionistId == nutritionistId)
                 .ToList();
 
             var startHour = new DateTime(date.Year, date.Month, date.Day, 8, 0, 0);
             var endHour = new DateTime(date.Year, date.Month, date.Day, 18, 0, 0);
             var currentSlot = startHour;
+
             var availableSlots = new List<DateTime>();
 
             while (currentSlot + TimeSpan.FromHours(1) <= endHour)
@@ -45,7 +46,7 @@ namespace SchedulePlatform.Service.Interfaces
 
                 foreach (var item in bookedAppointments)
                 {
-                    if (currentSlot >= item.StartDate && currentSlot < item.StartDate)
+                    if (currentSlot == item.StartDate)
                     {
                         isAvailable = false;
                         break;

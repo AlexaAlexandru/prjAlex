@@ -13,7 +13,7 @@ namespace SchedulePlatform.WebUI.Pages
 
         protected async override Task OnParametersSetAsync()
         {
-            var response = await HttpClient.GetFromJsonAsync<ApiResult<ServiceResponse>>($"api/ServiceProvided/{Id}");
+            var response = await HttpClient.GetFromJsonAsync<ApiResult<ServiceResponse>>($"api/ServicesProvided/{Id}");
 
             Service = new ServiceResponse()
             {

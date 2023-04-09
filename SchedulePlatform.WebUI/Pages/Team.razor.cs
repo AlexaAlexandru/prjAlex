@@ -11,7 +11,7 @@ namespace SchedulePlatform.WebUI.Pages
 
         protected async override Task OnParametersSetAsync()
         {
-            var response = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<NutritionistResponse>>>("api/Nutritionist");
+            var response = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<NutritionistResponse>>>("api/Nutritionists");
             nutritionists = response.Result.ToList();
         }
     }

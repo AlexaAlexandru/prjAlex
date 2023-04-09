@@ -20,7 +20,7 @@ namespace SchedulePlatform.WebUI.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            var response = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<ServiceResponse>>>("api/ServiceProvided");
+            var response = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<ServiceResponse>>>("api/ServicesProvided");
             services = response.Result.ToList();
         }
     }
