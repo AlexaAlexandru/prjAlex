@@ -1,4 +1,4 @@
-﻿@page "/Confirmation"
+﻿@page "/Confirmation/{Id:guid}"
 @inherits LayoutComponentBase
 
 <PageTitle>Confirmation </PageTitle>
@@ -17,14 +17,14 @@
                                 <tr>
                                     <td>
                                         <div class="d-flex flex-column">
-                                            <span class="heading d-block">Time/Date</span>
-                                            <span class="subheadings">5:00PM 3-12-2020</span>
+                                            <span class="heading d-block">Date/Time</span>
+                                            <span class="subheadings">@Appointment.StartDate </span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex flex-column">
                                             <span class="heading d-block">Status</span>
-                                            <span class="subheadings"><i class="dots"></i> Booked</span>
+                                            <span class="subheadings"><i class="dots"></i> @Appointment.Type</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -32,13 +32,13 @@
                                     <td>
                                         <div class="d-flex flex-column">
                                             <span class="heading d-block">Speciality</span>
-                                            <span class="subheadings">Sports Nutrition</span>
+                                            <span class="subheadings">@Service.NameServiceProvided</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex flex-column">
                                             <span class="heading d-block">Referring Nutritionist</span>
-                                            <span class="subheadings"> RD. Nutritionist Name</span>
+                                            <span class="subheadings"> RD. @Nutritionist.FirstName @Nutritionist.LastName</span>
                                         </div>
                                     </td>
                                     <td>
@@ -48,13 +48,14 @@
                                     <td>
                                         <div class="d-flex flex-column">
                                             <span class="heading d-block">Contact</span>
-                                            <span class="subheadings">Nutritionist Phone Number</span>
+                                            <span class="subheadings"> @Nutritionist.Phone</span>
+                                            <span class="subheadings"> @Nutritionist.Email</span>
                                         </div>
                                     </td>
                                     <td colspan="2">
                                         <div class="d-flex flex-column">
                                             <span class="heading d-block">Reason of visiting</span>
-                                            <span class="subheadings">Lorem ipsum is placeholder</span>
+                                            <span class="subheadings">@Customer.ScopeOfAppointment</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -65,8 +66,8 @@
                 <div class="col-md-4">
                     <div class="p-2 text-center">
                         <div class="profile">
-                            <img src="https://i.imgur.com/VfRSLTm.jpg" width="100" class="rounded-circle img-thumbnail">
-                            <span class="d-block mt-3 font-weight-bold">RD. Nutritionist Name.</span>
+                            <img src="@Nutritionist.PictureUrl" width="100" class="rounded-circle img-thumbnail">
+                            <span class="d-block mt-3 font-weight-bold">RD. @Nutritionist.FirstName @Nutritionist.LastName</span>
                         </div>
                         <div class="about-nutritionist">
                             <table class="table table-borderless">
@@ -75,7 +76,6 @@
                                         <td>
                                             <div class="d-flex flex-column">
                                                 <span class="heading d-block">Specialist</span>
-                                                <span class="subheadings">Sports, Clinical nutritionist</span>
                                             </div>
                                         </td>
                                     </tr>

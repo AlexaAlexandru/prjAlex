@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Net.Http.Json;
 using System.Xml.Serialization;
+using MatBlazor;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
@@ -26,10 +27,12 @@ namespace SchedulePlatform.WebUI.Pages
         private List<ServiceResponse> services = new List<ServiceResponse>();
         private List<DateTime> availableSlots = new List<DateTime>();
         private List<CustomerResponse> customers = new List<CustomerResponse>();
+        private List<AppointmentResponse> appointments = new List<AppointmentResponse>();
 
         private CustomerRequest customer = new();
         private CustomerResponse foundCustomer = new();
         private AppointmentRequest newAppointment = new();
+        private AppointmentResponse foundAppoinment = new();
 
         private DateTime _requestDate = new DateTime();
         private DateTime _requestHour = new DateTime();
@@ -80,7 +83,7 @@ namespace SchedulePlatform.WebUI.Pages
 
             newAppointment.CustomerId = customer.Id;
 
-            bool alertConfirmation = await JsRuntime.InvokeAsync<bool>("confirm","Are all data correct?");
+            bool alertConfirmation = await JsRuntime.InvokeAsync<bool>("confirm", "Are all data correct?");
             if (alertConfirmation)
             {
                 var request = await HttpClient.PostAsJsonAsync("api/Customers", customer);
@@ -91,9 +94,6 @@ namespace SchedulePlatform.WebUI.Pages
                 var searchCustomers = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<CustomerResponse>>>($"api/Customers");
                 customers = searchCustomers.Result.ToList();
             }
-
-
-            //_nav.NavigateTo("/Confirmation");
         }
 
         public async Task SubmitAppointment()
@@ -107,6 +107,8 @@ namespace SchedulePlatform.WebUI.Pages
 
             newAppointment.CustomerId = foundCustomer.Id;
 
+            Console.WriteLine(foundCustomer.Id);
+
             bool alertConfirmationAppointment = await JsRuntime.InvokeAsync<bool>("confirm", $" The appointment will be on the {newAppointment.StartDate}, for {newAppointment.ServiceProvidedId} at {newAppointment.NutritionistId}. customer {newAppointment.CustomerId}. Are you sure?");
 
             if (alertConfirmationAppointment)
@@ -116,7 +118,15 @@ namespace SchedulePlatform.WebUI.Pages
 
                 await JsRuntime.InvokeVoidAsync("confirm", "The appointment was registered");
 
-                _nav.NavigateTo("Confirmation");
+                var findappointmentsForCustomer = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<AppointmentResponse>>>($"api/Appointments/all/{foundCustomer.Id}");
+
+                appointments = findappointmentsForCustomer.Result.ToList();
+
+                foundAppoinment = appointments.Find(a => a.StartDate == newAppointment.StartDate);
+
+                ConfirmationId = foundAppoinment.Id;
+
+                _nav.NavigateTo($"Confirmation/{ConfirmationId}");
 
             }
         }
