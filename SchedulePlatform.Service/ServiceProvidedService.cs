@@ -46,9 +46,9 @@ namespace SchedulePlatform.Service
 
         public IEnumerable<ServiceProvidedResponseModel> GetAllServicesByNutritionistId(Guid nutritionistId)
         {
-            var allServices = _nutritionistServiceRepository.GetAll().ToList().Where(n => n.NutritionistId == nutritionistId);
+            var allServices = _nutritionistServiceRepository.GetAll().ToList().Where(s => s.NutritionistId == nutritionistId);
 
-            if (allServices == null)
+            if (allServices.Count()==0)
             {
                 throw new Exception("The nutrionist has no related services");
             }
