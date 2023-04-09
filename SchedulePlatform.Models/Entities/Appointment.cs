@@ -18,6 +18,10 @@ namespace SchedulePlatform.Models.Entities
         public Guid CustomerId { get; set; }
 
         public Customer Customer { get; set; }
+
+        public ServiceProvided ServiceProvided { get; set; }
+
+        public Guid ServiceProvidedId { get; set; }
     }
 }
 

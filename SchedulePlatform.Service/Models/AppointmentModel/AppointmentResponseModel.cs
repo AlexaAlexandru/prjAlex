@@ -11,6 +11,7 @@ namespace SchedulePlatform.Service.Models.AppointmentModel
         public TypeAppointment Type { get; set; }
         public Guid NutritionistId { get; set; }
         public Guid CustomerId { get; set; }
+        public Guid ServiceProvidedId { get; set; }
     }
 }
 
