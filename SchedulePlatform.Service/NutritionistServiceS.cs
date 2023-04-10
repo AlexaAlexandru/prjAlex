@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using SchedulePlatform.Data.Interfaces;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Service.Interfaces;
@@ -81,15 +82,20 @@ namespace SchedulePlatform.Service
             {
                 updatedNutritionist.Phone = nutritionist.Phone;
             }
-
-            _nutritionistRepository.Update(updatedNutritionist);
-
-            _nutritionistServiceRepository.Add(new NutritionistService
+            if (nutritionist.PictureUrl!=null)
             {
-                Id = Guid.NewGuid(),
-                ServiceId = nutritionist.newNutritionServiceId,
-                NutritionistId = updatedNutritionist.Id
-            });
+                updatedNutritionist.PictureUrl = nutritionist.PictureUrl;
+            }
+            if (nutritionist.newNutritionServiceId.HasValue)
+            {
+                _nutritionistServiceRepository.Add(new NutritionistService
+                {
+                    Id = Guid.NewGuid(),
+                    ServiceId = (Guid)nutritionist.newNutritionServiceId,
+                    NutritionistId = updatedNutritionist.Id
+                });
+            }
+            _nutritionistRepository.Update(updatedNutritionist);
 
             return _mapper.Map<UpdateNutritionistResponseModel>(updatedNutritionist);
         }

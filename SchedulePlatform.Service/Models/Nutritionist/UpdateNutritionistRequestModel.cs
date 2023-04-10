@@ -13,7 +13,7 @@ namespace SchedulePlatform.Service.Models.Nutritionist
         public string? Biography { get; set; }
         public Uri? PictureUrl { get; set; }
         public string? Address { get; set; }
-        public Guid newNutritionServiceId { get; set; }
+        public Guid? newNutritionServiceId { get; set; }
     }
 }
 
