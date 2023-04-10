@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Components;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 using SchedulePlatform.Shared.Models;
+using SchedulePlatform.Models.Entities;
 
 namespace SchedulePlatform.WebUI.Pages
 {
@@ -18,13 +22,17 @@ namespace SchedulePlatform.WebUI.Pages
 
         private CustomerResponse Customer = new();
 
+        private EmailRequest Email = new();
+
+        private string Message { get; set; }
+
         protected async override Task OnParametersSetAsync()
         {
             var response = await HttpClient.GetFromJsonAsync<ApiResult<AppointmentResponse>>($"api/Appointments/{Id}");
 
             Appointment = new AppointmentResponse()
             {
-                CustomerId=response.Result.CustomerId,
+                CustomerId = response.Result.CustomerId,
                 NutritionistId = response.Result.NutritionistId,
                 ServiceProvidedId = response.Result.ServiceProvidedId,
                 StartDate = response.Result.StartDate,
@@ -39,7 +47,7 @@ namespace SchedulePlatform.WebUI.Pages
                 LastName = searchNutritionist.Result.LastName,
                 PictureUrl = searchNutritionist.Result.PictureUrl,
                 Phone = searchNutritionist.Result.Phone,
-                Email = searchNutritionist.Result.Email 
+                Email = searchNutritionist.Result.Email
             };
 
             var searchService = await HttpClient.GetFromJsonAsync<ApiResult<ServiceResponse>>($"api/ServicesProvided/{Appointment.ServiceProvidedId}");
@@ -54,8 +62,20 @@ namespace SchedulePlatform.WebUI.Pages
 
             Customer = new CustomerResponse()
             {
-                ScopeOfAppointment = searchCustomer.Result.ScopeOfAppointment
+                ScopeOfAppointment = searchCustomer.Result.ScopeOfAppointment,
+                Email = searchCustomer.Result.Email,
+                FirstName = searchCustomer.Result.FirstName,
+                LastName = searchCustomer.Result.LastName
             };
+
+            Email = new EmailRequest()
+            {
+                To = Customer.Email,
+                Subject = $"Confirmation of Appointment {Appointment.Id}",
+                Body = $"<h1>Scheduling platform is waiting for you</h1> <div> Resumem of your appointment : On the {Appointment.StartDate} , you will have an appoinment at {Nutritionist.FirstName} {Nutritionist.LastName}. See you there</div>"
+            };
+
+            var request = await HttpClient.PostAsJsonAsync("api/Email", Email);
 
         }
     }
