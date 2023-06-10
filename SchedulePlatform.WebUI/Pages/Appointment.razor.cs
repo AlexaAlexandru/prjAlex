@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Security;
 using SchedulePlatform.Models.Entities;
 using SchedulePlatform.Shared.Models;
 
@@ -54,7 +55,6 @@ namespace SchedulePlatform.WebUI.Pages
         {
             var response = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<NutritionistResponse>>>("/api/Nutritionists");
             nutritionists = response.Result.ToList();
-
         }
 
         protected async Task HandleFreeSlots()
@@ -74,6 +74,9 @@ namespace SchedulePlatform.WebUI.Pages
 
         protected async Task HandleServicesByNutritionist(Guid nutritionistId)
         {
+            if(nutritionistId == Guid.Empty) {
+                nutritionistId = nutritionists.First().Id;
+            }
             var servicesByNutritionist = await HttpClient.GetFromJsonAsync<ApiResult<IEnumerable<ServiceResponse>>>($"Api/ServicesProvided/all/{nutritionistId}");
             services = servicesByNutritionist.Result.ToList();
         }
@@ -107,9 +110,13 @@ namespace SchedulePlatform.WebUI.Pages
 
             newAppointment.CustomerId = foundCustomer.Id;
 
+            var serviceName = services.Find(x => x.Id == newAppointment.ServiceProvidedId);
+
+            var nutritionistName = nutritionists.Find(n => n.Id == newAppointment.NutritionistId);
+
             Console.WriteLine(foundCustomer.Id);
 
-            bool alertConfirmationAppointment = await JsRuntime.InvokeAsync<bool>("confirm", $" The appointment will be on the {newAppointment.StartDate}, for {newAppointment.ServiceProvidedId} at {newAppointment.NutritionistId}. customer {newAppointment.CustomerId}. Are you sure?");
+            bool alertConfirmationAppointment = await JsRuntime.InvokeAsync<bool>("confirm", $" The appointment will be on the {newAppointment.StartDate}, for {serviceName.NameServiceProvided} at {nutritionistName.FirstName} {nutritionistName.LastName}. {foundCustomer.FirstName} are all informations correct?");
 
             if (alertConfirmationAppointment)
             {

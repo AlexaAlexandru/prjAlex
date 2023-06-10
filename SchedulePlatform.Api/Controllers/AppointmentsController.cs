@@ -94,20 +94,16 @@ namespace SchedulePlatform.Api.Controllers
 
         public IActionResult GetById(Guid id)
         {
-            if (_service.GetById(id)==null)
-            {
-                return NotFound();
-            }
             try
             {
+                if (_service.GetById(id) == null)
+                {
+                    return NotFound();
+                }
                 return Ok(ApiGenericsResult<AppointmentResponseModel>.Success(_service.GetById(id)));
             }
             catch (Exception ex)
             {
-                if (_service.GetById(id)==null)
-                {
-                    return NotFound(ex.Message);
-                }
                 return BadRequest(ex.Message);
             }
         }

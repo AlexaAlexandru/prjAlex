@@ -13,7 +13,7 @@
             <div class="row gx-5">
                 <div class="col ">
                     <h1>Nutrition<br>One click away</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+                    <p>The word ‘diet’ has developed negative connotations which can deter people from accessing services. A dietitian will never force you to follow a specific plan; they will guide you, support you, and provide you with options specific to you and your needs. Our dietitians want to help you reach your goals and empower you to make positive change.</p>
                     <button @onclick=@Navigate type="button" class="btn btn-dark btn-large">Make an appointment </button>
                 </div>
                 <div class="col img-col">
@@ -30,11 +30,10 @@
                     <div class="content">
                         <h3>Why Choose Nutrition,One click-away?</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                            Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                            Our Accredited Practicing Dietitians can help you address any nutritional concerns you may have. They can assess your health conditions, work with you and your family to set realistic and achievable goals, devise a treatment plan to optimise your diet quality, and help improve your overall nutritional status.
                         </p>
                         <div class="text-center">
-                            <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                            <a class="more-btn" @onclick="@MoreInfo">Learn More <i class="bx bx-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -44,22 +43,22 @@
                             <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box mt-4 mt-xl-0 ">
                                     <img class="img-thumbnail rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/pngwing.com%20(1).png?alt=media&token=c0a75171-0d43-4ee4-be82-3005046a9be3" />
-                                    <h4>Corporis voluptates sit</h4>
-                                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                                    <h4>Our team</h4>
+                                    <p>Dietitians are governed by the regulatory body Dietitians Romania. Dietitians in Romania who meet strict criteria are eligible to join the CDR ( Colegiul Dieteticienilor din Romania).</p>
                                 </div>
                             </div>
                             <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box mt-4 mt-xl-0">
                                     <img class="img-thumbnail rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/91719-week-illness-mental-graphic-health-design-line.png?alt=media&token=76b3a368-ccb9-40d7-b3e7-952bd97c4be0" />
-                                    <h4>Ullamco laboris ladore pan</h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                                    <h4>Feed your mind</h4>
+                                    <p>When you stick to a diet of nutrient-rich foods, you're setting yourself up for fewer mood swings and an improved ability to focus. Studies have even found that clean diets consisting of mainly whole, unprocessed foods, can help with symptoms of depression and anxiety</p>
                                 </div>
                             </div>
                             <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box mt-4 mt-xl-0">
                                     <img class="img-thumbnail rounded mx-auto d-block" src="https://firebasestorage.googleapis.com/v0/b/scheduleplatform.appspot.com/o/5-2-health-free-png-image.png?alt=media&token=815bd145-fce0-441d-bf32-1f237a054fcb" />
-                                    <h4>Labore consequatur</h4>
-                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                                    <h4>Feed your body</h4>
+                                    <p>Good nutrition is just as important as exercise for your overall health. By Improving your diet, you will enjoy increased energy levels, a stronger immune system, and generally feel well more often. </p>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +73,7 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h1>Contact US</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.</p>
+                    <p>schedulingplatformnutrition@gmail.com                     Phone Number- 0788339820</p>
                 </div>
             </div>
         </div>
@@ -86,6 +85,11 @@
     void Navigate()
     {
         navigationManager.NavigateTo("/Appointment");
+    }
+
+    void MoreInfo()
+    {
+        navigationManager.NavigateTo("/About");
     }
 
 }

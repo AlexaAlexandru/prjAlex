@@ -18,9 +18,9 @@
                     <div class="appointment-cta">
                         <h1>Schedule your Appointment</h1>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi facere, soluta magnam consectetur molestias itaque
-                            ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates aliquid consequuntur cumque quasi.
-                            Perspiciatis.
+                            <h5>Welcome to Nutrition,One Click Away!</h5>
+                            We’re so happy you’ve decided to schedule an appointment with one of our dietitian nutritionists.<br />
+                            Please note that an appointment is for 1 person, if you have multiple family members please book an appointment for each individual.
                         </p>
                     </div>
                     <div id="Customer">
@@ -105,7 +105,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <span class="form-label">Date appointment</span>
-                                    <input type="date" @bind-value="DateTimeTest" @onclick="DateValidator" required>
+                                    <input type="date" @bind-value="DateTimeTest" @onclick="@DateValidator" required>
                                 </div>
                             </div>
                             @if (DateTimeTest.HasValue)
@@ -116,7 +116,6 @@
                                         <select class="form-control" placeholder="Select a nutritionist" onselect="@HandleServicesByNutritionist(newAppointment.NutritionistId)" @bind="newAppointment.NutritionistId" @onclick="@HandleFreeSlots">
                                             @foreach (var nutritionist in nutritionists)
                                             {
-                                                <option value="none" selected disabled hidden>Select</option>
                                                 <option value="@nutritionist.Id">@nutritionist.FirstName @nutritionist.LastName</option>
                                             }
                                         </select>
